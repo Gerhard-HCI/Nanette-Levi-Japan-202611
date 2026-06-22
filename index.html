@@ -1,1 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D2847">
+  <title>Nanette Levi &amp; Raimundo Lopez · Japan 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#0D2847; --navy-dk:#071B35; --navy-lt:#EEF4FF;
+      --gold:#B07C22; --gold-lt:#FBF5E6;
+      --sakura:#E8A4B2; --sakura-lt:#FDF2F5;
+      --cream:#FAF8F4; --ink:#0A1A2F; --ink-2:#233D5C; --ink-3:#5A7590; --ink-4:#90A8BE;
+      --border:#D8E4F0; --border-lt:#EBF2FA; --white:#FFFFFF;
+      --shadow:0 2px 12px rgba(13,40,71,.10),0 1px 3px rgba(13,40,71,.06);
+      --radius:18px; --radius-md:12px; --radius-sm:8px;
+      --font-serif:'Cormorant Garamond','Palatino Linotype',Georgia,serif;
+      --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;height:100%}
+    body{font-family:var(--font-sans);background:var(--cream);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+    a{color:inherit;text-decoration:none}
+    button{font-family:var(--font-sans);cursor:pointer;-webkit-tap-highlight-color:transparent}
+    input{font-family:var(--font-sans)}
+    html,body{height:100%;margin:0;padding:0}
+
+    /* HEADER */
+    #app-header{position:fixed;top:0;left:0;right:0;z-index:9999;background-color:#0D2847;background-image:linear-gradient(160deg,#0F3160 0%,#0D2847 55%,#071B35 100%);border-bottom:1px solid rgba(255,255,255,.08)}
+    .hdr-top{display:flex;align-items:center;justify-content:space-between;padding:8px 14px 4px}
+    .hdr-left{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .hdr-flag{font-size:17px;flex-shrink:0}
+    .hdr-dest{font-family:var(--font-serif);font-size:14px;font-weight:300;letter-spacing:.4px;color:#fff;white-space:nowrap}
+    .hdr-hc{font-size:8px;color:rgba(255,255,255,.40);letter-spacing:.8px;text-transform:uppercase;margin-top:1px}
+    .hdr-names{text-align:center;padding:0 14px 7px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hdr-name{font-family:var(--font-serif);font-size:clamp(22px,5vw,34px);font-weight:300;letter-spacing:.4px;color:#fff;line-height:1.15}
+    .hdr-name2{font-size:clamp(9px,1.8vw,11px);color:rgba(255,255,255,.45);letter-spacing:1.4px;text-transform:uppercase;margin-top:3px}
+    .hdr-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    #jst-clock{font-family:'SF Mono','Menlo',monospace;font-size:14px;font-weight:300;letter-spacing:1px;color:#fff;display:block;text-align:right;white-space:nowrap}
+    #trip-day-label{font-size:8.5px;color:rgba(255,255,255,.38);letter-spacing:.4px;margin-top:1px;display:block;text-align:right;white-space:nowrap}
+
+    /* TAB NAV */
+    .tab-nav{display:flex;border-top:1px solid rgba(255,255,255,.07);overflow-x:auto;scrollbar-width:none}
+    .tab-nav::-webkit-scrollbar{display:none}
+    .tab-btn{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.78);font-size:11.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:9px 13px 7px;transition:color .18s,border-color .18s;cursor:pointer;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+    .tab-btn.active{color:var(--sakura);border-bottom-color:var(--sakura)}
+
+    /* MAIN */
+    #main-content{overflow-y:auto;-webkit-overflow-scrolling:touch;height:100vh;}
+    .tab-panel{display:none;padding:14px 14px 80px;animation:panelFade .22s ease both}
+    .tab-panel.active{display:block}
+    @keyframes panelFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+    /* BANNER */
+    .trip-banner{background:linear-gradient(135deg,#0D2847 0%,#0A2040 55%,#04111F 100%);border-radius:var(--radius);padding:22px 20px 20px;margin-bottom:14px;color:#fff;position:relative;overflow:hidden}
+    .trip-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat}
+    .trip-banner-kana{font-family:var(--font-serif);font-size:11px;font-style:italic;opacity:.55;letter-spacing:1px;margin-bottom:4px;position:relative}
+    .trip-banner h2{font-family:var(--font-serif);font-size:28px;font-weight:300;letter-spacing:1px;margin-bottom:4px;position:relative}
+    .trip-banner .banner-dates{font-size:13px;opacity:.72;position:relative}
+    .banner-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;position:relative}
+    .banner-chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 10px;font-size:11px}
+    .banner-chip.confirmed{background:rgba(200,230,201,.25);border-color:rgba(200,230,201,.5)}
+
+    .section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink-4);padding:8px 2px 6px}
+
+    /* BOOKING LEGEND */
+    .booking-legend{display:flex;flex-wrap:wrap;gap:8px 14px;padding:10px 14px;background:var(--white);border-radius:var(--radius-md);margin-bottom:10px;border:1px solid var(--border-lt)}
+    .bl-item{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--ink-3);font-weight:500}
+    .bl-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+    .bl-dot.confirmed{background:#C8E6C9;border:1px solid rgba(27,94,32,.3)}
+    .bl-dot.requested{background:#80DEEA;border:1px solid rgba(0,77,86,.3)}
+    .bl-dot.self-booked{background:#FADADD;border:1px solid rgba(123,26,26,.3)}
+    .bl-dot.suggestion{background:#BBDEFB;border:1px solid rgba(13,60,110,.3)}
+    .bl-dot.walk-in{background:#FFF9E6;border:1px solid rgba(107,80,0,.3)}
+
+    /* DAY CARDS */
+    .day-card{background:var(--white);border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border-lt);animation:cardIn .28s ease both}
+    @keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .day-card.is-today{border-color:var(--navy);box-shadow:0 0 0 1.5px var(--navy),var(--shadow)}
+    .day-card.is-past{opacity:.58}
+    .day-header{display:flex;align-items:center;gap:12px;padding:15px 16px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+    .day-num{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;background:var(--border-lt);color:var(--ink-3)}
+    .day-card.is-today .day-num{background:var(--navy);color:#fff}
+    .day-header-info{flex:1;min-width:0}
+    .day-name{font-size:15px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .day-sub{font-size:11px;color:var(--ink-4);margin-top:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .day-city-badge{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:#EBF3FF;color:#1A5FAA}
+    .day-city-badge.kyoto{background:#F1EBE0;color:#7A5C1F}
+    .day-city-badge.fuji{background:#EAF1FB;color:#3A5C8A}
+    .day-city-badge.hiroshima{background:#EAF5EE;color:#2E6B4F}
+    .day-city-badge.fukuoka{background:#FBEEF0;color:#9A3B52}
+    .banner-chip.pending{background:rgba(236,239,241,.22);border-color:rgba(255,255,255,.24)}
+    .today-pill{font-size:10px;font-weight:700;background:var(--navy);color:#fff;padding:2px 8px;border-radius:20px}
+    .host-pill{font-size:10px;font-weight:600;background:rgba(176,124,34,.15);color:var(--gold);padding:2px 8px;border-radius:20px;border:1px solid rgba(176,124,34,.25)}
+    .day-chevron{color:var(--ink-4);font-size:14px;flex-shrink:0;transition:transform .25s cubic-bezier(.4,0,.2,1)}
+    .day-card.open .day-chevron{transform:rotate(180deg)}
+    .day-body{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+    .day-card.open .day-body{max-height:5000px}
+    .day-body-inner{padding:0 16px 16px}
+
+    .hotel-bar{display:flex;align-items:center;gap:10px;border-radius:var(--radius-md);padding:10px 13px;margin-bottom:12px;background:#EBF4FF;border-left:3px solid #0D2847}
+    .hb-name{font-size:12px;font-weight:600;color:#0D2847}
+    .hb-detail{font-size:11px;color:#1A3F6F;margin-top:1px}
+    .hb-link{margin-left:auto;font-size:11px;font-weight:500;flex-shrink:0;color:#0D2847}
+
+    .day-note-bar{background:var(--navy-lt);border-radius:var(--radius-md);border-left:3px solid #4A80C0;padding:10px 13px;font-size:12px;color:var(--ink-2);line-height:1.55;margin-bottom:12px}
+
+    .weather-widget{display:flex;align-items:center;gap:10px;background:var(--gold-lt);border-radius:var(--radius-md);border:1px solid rgba(176,124,34,.15);padding:10px 13px;margin-bottom:14px}
+    .wx-icon{font-size:26px}.wx-info{flex:1}.wx-temp{font-size:14px;font-weight:600}.wx-desc{font-size:11px;color:var(--ink-3);margin-top:2px}.wx-rain{font-size:12px;font-weight:500;color:#1D6FAD;flex-shrink:0}
+    .wx-loading{font-size:12px;color:var(--ink-4);animation:pulse 1.5s ease infinite}
+    @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+    /* TIMELINE */
+    .timeline{position:relative;padding-left:75px}
+    .stop-item{position:relative;margin-bottom:14px}
+    .stop-item::after{content:'';position:absolute;left:-16px;top:29px;bottom:-14px;width:2px;background:var(--border);z-index:1}
+    .stop-item:last-child::after{display:none}
+    .stop-time{position:absolute;left:-70px;top:11px;width:42px;text-align:right;font-size:10px;font-weight:600;color:var(--ink-4);line-height:1.4}
+    .stop-dot{position:absolute;left:-25px;top:9px;width:18px;height:18px;border-radius:50%;border:2.5px solid #ccc;background:#fff;z-index:2}
+    .stop-dot.t-restaurant{border-color:#8B1A1A;background:#F8EDED}
+    .stop-dot.t-activity{border-color:#6650CC;background:#EEE8FF}
+    .stop-dot.t-transport{border-color:#0D2847;background:#EEF4FF}
+    .stop-dot.t-hotel{border-color:#2E7D32;background:#E8F5E9}
+    .stop-dot.t-flight{border-color:#0277BD;background:#E1F5FE}
+    .stop-dot.t-suggestion{border-color:#1565C0;background:#E3F2FD}
+    .stop-dot.t-pending{border-color:#607D8B;background:#ECEFF1}
+    .stop-card{background:var(--cream);border-radius:var(--radius-md);border:1px solid var(--border-lt);padding:11px 13px}
+    .stop-card.is-suggestion{background:#F0F7FF;border-color:rgba(21,101,192,.15)}
+    .stop-card.is-pending{background:#F5F5F5;border-color:rgba(96,125,139,.15)}
+    .stop-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .stop-title-wrap{flex:1;min-width:0}
+    .stop-icon{font-size:13px;margin-right:5px}
+    .stop-title{font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+    .stop-subtitle{font-size:11px;color:var(--ink-3);margin-top:2px}
+
+    /* BOOKING STATUS BADGES — colours from xlsx legend */
+    .stop-badge{font-size:9.5px;font-weight:600;padding:3px 9px;border-radius:5px;flex-shrink:0;white-space:nowrap;letter-spacing:.1px}
+    .stop-badge.confirmed  {background:#C8E6C9;color:#1B5E20;border:1px solid rgba(27,94,32,.18)}
+    .stop-badge.requested  {background:#80DEEA;color:#004D56;border:1px solid rgba(0,77,86,.18)}
+    .stop-badge.self-booked{background:#FADADD;color:#7B1A1A;border:1px solid rgba(123,26,26,.18)}
+    .stop-badge.suggestion {background:#BBDEFB;color:#0D3C6E;border:1px solid rgba(13,60,110,.18)}
+    .stop-badge.walk-in    {background:#FFF9E6;color:#6B5000;border:1px solid rgba(107,80,0,.18)}
+    .stop-badge.pending    {background:#ECEFF1;color:#546E7A;border:1px solid rgba(84,110,122,.2)}
+    .stop-badge.logistics  {background:#FFE0B2;color:#BF360C;border:1px solid rgba(191,54,12,.18)}
+
+    .stop-notes{font-size:12px;color:var(--ink-2);line-height:1.55;margin-top:8px;padding-top:8px;border-top:1px solid var(--border-lt)}
+    .stop-alert{display:flex;align-items:flex-start;gap:6px;margin-top:8px;padding:7px 10px;background:#FFFBEB;border-radius:var(--radius-sm);border-left:3px solid #F59E0B;font-size:11px;color:#92400E;font-weight:500;line-height:1.4}
+    .diet-alert{display:flex;align-items:flex-start;gap:8px;margin-top:8px;padding:8px 11px;background:#FDF2F5;border-radius:var(--radius-sm);border-left:3px solid var(--sakura);font-size:11.5px;color:#7B1A1A;line-height:1.5}
+    .diet-alert .di{font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#7B1A1A;padding:2px 6px;background:#fff;border:1px solid var(--sakura);border-radius:3px;flex-shrink:0;margin-top:1px;white-space:nowrap}
+    .diet-alert strong{color:var(--ink)}
+    .map-actions{display:flex;gap:5px;margin-top:10px}
+    .ticket-cap{font-size:11px;font-weight:600;color:#7a6a4a;margin-top:11px;margin-bottom:6px}
+    .ticket-row{display:flex;flex-wrap:wrap;gap:6px}
+    .ticket-btn{flex:1 1 44%;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;min-height:38px;border:1px solid #c9a96a;background:#faf6ef;color:#1f3a5f;text-decoration:none}
+    .ticket-btn:active{background:#f1e7d2}
+    .map-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px 5px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;min-height:34px;border:1px solid var(--border);background:var(--white);color:var(--ink-2);cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .map-btn:active{transform:scale(.96)}
+    .map-btn.map-disabled{color:var(--border);cursor:default;background:var(--border-lt);border-color:var(--border-lt);pointer-events:none;opacity:.4}
+    .map-btn.mp{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600}
+
+    /* UTILITIES */
+    .util-card{background:var(--white);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border-lt);margin-bottom:12px}
+    .util-card-title{font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:14px;letter-spacing:.3px}
+    .fx-row{display:flex;gap:8px;align-items:flex-end}
+    .fx-group{flex:1}
+    .fx-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-4);margin-bottom:5px}
+    .fx-input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:18px;font-weight:500;color:var(--ink);background:var(--cream);outline:none;-webkit-appearance:none}
+    .fx-input:focus{border-color:var(--navy)}
+    .fx-swap-btn{width:38px;height:38px;border-radius:50%;background:var(--navy-lt);border:none;color:var(--navy);font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:1px;cursor:pointer}
+    .fx-rate-note{font-size:11px;color:var(--ink-4);text-align:center;margin-top:10px;line-height:1.5}
+    .info-list{list-style:none}
+    .info-list li{display:flex;align-items:flex-start;gap:11px;padding:10px 0;border-bottom:1px solid var(--border-lt);font-size:13px;line-height:1.55}
+    .info-list li:last-child{border-bottom:none;padding-bottom:0}
+    .info-emoji{font-size:17px;flex-shrink:0;margin-top:1px}
+    .info-text{color:var(--ink-2)}
+    .info-text strong{color:var(--ink);display:block;margin-bottom:1px}
+    .rule-item{padding:9px 0;border-bottom:1px solid var(--border-lt);display:flex;gap:10px;font-size:12.5px;line-height:1.5}
+    .rule-item:last-child{border-bottom:none}
+    .rule-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+    .rule-text strong{color:var(--ink)}
+
+    /* WISH LIST */
+    .wishlist-banner{background:linear-gradient(135deg,#4A1942 0%,#2D0F27 100%);border-radius:var(--radius);padding:22px 20px 18px;margin-bottom:14px;color:#fff;position:relative;overflow:hidden}
+    .wishlist-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat}
+    .wishlist-banner h2{font-family:var(--font-serif);font-size:26px;font-weight:300;letter-spacing:.8px;margin-bottom:4px;position:relative}
+    .wishlist-banner p{font-size:12px;opacity:.65;position:relative}
+    .wish-card{background:var(--white);border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--border-lt);overflow:hidden}
+    .wish-row{display:flex;align-items:center;gap:14px;padding:14px 16px}
+    .wish-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4A1942,#2D0F27);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .wish-info{flex:1;min-width:0}
+    .wish-name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.2}
+    .wish-style{font-size:10.5px;color:var(--ink-4);margin-top:2px}
+    .wish-actions{display:flex;gap:6px;flex-shrink:0}
+    .wish-map-btn{padding:7px 11px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--white);color:var(--ink-2);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+    .wish-divider{height:1px;background:var(--border-lt);margin:0}
+    .wish-border{border-top:1px solid var(--border-lt)}
+
+    /* DIET TAB */
+    .diet-banner{background:linear-gradient(135deg,#7C1D3A 0%,#4A0F22 100%);border-radius:var(--radius);padding:22px 20px 18px;margin-bottom:14px;color:#fff;position:relative;overflow:hidden}
+    .diet-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat}
+    .diet-banner h2{font-family:var(--font-serif);font-size:26px;font-weight:300;letter-spacing:.8px;margin-bottom:4px;position:relative}
+    .diet-banner p{font-size:12px;opacity:.7;position:relative}
+    .diet-cta{background:linear-gradient(135deg,#0D2847,#142647);color:#fff;border-radius:var(--radius);padding:18px 18px 16px;margin-bottom:14px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid rgba(176,124,34,.25);box-shadow:var(--shadow)}
+    .diet-cta:active{transform:scale(.99)}
+    .diet-cta-icon{font-size:30px;flex-shrink:0}
+    .diet-cta-text{flex:1;min-width:0}
+    .diet-cta-title{font-family:var(--font-serif);font-size:18px;font-weight:400;letter-spacing:.3px;color:#fff;margin-bottom:2px}
+    .diet-cta-sub{font-size:11.5px;opacity:.7;line-height:1.45}
+    .diet-cta-arrow{font-size:18px;color:var(--gold);flex-shrink:0}
+    .diet-person-card{background:var(--white);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--border-lt)}
+    .diet-person-card.severe{border:2px solid var(--sakura);background:var(--sakura-lt)}
+    .diet-person-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+    .diet-person-name{font-family:var(--font-serif);font-size:20px;font-weight:500;color:var(--ink)}
+    .diet-tag{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+    .diet-tag.severe{background:var(--sakura);color:#fff}
+    .diet-tag.adult{background:var(--navy-lt);color:var(--ink)}
+    .diet-tag.child{background:#FFF3E0;color:#BF360C}
+    .diet-section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:14px 0 8px;color:var(--ink-3)}
+    .diet-section-label.severe{color:#7B1A1A}
+    .diet-section-label.avoid{color:#BF360C}
+    .diet-chips{display:flex;flex-wrap:wrap;gap:6px}
+    .diet-chip{display:inline-block;font-size:11.5px;font-weight:500;padding:5px 11px;border-radius:99px;background:var(--cream);color:var(--ink-2);border:1px solid var(--border-lt)}
+    .diet-chip.severe{background:var(--sakura);color:#fff;border-color:var(--sakura);font-weight:600}
+    .diet-chip.avoid{background:#FFEDD5;color:#9A3412;border-color:#FED7AA}
+
+    /* DIET MODAL — Japanese chef card */
+    .modal-overlay{position:fixed;inset:0;background:rgba(7,27,53,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10000;display:none;align-items:flex-end;justify-content:center;animation:overlayIn .25s ease}
+    .modal-overlay.active{display:flex}
+    @keyframes overlayIn{from{opacity:0}to{opacity:1}}
+    .modal{background:var(--cream);width:100%;max-width:620px;max-height:92dvh;border-radius:22px 22px 0 0;overflow-y:auto;padding:18px 22px calc(28px + env(safe-area-inset-bottom));animation:modalUp .35s cubic-bezier(.16,1,.3,1)}
+    @keyframes modalUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+    .modal-grabber{width:38px;height:4px;background:var(--ink-4);border-radius:99px;margin:0 auto 16px;opacity:.45}
+    .modal-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:12px}
+    .modal-title{font-family:var(--font-serif);font-size:24px;font-weight:500;color:var(--ink);line-height:1.2}
+    .modal-title-jp{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:16px;color:var(--ink-2);margin-top:3px}
+    .modal-close{font-size:24px;color:var(--ink-3);background:var(--white);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;border:1px solid var(--border-lt)}
+    .modal-intro{font-size:12.5px;color:var(--ink-3);line-height:1.55;margin-bottom:16px;font-style:italic}
+    .jp-card{background:#fff;border:1px solid var(--border-lt);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
+    .jp-card.severe{border:2px solid var(--sakura);background:linear-gradient(180deg,#fff,#FDF6F8)}
+    .jp-card-name{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Cormorant Garamond',serif;font-size:19px;font-weight:500;color:#0A1A2F;margin-bottom:2px}
+    .jp-card-name-en{font-size:11.5px;color:#5A7590;letter-spacing:.02em;margin-bottom:10px}
+    .jp-card-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:10px;margin-bottom:6px;color:#5A7590}
+    .jp-card-label.severe{color:#7B1A1A}
+    .jp-card-label.avoid{color:#BF360C}
+    .jp-text{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:15.5px;color:#0A1A2F;line-height:1.7}
+    .jp-text strong{color:#7B1A1A;font-weight:700}
+    .jp-text-list{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:14.5px;color:#233D5C;line-height:1.75}
+    .modal-footer-note{font-size:11.5px;color:var(--ink-3);text-align:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--border-lt);line-height:1.6}
+    .modal-footer-note em{color:var(--ink-4)}
+
+
+    /* HOST BIO CARDS */
+    .host-card{padding:0;overflow:hidden}
+    .host-bio{padding:16px 18px 14px;border-bottom:1px solid var(--border-lt)}
+    .host-bio:last-child{border-bottom:none}
+    .host-bio-head{margin-bottom:8px}
+    .host-bio-name{font-family:var(--font-serif);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:.2px}
+    .host-bio-meta{font-size:11px;color:var(--ink-3);font-style:italic;margin-top:2px;font-family:var(--font-serif)}
+    .host-bio-text{font-size:13px;color:var(--ink-2);line-height:1.6;margin:0}
+
+    /* EMERGENCY */
+    .emergency-banner{background:var(--navy);border-radius:var(--radius);padding:18px 20px;color:#fff;margin-bottom:14px;text-align:center}
+    .emergency-banner h2{font-family:var(--font-serif);font-size:22px;font-weight:300;letter-spacing:.5px;margin-bottom:4px}
+    .emergency-banner p{font-size:12px;opacity:.75}
+    .contact-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border-lt);margin-bottom:12px}
+    .contact-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--border-lt);gap:10px}
+    .contact-row:last-child{border-bottom:none}
+    .contact-left{display:flex;align-items:center;gap:12px}
+    .contact-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+    .ci-r{background:#FFEBEE}.ci-g{background:#E8F5E9}.ci-b{background:#E3F2FD}.ci-n{background:var(--navy-lt)}.ci-o{background:#FFF3E0}
+    .contact-label{font-size:13px;font-weight:600;color:var(--ink)}
+    .contact-sub{font-size:11.5px;color:var(--ink-3);margin-top:1px}
+    .call-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;white-space:nowrap;border:none;cursor:pointer}
+    .cn{background:var(--navy);color:#fff}.cr{background:#C62828;color:#fff}
+    .cb{background:#0277BD;color:#fff}.co{background:var(--cream);color:var(--ink);border:1.5px solid var(--border)!important}
+
+    #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);background:rgba(13,40,71,.92);color:#fff;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:500;pointer-events:none;opacity:0;transition:all .22s cubic-bezier(.4,0,.2,1);z-index:999;white-space:nowrap;max-width:90vw}
+    #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    /* DISCOVER */
+    .disc-banner{background:linear-gradient(135deg,#0D2847 0%,#0A2040 55%,#04111F 100%);border-radius:var(--radius);padding:22px 20px 18px;margin-bottom:14px;color:#fff;position:relative;overflow:hidden}
+    .disc-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat}
+    .disc-banner h2{font-family:var(--font-serif);font-size:26px;font-weight:300;letter-spacing:.8px;margin-bottom:4px;position:relative}
+    .disc-banner p{font-size:12px;opacity:.65;position:relative;margin:0}
+    .disc-city-bar{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+    .disc-city-bar::-webkit-scrollbar{display:none}
+    .disc-city-pill{flex-shrink:0;background:var(--white);border:1px solid var(--border);color:var(--ink-3);padding:9px 16px;border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.04em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s,border-color .15s}
+    .disc-city-pill:active{background:var(--border-lt)}
+    .disc-city-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .disc-scherrer{background:linear-gradient(180deg,#0D2847 0%,#142647 100%);color:#f3eee0;border-radius:var(--radius);padding:22px 20px 20px;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid rgba(176,124,34,.2)}
+    .disc-scherrer::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(176,124,34,.2) 0%,transparent 70%);pointer-events:none}
+    .disc-scherrer-label{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;position:relative}
+    .disc-scherrer-label::before{content:'';width:16px;height:1px;background:var(--gold)}
+    .disc-scherrer-title{font-family:var(--font-serif);font-size:26px;font-weight:300;letter-spacing:-.01em;margin:0 0 4px;color:#f3eee0;position:relative}
+    .disc-scherrer-by{font-family:var(--font-serif);font-style:italic;font-size:15px;color:var(--gold);margin-bottom:14px;position:relative}
+    .disc-scherrer-by .copy{font-size:11px;font-style:normal;letter-spacing:.06em;opacity:.7;margin-right:4px;font-family:var(--font-sans)}
+    .disc-scherrer-p{font-size:13px;line-height:1.6;color:rgba(243,238,224,.78);margin:0 0 16px;position:relative}
+    .disc-scherrer-cta{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#0D2847;padding:10px 18px;border-radius:99px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;text-decoration:none;position:relative}
+    .disc-scherrer-cta:active{opacity:.85}
+    .disc-scherrer-ig{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;border-radius:99px;font-size:11.5px;font-weight:600;letter-spacing:.05em;color:#f3eee0;border:1px solid rgba(244,229,191,.3);text-decoration:none;transition:background .15s;margin-top:2px}
+    .disc-scherrer-ig:active{background:rgba(255,255,255,.1)}
+    .disc-scherrer-tip{margin-top:14px;font-size:12.5px;color:rgba(243,238,224,.55);font-style:italic;font-family:var(--font-serif);line-height:1.55;position:relative;padding-left:12px;border-left:1px solid rgba(176,124,34,.3)}
+    .disc-note{font-size:12px;color:var(--ink-3);font-style:italic;line-height:1.55;margin-bottom:10px;padding:8px 12px;background:var(--gold-lt);border-radius:8px;border-left:2px solid rgba(176,124,34,.4)}
+    .disc-card{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .disc-card-head{padding:14px 18px 10px;border-bottom:1px solid var(--border-lt)}
+    .disc-card-head-title{font-family:var(--font-serif);font-size:18px;font-weight:500;color:var(--ink)}
+    .disc-card-body{padding:8px 12px 12px}
+    .disc-item{display:flex;align-items:center;gap:12px;padding:10px 10px;background:var(--cream);border-radius:10px;margin-bottom:6px;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:background .15s;border:1px solid var(--border-lt)}
+    .disc-item:last-child{margin-bottom:0}
+    .disc-item:active{background:var(--border-lt)}
+    .disc-item-info{flex:1;min-width:0}
+    .disc-item-name{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.25}
+    .disc-item-sub{font-size:11px;color:var(--ink-3);margin-top:2px;font-style:italic}
+    .disc-arrow{font-size:16px;color:var(--gold);flex-shrink:0;opacity:.8}
+
+    @media(min-width:700px){
+      .tab-nav{padding:0 30px}
+      .tab-btn{font-size:12.5px;padding:10px 18px}
+      .tab-panel{max-width:900px;margin-left:auto;margin-right:auto;padding:24px 32px 60px}
+    }
+    @media(prefers-color-scheme:dark){
+      :root{--cream:#0E1824;--white:#141F2E;--border:#1E3248;--border-lt:#182840;--ink:#E8F2FF;--ink-2:#A8C0DC;--ink-3:#607A94;--ink-4:#3A5470;--navy-lt:#101E30;--gold-lt:#1A1508;--sakura-lt:#2A1A20}
+    }
+
+/* ═════════════════════════════════════════════════════════════════════
+   HCI · Statement tab styles (from hci-tab-library/main/statement/tab.css)
+   ═════════════════════════════════════════════════════════════════════ */
+#tab-statement .card{
+  background:#FFFFFF;border:1px solid #E8E1D5;border-radius:16px;
+  box-shadow:0 1px 2px rgba(31,26,20,.04),0 10px 26px rgba(31,26,20,.05);
+  margin-bottom:14px;overflow:hidden;}
+.lock-wrap{text-align:center;padding:34px 22px 30px;}
+.lock-ico{font-size:30px;}
+.lock-h{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:500;margin:12px 0 4px;color:#211C17;}
+.lock-p{font-size:13px;color:#6E655A;max-width:330px;margin:0 auto 20px;}
+.pw-row{display:flex;gap:9px;max-width:340px;margin:0 auto;}
+.pw-input{flex:1;font-family:inherit;font-size:16px;letter-spacing:.06em;color:#211C17;
+  background:#F8F4EC;border:1px solid #E8E1D5;border-radius:11px;padding:12px 14px;min-height:48px;text-align:center;}
+.pw-input:focus{outline:none;border-color:#2E4257;background:#FFFFFF;}
+#tab-statement .btn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;
+  background:#2E4257;color:#fff;border-radius:11px;padding:0 18px;min-height:48px;min-width:48px;}
+#tab-statement .btn:active{background:#243648;}
+.lock-err{color:#B5474F;font-size:12.5px;margin-top:13px;min-height:16px;}
+.lock-hint{font-size:11px;color:#6E655A;margin-top:18px;}
+.stmt-head{padding:18px 16px 4px;}
+.stmt-as{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6E655A;}
+.stmt-balance{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:600;line-height:1;margin:8px 0 2px;color:#211C17;}
+.stmt-balance.zero{color:#2E4257;}
+.stmt-blabel{font-size:12.5px;color:#6E655A;}
+.stmt-sec{padding:6px 16px 4px;}
+.stmt-sec-h{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid #E8E1D5;padding:14px 0 6px;}
+.stmt-sec-h .n{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655A;}
+.stmt-sec-h .v{font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;color:#211C17;}
+.stmt-sec-note{font-size:12px;color:#6E655A;font-style:italic;margin:-2px 0 4px;}
+.stmt-li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;}
+.stmt-li .li-l{font-size:14px;color:#211C17;}
+.stmt-li .li-n{font-size:11.5px;color:#6E655A;margin-top:1px;}
+.stmt-li .li-v{font-variant-numeric:tabular-nums;font-size:14px;flex-shrink:0;color:#211C17;}
+.stmt-li .li-v.incl{color:#6E655A;font-style:italic;font-size:12px;}
+.stmt-total{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:2px solid #211C17;margin-top:8px;padding:13px 16px;}
+.stmt-total .n{font-family:"Cormorant Garamond",serif;font-size:19px;color:#211C17;}
+.stmt-total .v{font-variant-numeric:tabular-nums;font-size:19px;font-weight:600;color:#211C17;}
+.stmt-pay{padding:4px 16px 2px;}
+.stmt-pay .empty{font-size:12.5px;color:#6E655A;font-style:italic;padding:4px 0;}
+.stmt-fx{font-size:11px;color:#6E655A;padding:14px 16px 18px;line-height:1.5;}
+.stmt-lockbtn{font-size:13px;color:#2E4257;background:#F6F1E8;border:1px solid #E8E1D5;
+  cursor:pointer;font-family:inherit;display:block;margin:6px auto 22px;padding:11px 22px;
+  border-radius:11px;min-height:44px;}
+.stmt-lockbtn:active{background:#EDE6D8;}
+#console{display:none;position:fixed;inset:0;z-index:90;background:#1F1A14;color:#EDE7DB;overflow:auto;padding:22px 18px 40px;}
+#console.show{display:block;}
+.con-w{max-width:600px;margin:0 auto;position:relative;}
+.con-h{font-family:"Cormorant Garamond",serif;font-size:24px;margin:4px 0 2px;color:#EDE7DB;}
+.con-sub{font-size:12.5px;color:#A99F8E;margin-bottom:18px;}
+.con-l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A99F8E;margin:16px 0 6px;}
+.con-in,.con-ta{width:100%;font-family:"DM Mono",ui-monospace,monospace;font-size:13px;color:#F4EFE6;
+  background:#2a241c;border:1px solid #3a3328;border-radius:10px;padding:11px 12px;}
+.con-ta{min-height:200px;resize:vertical;line-height:1.45;white-space:pre;}
+.con-out{min-height:120px;word-break:break-all;white-space:normal;}
+.con-btns{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px;}
+.con-btn{appearance:none;border:1px solid #4a4234;background:#2E4257;color:#fff;border-radius:10px;
+  font-family:inherit;font-size:13px;padding:11px 15px;min-height:44px;cursor:pointer;}
+.con-btn.sec{background:#2a241c;color:#EDE7DB;}
+.con-msg{font-size:12px;margin-top:10px;min-height:15px;color:#C9A86A;}
+.con-close{position:absolute;top:-4px;right:0;background:none;border:0;color:#A99F8E;font-size:24px;cursor:pointer;}
+.stmt-internal-banner{background:#3A2E22;color:#E9C887;font-size:11.5px;letter-spacing:.03em;
+  text-align:center;padding:9px 14px;border-radius:11px;margin-bottom:12px;}
+.li-int{font-size:11px;color:#9A8F7E;font-variant-numeric:tabular-nums;margin-top:3px;}
+.stmt-pl{margin:8px 16px 4px;background:#F3ECE0;border:1px solid #E8E1D5;border-radius:12px;padding:4px 14px;}
+.pl-row{display:flex;justify-content:space-between;padding:8px 0;font-variant-numeric:tabular-nums;
+  font-size:13.5px;border-bottom:1px solid #E7DECF;color:#211C17;}
+.pl-row:last-child{border-bottom:0;}
+.pl-row.profit{font-weight:600;color:#2E4257;}
+.stmt-pay-cta{padding:4px 16px 12px;}
+.paybtn{display:block;text-align:center;text-decoration:none;font-family:inherit;font-weight:600;
+  font-size:15px;color:#fff;background:#2E4257;border-radius:13px;padding:15px 18px;min-height:52px;
+  box-shadow:0 6px 16px rgba(46,66,87,.22);}
+.paybtn:active{background:#243648;}
+.paybtn.disabled{background:#ECE5D8;color:#9A8F7E;box-shadow:none;cursor:default;font-weight:500;}
+.con-pay-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
+.con-pay-row .con-in{flex:1 1 110px;min-width:0;}
+.con-pay-row .con-btn{flex:1 1 100%;}
+.paybtn-sub{text-align:center;font-size:11px;color:#6E655A;margin-top:7px;}
+.tab-btn .lk{font-size:11px;margin-right:3px;opacity:.85;}
+  </style>
+</head>
+<body>
+
+<header id="app-header">
+  <div class="hdr-top">
+    <div class="hdr-left">
+      <span class="hdr-flag">🗾</span>
+      <div>
+        <div class="hdr-dest">Tokyo · Fuji · Kyoto · 2026</div>
+        <div class="hdr-hc">Happy Camper</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div>
+        <span id="jst-clock">--:--</span>
+        <span id="trip-day-label">Japan Standard Time</span>
+      </div>
+      <img id="hc-logo" alt="Happy Camper" src="data:image/png;base64,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" height="40" style="display:block;height:40px;width:auto;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5));">
+    </div>
+  </div>
+  <div class="hdr-names">
+    <div class="hdr-name">Nanette Levi &amp; Raimundo Lopez</div>
+    <div class="hdr-name2">Pauline Lima &middot; Alberto Lima</div>
+  </div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
+    <button class="tab-btn" data-tab="discover">Discover</button>
+    <button class="tab-btn" data-tab="wishlist">Wish List</button>
+    <button class="tab-btn" data-tab="diet">Diet</button>
+    <button class="tab-btn" data-tab="utilities">Utilities</button>
+    <button class="tab-btn" data-tab="statement"><span class="lk">🔒</span> Statement</button>
+    <button class="tab-btn" data-tab="emergency">Contacts &amp; Emergency</button>
+  </nav>
+</header>
+
+<div id="main-content">
+  <div id="tab-itinerary" class="tab-panel active"></div>
+  <div id="tab-discover"  class="tab-panel"></div>
+  <div id="tab-wishlist"  class="tab-panel"></div>
+  <div id="tab-diet"      class="tab-panel"></div>
+  <div id="tab-utilities" class="tab-panel"></div>
+  <div id="tab-statement" class="tab-panel">
+    <div class="card" id="stmt-lock">
+      <div class="lock-wrap">
+        <div class="lock-ico">🔒</div>
+        <div class="lock-h">Your running statement</div>
+        <p class="lock-p">Enter the access code shared with you to view your itemised charges and balance.</p>
+        <div class="pw-row">
+          <input class="pw-input" id="stmt-pw" type="password" inputmode="text"
+                 autocomplete="off" placeholder="Access code" aria-label="Access code">
+          <button class="btn" id="stmt-unlock">Open</button>
+        </div>
+        <div class="lock-err" id="stmt-err"></div>
+        <div class="lock-hint">Private to the lead guest · figures in USD</div>
+      </div>
+    </div>
+    <div id="stmt-view"></div>
+  </div>
+  <div id="tab-emergency" class="tab-panel"></div>
+</div>
+
+<div class="modal-overlay" id="diet-modal" onclick="if(event.target===this)closeDietModal()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-grabber"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">For the Chef</div>
+        <div class="modal-title-jp">シェフへのご案内</div>
+      </div>
+      <button class="modal-close" onclick="closeDietModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-intro">Show this card at the counter on arrival. Please bring any avoidances to the chef's attention before service begins.</div>
+    <div id="modal-jp-content"></div>
+    <div class="modal-footer-note">ご親切に対応していただき、誠にありがとうございます。<br><em>Thank you sincerely for your kind accommodation.</em></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div id="console">
+  <div class="con-w">
+    <button class="con-close" id="con-close" aria-label="Close">×</button>
+    <div class="con-h">Statement · encrypt console</div>
+    <div class="con-sub">One master sheet &rarr; two encrypted blobs. Cost fields are auto-removed from the guest blob.</div>
+    <div class="con-l">1 · Access codes</div>
+    <input class="con-in" id="con-pw-guest" type="text" placeholder="Guest code" autocomplete="off" style="margin-bottom:8px">
+    <input class="con-in" id="con-pw-internal" type="text" placeholder="Internal / staff code" autocomplete="off">
+    <div class="con-btns">
+      <button class="con-btn sec" id="con-load">↓ Load current (internal code)</button>
+      <button class="con-btn sec" id="con-template">＋ Blank template</button>
+    </div>
+    <div class="con-l">2 · Master statement — add &quot;cost&quot; per item (internal only)</div>
+    <textarea class="con-ta" id="con-json" spellcheck="false"></textarea>
+    <div class="con-l" style="margin-top:16px">2b · Record a payment (tap-only — appends to the sheet above)</div>
+    <div class="con-pay-row">
+      <input class="con-in" id="con-pay-date" type="date" aria-label="Payment date">
+      <input class="con-in" id="con-pay-amt" type="number" inputmode="decimal" placeholder="Amount (USD)" aria-label="Payment amount">
+      <input class="con-in" id="con-pay-label" type="text" placeholder="Label (e.g. Stripe invoice)" aria-label="Payment label">
+      <button class="con-btn sec" id="con-pay-add">＋ Add payment to sheet</button>
+    </div>
+    <div class="con-btns" style="margin-top:16px">
+      <button class="con-btn" id="con-encrypt">🔒 Encrypt &amp; generate both blobs</button>
+    </div>
+    <div class="con-l">3a · Guest blob — paste into ENC_GUEST</div>
+    <textarea class="con-ta con-out" id="con-out-guest" readonly spellcheck="false"></textarea>
+    <div class="con-btns"><button class="con-btn sec" id="con-copy-guest">⧉ Copy guest blob</button></div>
+    <div class="con-l">3b · Internal blob — paste into ENC_INTERNAL</div>
+    <textarea class="con-ta con-out" id="con-out-internal" readonly spellcheck="false"></textarea>
+    <div class="con-btns"><button class="con-btn sec" id="con-copy-internal">⧉ Copy internal blob</button></div>
+    <div class="con-msg" id="con-msg"></div>
+  </div>
+</div>
+<script>
+(function(){
+'use strict';
+
+/* ═══ CONFIG · Levi · 4–19 Nov 2026 ═══ */
+var FX_RATE = 162;
+
+/* ═══ TRIP DATA · logistics arranged by Traveledge · dinners curated by HCI ═══ */
+var TRIP = {
+  startDate:'2026-11-04',
+  endDate:  '2026-11-19',
+  days:[
+    { date:'2026-11-04', dayNum:1, weekday:'Wednesday, 4 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Arrival in Tokyo · transfer to the Palace Hotel · an easy first night in-house.',
+      stops:[
+        { time:'15:40', type:'flight', badge:'Arrival', badgeType:'self-booked', title:'Arrive Tokyo · Narita (NRT)', sub:'4 guests · flight self-arranged', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'The party of four lands at Narita around 15:40. A 16-day pocket Wi-Fi router is waiting at the hotel, arranged by Traveledge — up to 10 devices, including on the trains. Draw some yen at the airport 7-Eleven or Japan Post ATM; a few dining counters prefer cash.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'First night · in-house', sub:'No dinner committed tonight', loc:'Palace Hotel Tokyo', addr:'1-1-1 Marunouchi, Chiyoda, Tokyo 100-0005', q:'Palace Hotel Tokyo', notes:'No dinner out tonight, by design — the Palace Hotel\'s own restaurants are excellent after the flight. HCI is glad to arrange something should you wish.', alert:null }
+      ] },
+    { date:'2026-11-05', dayNum:2, weekday:'Thursday, 5 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Private orientation · half-day Tokyo tour (Imperial Palace Gardens & Ginza). Evening open.',
+      stops:[
+        { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Palace Hotel Tokyo', addr:'1-1-1 Marunouchi, Chiyoda, Tokyo', q:'Palace Hotel Tokyo', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
+        { time:'Afternoon', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Half-day private Tokyo tour', sub:'Private car · Imperial Palace Gardens & Ginza', loc:'Imperial Palace East Gardens', addr:'Chiyoda, Tokyo', q:'Imperial Palace East Gardens Tokyo', notes:'A half-day with private guide and car: the Imperial Palace East Gardens — the former site of Edo Castle — then south to Ginza for its department stores, basement food halls and galleries.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'Dinner at leisure', sub:'No dinner committed tonight', loc:'Tokyo', addr:'Tokyo', q:'Tokyo', notes:'An open evening to settle in. HCI can secure a table if you would like one.', alert:null }
+      ] },
+    { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · first HCI dinner to curate.',
+      stops:[
+        { time:'09:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Full-day private Tokyo tour', sub:'Private car · 09:00–17:00', loc:'Ueno · Kappabashi · Asakusa', addr:'Taito City, Tokyo', q:'Ueno Park Tokyo', notes:'A full guided day across northern Tokyo: the museums and grounds of Ueno Park, the kitchenware street of Kappabashi, and Senso-ji with the old streets of Asakusa.', alert:'09:00 start · ~8 hours' },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'4 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Your first HCI dinner. We will propose a restaurant matched to the evening and the group, secure the reservation, and brief the kitchen on any preferences before you arrive.', alert:null }
+      ] },
+    { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
+      notes:'Private Fuji tour (Chureito Pagoda & Arakurayama) · check in to Fufu · kaiseki dinner included.',
+      stops:[
+        { time:'08:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Fuji-area tour', sub:'Private car · 08:30–17:00', loc:'Arakurayama Sengen Park & Chureito Pagoda', addr:'Fujiyoshida, Yamanashi', q:'Arakurayama Sengen Park Chureito Pagoda', notes:'A guided day around Mt Fuji: Arakurayama Sengen Park and the Chureito Pagoda for the iconic pagoda-and-Fuji view, and — time permitting — the Itchiku Kubota Art Museum, before being taken to your ryokan on Lake Kawaguchi.', alert:'Chureito Pagoda · 398 steps to the viewpoint' },
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Fufu Kawaguchiko', sub:'Luxury ryokan · 2 nights · Konohana Comfort Suite ×2', loc:'Fufu Kawaguchiko', addr:'2211-1 Mizuguchi, Fujikawaguchikomachi, Yamanashi 401-0304', q:'Fufu Kawaguchiko', notes:'A 32-room luxury ryokan with Mt Fuji views, private hot-spring baths and glass walls that open to the forest. Breakfast and dinner included.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'A contemporary kaiseki dinner at the ryokan — fine local produce and Yamanashi wines, with Mt Fuji and the illuminated gardens beyond. Included in the stay; nothing to organise.', alert:null }
+      ] },
+    { date:'2026-11-08', dayNum:5, weekday:'Sunday, 8 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
+      notes:'Morning cycling tour around Lake Kawaguchi · afternoon at leisure · kaiseki dinner included.',
+      stops:[
+        { time:'10:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private cycling tour', sub:'Guided · 10:00–11:30 · from the hotel lobby', loc:'Kawaguchi Asama Shrine', addr:'Fujikawaguchikomachi, Yamanashi', q:'Kawaguchi Asama Shrine', notes:'An easy guided ride to Kawaguchi Asama Shrine — part of the Mt Fuji World Heritage Site, with 1,200-year-old sacred cedars and the "Tenku no Torii" gate framing the mountain — and Haha-no-Shirataki falls.', alert:'Pay on site · ¥13,750 per person · weather-dependent' },
+        { time:'Afternoon', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Afternoon by the lake', sub:'Unguided', loc:'Lake Kawaguchi', addr:'Fujikawaguchiko, Yamanashi', q:'Lake Kawaguchi', notes:'A free afternoon on the lake\'s northern shore — Oishi Park\'s flower beds framing Fuji, or the Kawaguchiko Music Forest.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'A second seasonal kaiseki at the ryokan, included in the stay.', alert:null }
+      ] },
+    { date:'2026-11-09', dayNum:6, weekday:'Monday, 9 November', city:'Hiroshima', cityClass:'hiroshima', hotel:'Sheraton Grand Hiroshima', hotelBy:'by Traveledge', hq:'Sheraton Grand Hiroshima Hotel', hosted:false,
+      notes:'Shinkansen to Hiroshima · private afternoon tour (Peace Park & Shukkei-en) · HCI dinner to curate.',
+      stops:[
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Overnight luggage transfer', sub:'Kawaguchiko → Kyoto', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'Your main luggage is sent ahead to Kyoto so you travel light for the Hiroshima and Fukuoka nights. Bags to the front desk by 10:00 (30 kg per piece); pack a small overnight bag.', alert:'Bags to front desk by 10:00' },
+        { time:'10:30', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Mishima → Hiroshima', sub:'Green (First) class · dep 10:30 / arr 14:30', loc:'Mishima Station', addr:'Mishima Station, Shizuoka', q:'Mishima Station', notes:'About 4 hours by bullet train in Green Car, with a change at Nagoya.', alert:'Train change at Nagoya' },
+        { time:'14:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Hiroshima tour', sub:'Private car · 14:30–18:30', loc:'Peace Memorial Park', addr:'Naka Ward, Hiroshima', q:'Hiroshima Peace Memorial Park', notes:'A guided afternoon: the Peace Memorial Park and Museum and the Atomic Bomb Dome, then the miniature landscapes of Shukkei-en garden.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'4 covers · Hiroshima', loc:'Hiroshima', addr:'Hiroshima', q:'', notes:'An HCI dinner in Hiroshima — perhaps the city\'s celebrated okonomiyaki or seasonal Seto-inland oysters, or a refined counter. We will propose, book and brief the kitchen ahead.', alert:null }
+      ] },
+    { date:'2026-11-10', dayNum:7, weekday:'Tuesday, 10 November', city:'Fukuoka', cityClass:'fukuoka', hotel:'The Ritz-Carlton Fukuoka', hotelBy:'by Traveledge', hq:'The Ritz-Carlton Fukuoka', hosted:false,
+      notes:'Shinkansen to Fukuoka · Grand Sumo Tournament (separately arranged) · HCI dinner to curate.',
+      stops:[
+        { time:'11:03', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hiroshima → Hakata', sub:'dep 11:03 / arr 12:09 · private transfer to hotel', loc:'Hiroshima Station', addr:'Minami Ward, Hiroshima', q:'Hiroshima Station', notes:'A short bullet-train hop to Fukuoka (Hakata), then a private transfer to The Ritz-Carlton Fukuoka.', alert:null },
+        { time:'Afternoon', type:'activity', badge:'Separately arranged', badgeType:'self-booked', title:'Fukuoka Grand Sumo Tournament', sub:'Arrive seats 14:00–15:30', loc:'Fukuoka Kokusai Center', addr:'2-2 Chikko-honmachi, Hakata-ku, Fukuoka 812-0021', q:'Fukuoka Kokusai Center', notes:'A day at the November grand sumo basho. The top-division bouts and ceremonies build through the afternoon — aim to be seated by 14:00–15:30. Make your own way (about 15 minutes by taxi from the hotel).', alert:'Own way · ~15 min taxi from the hotel' },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'4 covers · Fukuoka', loc:'Fukuoka', addr:'Fukuoka', q:'', notes:'An HCI dinner in Hakata, one of Japan\'s great food cities — from its renowned sushi counters to the open-air yatai stalls and motsunabe. We will propose, book and brief ahead.', alert:null }
+      ] },
+    { date:'2026-11-11', dayNum:8, weekday:'Wednesday, 11 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Shinkansen to Kyoto · check in to Capella · HCI dinner to curate.',
+      stops:[
+        { time:'09:36', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hakata → Kyoto', sub:'Green (First) class · dep 09:36 / arr 12:19', loc:'Hakata Station', addr:'Hakata-ku, Fukuoka', q:'Hakata Station', notes:'A private car to Hakata Station (~10 min), the bullet train to Kyoto in Green Car (about 2h 43m), and a private transfer to Capella Kyoto on arrival (~15 min).', alert:null },
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Capella Kyoto', sub:'6 nights · Premier Temple King ×2', loc:'Capella Kyoto', addr:'130 Komatsu-cho, Higashiyama-ku, Kyoto 605-0811', q:'Capella Kyoto', notes:'In the historic Miyagawa-cho district beside Kenninji, Kyoto\'s oldest Zen temple — a reimagined machiya hotel. Breakfast included. Pauline & Alberto check out on 13 November.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'4 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Your first Kyoto dinner with HCI. We will match the restaurant to the evening — kaiseki, a counter, or something more relaxed — and handle the booking and the brief.', alert:null }
+      ] },
+    { date:'2026-11-12', dayNum:9, weekday:'Thursday, 12 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Day at leisure in eastern Kyoto · HCI dinner to curate.',
+      stops:[
+        { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Eastern Kyoto at your pace', sub:'Higashiyama · unguided', loc:'Higashiyama, Kyoto', addr:'Higashiyama Ward, Kyoto', q:'Kiyomizu-dera Kyoto', notes:'Kiyomizu-dera and the lanes of Sannen-zaka, Kodai-ji, Maruyama Park and Yasaka-jinja, down into Gion — all close to the hotel.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'4 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'An HCI dinner in Kyoto, proposed, booked and briefed ahead.', alert:null }
+      ] },
+    { date:'2026-11-13', dayNum:10, weekday:'Friday, 13 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Pauline & Alberto depart Japan · the party continues as two · HCI dinner to curate.',
+      stops:[
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Departure transfer · Pauline & Alberto', sub:'Capella Kyoto → Kyoto Station (~15 min)', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'A private car for Pauline & Alberto to begin the journey home — departing Tokyo (NRT) at 17:30. From tonight the dining programme is for two.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'The first dinner for two — HCI will tailor the choice now the group is smaller.', alert:null }
+      ] },
+    { date:'2026-11-14', dayNum:11, weekday:'Saturday, 14 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Day at leisure in western Kyoto · HCI dinner to curate.',
+      stops:[
+        { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Kyoto at your pace', sub:'Unguided', loc:'Arashiyama, Kyoto', addr:'Kyoto', q:'Arashiyama Bamboo Grove Kyoto', notes:'The Golden Pavilion (Kinkaku-ji), the Zen rock garden of Ryoan-ji, and the bamboo groves of Arashiyama.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'An HCI dinner for two, proposed and booked ahead.', alert:null }
+      ] },
+    { date:'2026-11-15', dayNum:12, weekday:'Sunday, 15 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Day at leisure · the Philosopher\'s Path & Higashiyama temples · HCI dinner to curate.',
+      stops:[
+        { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'The Philosopher\'s Path', sub:'Unguided', loc:'Philosopher\'s Path, Kyoto', addr:'Sakyo Ward, Kyoto', q:'Philosophers Path Kyoto', notes:'The canal-side walk between Ginkaku-ji (the Silver Pavilion) and Nanzen-ji, with the Keage Incline nearby.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'An HCI dinner for two, proposed and booked ahead.', alert:null }
+      ] },
+    { date:'2026-11-16', dayNum:13, weekday:'Monday, 16 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+      notes:'Day at leisure · Nishijin, Nijo Castle & Fushimi Inari · HCI dinner to curate.',
+      stops:[
+        { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Central & southern Kyoto', sub:'Unguided', loc:'Fushimi Inari Taisha', addr:'Fushimi Ward, Kyoto', q:'Fushimi Inari Taisha Kyoto', notes:'The Nishijin weaving district and Nijo Castle, then the thousands of vermilion torii at Fushimi Inari — best wandered up the hillside.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A last Kyoto dinner with HCI, proposed and booked ahead.', alert:null }
+      ] },
+    { date:'2026-11-17', dayNum:14, weekday:'Tuesday, 17 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'by Traveledge', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Shinkansen back to Tokyo · check in to the Palace Hotel · HCI dinner to curate.',
+      stops:[
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Same-day luggage transfer', sub:'Kyoto → Tokyo', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'Luggage is sent ahead to Tokyo and delivered to the Palace Hotel. Have bags at reception before leaving (30 kg per piece).', alert:null },
+        { time:'Midday', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Kyoto → Tokyo', sub:'Green (First) class · ~2 hrs', loc:'Kyoto Station', addr:'Shimogyo Ward, Kyoto', q:'Kyoto Station', notes:'A private car to Kyoto Station (~15 min), the bullet train to Tokyo in Green Car (about 2 hours), then a private transfer to the Palace Hotel (~10 min).', alert:null },
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Palace Hotel Tokyo', sub:'2 nights · Deluxe Room with Balcony', loc:'Palace Hotel Tokyo', addr:'1-1-1 Marunouchi, Chiyoda, Tokyo 100-0005', q:'Palace Hotel Tokyo', notes:'Back in Tokyo beside the Imperial Palace. Deluxe Rooms with Balcony over Wadakura Fountain Park. Breakfast included.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Back in Tokyo — an HCI dinner proposed, booked and briefed ahead.', alert:null }
+      ] },
+    { date:'2026-11-18', dayNum:15, weekday:'Wednesday, 18 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'by Traveledge', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Day at leisure in western Tokyo · the final HCI dinner to curate.',
+      stops:[
+        { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Tokyo at your pace', sub:'Unguided', loc:'Meiji Jingu & Harajuku', addr:'Shibuya, Tokyo', q:'Meiji Jingu Tokyo', notes:'Meiji Jingu and Yoyogi Park, the boutiques of Harajuku and Omotesando, the Shibuya crossing, and Shinjuku for the evening.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'HCI · curating', badgeType:'pending', title:'Dinner · curated by HCI', sub:'2 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'The final HCI dinner — a fitting close to the journey, proposed and booked ahead.', alert:null }
+      ] },
+    { date:'2026-11-19', dayNum:16, weekday:'Thursday, 19 November', city:'Tokyo', cityClass:'', hotel:'', hotelBy:'', hq:'', hosted:false,
+      notes:'Private transfer to Narita · flight home (AA60 to Dallas).',
+      stops:[
+        { time:'14:00', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Transfer · Palace Hotel → Narita', sub:'Private car · ~1 hr', loc:'Palace Hotel Tokyo', addr:'Marunouchi, Chiyoda, Tokyo', q:'Palace Hotel Tokyo', notes:'A private car to Narita, departing the hotel around 14:00.', alert:null },
+        { time:'17:30', type:'flight', badge:'Departure', badgeType:'self-booked', title:'Depart Tokyo · Narita · AA60', sub:'NRT → Dallas (DFW)', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'American Airlines AA60, NRT 17:30 → DFW 14:20 (11h 50m). Safe travels — gochisousama deshita, and thank you for letting Happy Camper shape the table.', alert:null }
+      ] }
+  ]
+};
+
+/* ═══ HCI DINING PROGRAMME (Wish List tab) ═══ */
+var WL_CONFIRMED = [
+  { name:'Fufu Kawaguchiko · Kaiseki ×2', style:'Included in stay · 7 & 8 Nov · 4 pax · Kawaguchiko', q:'Fufu Kawaguchiko' }
+];
+var WL_REQUESTED = [
+  { name:'Dinner · to curate', style:'Fri 6 Nov · 4 pax · Tokyo', q:'' },
+  { name:'Dinner · to curate', style:'Mon 9 Nov · 4 pax · Hiroshima', q:'' },
+  { name:'Dinner · to curate', style:'Tue 10 Nov · 4 pax · Fukuoka', q:'' },
+  { name:'Dinner · to curate', style:'Wed 11 Nov · 4 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Thu 12 Nov · 4 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Fri 13 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Sat 14 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Sun 15 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Mon 16 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'Tue 17 Nov · 2 pax · Tokyo', q:'' },
+  { name:'Dinner · to curate', style:'Wed 18 Nov · 2 pax · Tokyo', q:'' }
+];
+var WL_SUGGESTIONS = [];
+var WL_LONGTERM = [];
+
+/* ═══ DIET ═══ */
+var DIET = [
+  { name:'No restrictions on file yet', tag:'Awaiting', tagClass:'adult', severe:false, sections:[
+      { label:'Note', class:'', chipClass:'', items:['HCI records each guest\'s allergies, aversions and preferences here','Share them and every restaurant is briefed in advance'] } ] }
+];
+var DIET_JP = [];
+
+/* ═══ DISCOVER ═══ */
+var DISCOVER = {
+  Tokyo:[
+    { cat:'Sightseeing', items:[
+      ['Senso-ji & Asakusa','Sensoji Asakusa Tokyo','Tokyo\'s oldest temple; Nakamise shopping street'],
+      ['Meiji Jingu','Meiji Jingu','Forest shrine beside Yoyogi Park'],
+      ['Shibuya Crossing & Shibuya Sky','Shibuya Sky','Iconic scramble + rooftop observation deck'],
+      ['teamLab (Planets / Borderless)','teamLab Planets Tokyo','Immersive digital-art museums'],
+      ['Imperial Palace East Gardens','Imperial Palace East Gardens','Former Edo Castle grounds & gardens'],
+      ['Tokyo Skytree','Tokyo Skytree','634 m tower; observation decks & Solamachi'],
+      ['Toyosu & Tsukiji Outer Market','Tsukiji Outer Market','Fish market & legendary street-food lanes'],
+      ['Shinjuku Gyoen','Shinjuku Gyoen','Expansive garden; superb autumn foliage'],
+      ['Nezu Museum','Nezu Museum Tokyo','Asian art & a serene strolling garden'],
+      ['Ueno Park & museums','Ueno Park','Tokyo National Museum, zoo, galleries']
+    ]},
+    { cat:'Food & Drink', items:[
+      ['Sushi','Sushi Ginza Tokyo','Toyosu counters to Ginza omakase (Saito, Sugita)'],
+      ['Tempura','Tempura Tokyo','Edomae tempura (Kondo, Mikawa Zezankyo)'],
+      ['Yakitori','Yakitori Tokyo','Omoide Yokocho to high-end (Torishiki)'],
+      ['Yakiniku & wagyu','Yakiniku Tokyo wagyu','Premium grilled wagyu (Yoroniku, Toraji)'],
+      ['Ramen','Ramen Tokyo','Every style; shoyu, tsukemen, tonkotsu'],
+      ['Kaiseki / haute Japanese','Kaiseki Tokyo','RyuGin, Ishikawa, Den — modern & classic'],
+      ['Depachika food halls','Isetan depachika','Basement gourmet halls (Isetan, Takashimaya)'],
+      ['Cocktail bars','Bar High Five Ginza','World-class bars (High Five, Star Bar, SG Club)'],
+      ['Unagi','Unagi Nodaiwa Tokyo','Eel specialists (Nodaiwa, Obana)'],
+      ['Soba','Soba Kanda Matsuya Tokyo','Handmade soba (Sarashina, Kanda Matsuya)']
+    ]},
+    { cat:'Shopping', items:[
+      ['Ginza','Ginza Tokyo','Luxury flagships; Ginza Six, Wako, Mitsukoshi'],
+      ['Isetan Shinjuku','Isetan Shinjuku','Flagship department store; famed depachika'],
+      ['Nihonbashi (Mitsukoshi/Takashimaya)','Nihonbashi Mitsukoshi','Historic department-store district'],
+      ['Omotesando & Aoyama','Omotesando','Fashion & architecture flagships'],
+      ['Daikanyama T-Site (Tsutaya)','Daikanyama Tsutaya','Design-led bookstore & lifestyle complex'],
+      ['Nakameguro','Nakameguro','Canal-side boutiques & cafes'],
+      ['Kappabashi Kitchen Town','Kappabashi Tokyo','Knives, kitchenware & sample food'],
+      ['Akihabara','Akihabara','Electronics, anime & hobby shops'],
+      ['Ginza Wako / Mikimoto','Ginza Wako','Landmark clock, watches & pearls'],
+      ['Miyashita Park / Shibuya Parco','Miyashita Park Shibuya','Rooftop park + fashion & lifestyle floors']
+    ]}
+  ],
+  Fuji:[
+    { cat:'Sightseeing', items:[
+      ['Chureito Pagoda · Arakura Sengen','Arakura Fuji Sengen Shrine Chureito Pagoda','The iconic pagoda-and-Fuji view · 398 steps up'],
+      ['Lake Kawaguchi (Kawaguchiko)','Lake Kawaguchi Fujikawaguchiko','Classic mirrored-Fuji views from the north shore'],
+      ['Oishi Park','Oishi Park Kawaguchiko','Lakeside flowers framing Mt Fuji'],
+      ['Oshino Hakkai springs','Oshino Hakkai','Eight crystal-clear ponds fed by Fuji snowmelt'],
+      ['Arakurayama Sengen Park','Arakurayama Sengen Park','Cherry, pagoda and Fuji in one frame'],
+      ['Lake Yamanaka','Lake Yamanaka','The largest of the Fuji Five Lakes'],
+      ['Kawaguchiko Music Forest','Kawaguchiko Music Forest','Automatic instruments & European-style gardens'],
+      ['Itchiku Kubota Art Museum','Itchiku Kubota Art Museum','Tsujigahana textile art in coral-and-limestone halls']
+    ]},
+    { cat:'Food & Onsen', items:[
+      ['Hoto noodles','Hoto Fudo Kawaguchiko','Yamanashi\'s flat-noodle miso hotpot'],
+      ['Lakeside onsen with Fuji views','onsen Kawaguchiko Mt Fuji view','Day-onsen on Lake Kawaguchi facing the mountain']
+    ]}
+  ],
+  Hiroshima:[
+    { cat:'Sightseeing', items:[
+      ['Peace Memorial Park & Museum','Hiroshima Peace Memorial Park','The moving heart of the city'],
+      ['Atomic Bomb Dome','Atomic Bomb Dome Hiroshima','UNESCO World Heritage survivor of 1945'],
+      ['Itsukushima Shrine · Miyajima','Itsukushima Shrine Miyajima','The floating torii on Miyajima island'],
+      ['Mt Misen · Miyajima','Mount Misen Miyajima','Ropeway and summit views over the Inland Sea'],
+      ['Shukkei-en Garden','Shukkeien Hiroshima','Miniature landscapes in a strolling garden'],
+      ['Hiroshima Castle','Hiroshima Castle','Reconstructed "Carp Castle" and museum']
+    ]},
+    { cat:'Food & Shopping', items:[
+      ['Hiroshima-style okonomiyaki','Okonomimura Hiroshima','Layered, noodle-stacked okonomiyaki — the city dish'],
+      ['Seto Inland oysters','oyster Hiroshima Miyajima','Plump local oysters, grilled or fried (in season)'],
+      ['Hondori & Hatchobori','Hondori Hiroshima','Covered arcades — the main shopping streets'],
+      ['Momiji manju','momiji manju Miyajima','Maple-leaf cakes — the classic Miyajima sweet']
+    ]}
+  ],
+  Fukuoka:[
+    { cat:'Sightseeing', items:[
+      ['Ohori Park','Ohori Park Fukuoka','Lakeside park, walking loop & Japanese garden'],
+      ['Fukuoka Castle Ruins (Maizuru Park)','Fukuoka Castle Ruins','Kuroda-clan castle walls; famous cherry blossoms'],
+      ['Dazaifu Tenmangu','Dazaifu Tenmangu','Shrine to the god of learning · ~30 min out'],
+      ['Kushida Shrine','Kushida Shrine Fukuoka','Fukuoka\'s guardian shrine; the Yamakasa float'],
+      ['Tocho-ji (Fukuoka Daibutsu)','Tochoji Fukuoka','Temple with a large seated wooden Buddha'],
+      ['Canal City Hakata','Canal City Hakata','Mall & entertainment complex with fountain shows'],
+      ['Fukuoka Tower','Fukuoka Tower','234 m seaside tower with observation deck'],
+      ['Nanzo-in Reclining Buddha','Nanzoin Sasaguri','Giant bronze reclining Buddha · ~25 min out'],
+      ['Fukuoka Art Museum','Fukuoka Art Museum','Dali, Miro & Buddhist art, by Ohori Park'],
+      ['Nakasu riverside','Nakasu Fukuoka','River-island nightlife & yatai zone']
+    ]},
+    { cat:'Food & Drink', items:[
+      ['Yatai street stalls','Nakasu Yatai','Open-air riverside food stalls — the Fukuoka icon'],
+      ['Hakata tonkotsu ramen','Hakata ramen Fukuoka','Rich pork-bone ramen (Ichiran, Ippudo origin)'],
+      ['Motsunabe','Motsunabe Fukuoka','Offal & cabbage hot pot — a Fukuoka specialty'],
+      ['Mizutaki','Mizutaki Fukuoka','Delicate chicken hot pot (Hamada-ya, Suigetsu)'],
+      ['Mentaiko','Mentaiko Fukuoka','Spicy marinated cod roe — regional signature'],
+      ['Hitokuchi gyoza','Tetsunabe gyoza Fukuoka','Bite-size crispy gyoza (Tetsunabe)'],
+      ['Goma-saba','Goma saba Fukuoka','Sesame-marinated raw mackerel — izakaya staple'],
+      ['Hakata udon','Hakata udon','Soft udon with gobo-ten (Daichi no Udon)'],
+      ['High-end sushi','Sushi Sakai Fukuoka','Strong sushi scene (Sushi Sakai, Gyoten, Kai)'],
+      ['Sake & shochu bars','izakaya Tenjin Fukuoka','Kyushu sake & shochu izakaya']
+    ]},
+    { cat:'Shopping', items:[
+      ['Tenjin district','Tenjin Fukuoka','Downtown shopping core; department stores & fashion'],
+      ['Tenjin Chikagai','Tenjin Chikagai','Elegant European-style underground arcade'],
+      ['Daimaru Fukuoka Tenjin','Daimaru Fukuoka Tenjin','Major department store with depachika'],
+      ['Iwataya / Mitsukoshi','Iwataya Fukuoka','Flagship department stores'],
+      ['JR Hakata City / Amu Plaza','Amu Plaza Hakata','Station mall: fashion, Tokyu Hands, dining'],
+      ['Kawabata Shotengai','Kawabata Shotengai Fukuoka','Hakata\'s oldest covered shopping arcade'],
+      ['Hakata-ori textiles','Hakata Ori textile shop','Traditional silk weaving (obi)'],
+      ['Hakata dolls (Hakata ningyo)','Hakata ningyo shop','Hand-painted clay-doll craft'],
+      ['Fukuya (mentaiko)','Fukuya Nakasu Honten','Originator of Hakata mentaiko; gift packs'],
+      ['PARCO Fukuoka','Fukuoka Parco','Youth fashion & lifestyle']
+    ]}
+  ],
+  Kyoto:[
+    { cat:'Sightseeing', items:[
+      ['Fushimi Inari Taisha','Fushimi Inari Taisha Kyoto','Thousands of vermilion torii · best at first light'],
+      ['Arashiyama Bamboo Grove','Arashiyama Bamboo Grove Kyoto','Early morning to avoid the crowds'],
+      ['Kinkaku-ji — Golden Pavilion','Kinkaku-ji Kyoto','The classic image of Kyoto'],
+      ['Kiyomizu-dera','Kiyomizu-dera Kyoto','Hillside temple · walk down into Gion afterwards'],
+      ['Ginkaku-ji + Philosopher\'s Path','Philosophers Path Kyoto','Canal-side walk · pair with Nanzen-ji'],
+      ['Sanjusangen-do','Sanjusangendo Kyoto','1,001 gilded Kannon'],
+      ['Ryoan-ji rock garden','Ryoan-ji Kyoto','The most famous Zen garden in Japan'],
+      ['Nijo Castle','Nijo Castle Kyoto','Shogun\'s residence with nightingale floors']
+    ]},
+    { cat:'Food & Drink', items:[
+      ['Nishiki Market','Nishiki Market Kyoto','Five blocks of stalls — Kyoto\'s kitchen'],
+      ['Yudofu near Nanzen-ji','Nanzenji Junsei Kyoto','Hot tofu in a temple-garden setting'],
+      ['% Arabica · Higashiyama','Arabica Higashiyama Kyoto','Coffee with a hillside view'],
+      ['Kagizen Yoshifusa · wagashi','Kagizen Yoshifusa Kyoto','Historic Gion sweets and matcha']
+    ]},
+    { cat:'Shopping', items:[
+      ['Ippodo Tea · Teramachi','Ippodo Tea Kyoto','Centuries-old tea house with a tasting salon'],
+      ['Aritsugu · Nishiki','Aritsugu Nishiki Market','Revered Kyoto knives and copperware'],
+      ['Kaikado · tea caddies','Kaikado Kyoto','Hand-made copper and tin tea canisters'],
+      ['Shinmonzen antique street','Shinmonzen Kyoto','High-end Japanese & Asian antiques · Gion']
+    ]}
+  ]
+};
+var DISCOVER_CITIES = ['Tokyo','Fuji','Hiroshima','Fukuoka','Kyoto'];
+var DISCOVER_ACTIVE = 'Tokyo';
+
+/* ═══ HELPERS ═══ */
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function gm(q){return(q&&q.indexOf('http')===0)?q:'https://maps.google.com/?q='+encodeURIComponent(q||'Tokyo Japan');}
+function nav(q){return(q&&q.indexOf('http')===0)?q:'https://maps.google.com/maps?daddr='+encodeURIComponent(q||'Tokyo Japan')+'&dirflg=d';}
+var toastTm;
+function showToast(msg){var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTm);toastTm=setTimeout(function(){el.classList.remove('show');},2200);}
+window.copyAddr=function(di,si){
+  var stop=TRIP.days[di].stops[si];
+  var txt=(stop.addr&&stop.addr!=='Tokyo'&&stop.addr!=='Kyoto')?stop.addr:stop.loc;
+  if(!txt)return;
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(function(){showToast('Address copied');});}
+  else{var ta=document.createElement('textarea');ta.value=txt;ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Address copied');}
+};
+
+/* ═══ CLOCK ═══ */
+function jst(){return new Date(Date.now()+9*3600000);}
+function isoToday(){return jst().toISOString().slice(0,10);}
+function tickClock(){
+  var d=jst();
+  document.getElementById('jst-clock').textContent=String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');
+  var today=d.toISOString().slice(0,10),found=null;
+  for(var i=0;i<TRIP.days.length;i++){if(TRIP.days[i].date===today){found=TRIP.days[i];break;}}
+  var lbl=document.getElementById('trip-day-label');
+  if(found)lbl.textContent='Day '+found.dayNum+' of 16 · '+found.city;
+  else if(today<TRIP.startDate){var ms=new Date(TRIP.startDate)-new Date(today);var d2=Math.ceil(ms/86400000);lbl.textContent=d2===1?'Tomorrow · Tokyo':d2+'d to Tokyo';}
+  else if(today>TRIP.endDate)lbl.textContent='Journey complete · Sayonara!';
+  else lbl.textContent='Japan Standard Time';
+}
+
+/* ═══ TABS ═══ */
+document.querySelector('.tab-nav').addEventListener('click',function(e){
+  var btn=e.target.closest('.tab-btn');if(!btn)return;
+  var name=btn.getAttribute('data-tab');
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.toggle('active',p.id==='tab-'+name);});
+  document.getElementById('main-content').scrollTo({top:0,behavior:'smooth'});
+  if(name!=='statement'&&window.HCIStatement)HCIStatement.lock();
+});
+window.toggleDay=function(num){var c=document.getElementById('day-'+num);if(c)c.classList.toggle('open');};
+var ICONS={flight:'✈️',transport:'🚄',hotel:'🏨',restaurant:'🍽️',activity:'🎌',market:'🏪',suggestion:'🍽️'};
+
+/* ═══ RENDER · STOP ═══ */
+function renderStop(stop,di,si){
+  var isSuggestion=stop.badgeType==='suggestion'||stop.badgeType==='pending';
+  var isActionable=stop.badgeType==='confirmed'||stop.badgeType==='logistics'||stop.badgeType==='requested'||stop.badgeType==='self-booked'||stop.badgeType==='walk-in';
+  var hasLoc=!!(stop.q||stop.loc);
+  var icon=ICONS[stop.type]||'📍';
+  var badge=stop.badge?'<span class="stop-badge '+stop.badgeType+'">'+esc(stop.badge)+'</span>':'';
+  var dotClass=isSuggestion?'t-suggestion':('t-'+(stop.type||'restaurant'));
+  var cardClass=stop.badgeType==='suggestion'?' is-suggestion':(stop.badgeType==='pending'?' is-pending':'');
+  var mapHTML=isActionable&&hasLoc
+    ?'<a href="'+gm(stop.q)+'" target="_blank" rel="noopener" class="map-btn mp">📍 Maps</a>'
+      +'<a href="'+nav(stop.q)+'" target="_blank" rel="noopener" class="map-btn">🧭 Nav</a>'
+      +'<button class="map-btn" onclick="copyAddr('+di+','+si+')">⎘ Copy</button>'
+    :'<span class="map-btn map-disabled">📍</span><span class="map-btn map-disabled">🧭</span><span class="map-btn map-disabled">⎘</span>';
+  return '<div class="stop-item">'
+    +'<div class="stop-time">'+(stop.time?stop.time.replace('~',''):'')+'</div>'
+    +'<div class="stop-dot '+dotClass+'"></div>'
+    +'<div class="stop-card'+cardClass+'"><div class="stop-top">'
+    +'<div class="stop-title-wrap">'
+    +'<div class="stop-title"><span class="stop-icon">'+icon+'</span>'+esc(stop.title)+'</div>'
+    +(stop.sub?'<div class="stop-subtitle">'+esc(stop.sub)+'</div>':'')
+    +'</div>'+badge+'</div>'
+    +(stop.notes?'<div class="stop-notes">'+esc(stop.notes)+'</div>':'')
+    +(stop.alert?'<div class="stop-alert">⚠ '+esc(stop.alert)+'</div>':'')
+    +(stop.dietary?'<div class="diet-alert"><span class="di">⚠ Dietary</span><div>'+stop.dietary+'</div></div>':'')
+    +(stop.tickets&&stop.tickets.length?'<div class="ticket-cap">Mobile QR tickets \u2014 tap to open</div><div class="ticket-row">'+stop.tickets.map(function(t){return '<a href="'+t.url+'" target="_blank" rel="noopener" class="ticket-btn">'+esc(t.name)+'</a>';}).join('')+'</div>':'')
+    +'<div class="map-actions">'+mapHTML+'</div>'
+    +'</div></div>';
+}
+
+/* ═══ RENDER · ITINERARY ═══ */
+function renderItinerary(){
+  var today=isoToday();
+  var html='<div class="trip-banner">'
+    +'<div class="trip-banner-kana">A Private Dining Programme · Happy Camper International</div>'
+    +'<h2>Japan</h2>'
+    +'<div class="banner-dates">4 – 19 November 2026 · 4 Guests · 15 Nights · Tokyo · Fuji · Hiroshima · Fukuoka · Kyoto</div>'
+    +'<div class="banner-chips">'
+    +'<span class="banner-chip pending">🍽️ 11 HCI dinners · curating</span>'
+    +'<span class="banner-chip confirmed">🍱 Fufu Kawaguchiko · ×2 included</span>'
+    +'<span class="banner-chip">🗻 Mt Fuji · Chureito Pagoda</span>'
+    +'<span class="banner-chip">🕊️ Hiroshima Peace Park</span>'
+    +'<span class="banner-chip">🥇 Grand Sumo · Fukuoka</span>'
+    +'<span class="banner-chip">⛩ Fushimi Inari · Kyoto</span>'
+    +'</div></div>'
+    +'<div class="booking-legend">'
+    +'<span class="bl-item"><span class="bl-dot confirmed"></span>Confirmed</span>'
+    +'<span class="bl-item"><span class="bl-dot requested"></span>Requested</span>'
+    +'<span class="bl-item"><span class="bl-dot walk-in"></span>Walk-in</span>'
+    +'<span class="bl-item"><span class="bl-dot self-booked"></span>Self-booked</span>'
+    +'<span class="bl-item"><span class="bl-dot suggestion"></span>Suggestion</span>'
+    +'</div>'
+    +'<div class="section-label">Daily Itinerary</div>';
+  TRIP.days.forEach(function(day,idx){
+    var isToday=day.date===today;
+    var isPast=day.date<today;
+    var isOpen=isToday||(today<TRIP.startDate&&idx===0);
+    var dining=day.stops.filter(function(s){return s.type==='restaurant';}).length;
+    var cityCls='day-city-badge'+(day.cityClass?' '+day.cityClass:'');
+    html+='<div class="day-card'+(isToday?' is-today':'')+(isPast?' is-past':'')+(isOpen?' open':'')+'" id="day-'+day.dayNum+'" style="animation-delay:'+(idx*.04).toFixed(2)+'s">'
+      +'<div class="day-header" onclick="toggleDay('+day.dayNum+')">'
+      +'<div class="day-num">D'+day.dayNum+'</div>'
+      +'<div class="day-header-info">'
+      +'<div class="day-name">'+esc(day.weekday)+'</div>'
+      +'<div class="day-sub"><span class="'+cityCls+'">'+day.city+'</span>'
+      +(isToday?'<span class="today-pill">TODAY</span>':'')
+      +(day.hosted?'<span class="host-pill">Hosted</span>':'')
+      +(dining>0?'<span>'+dining+' dining</span>':'')
+      +'</div></div><span class="day-chevron">▾</span>'
+      +'</div>'
+      +'<div class="day-body"><div class="day-body-inner">';
+    if(day.hotel){
+      html+='<div class="hotel-bar">'
+        +'<div style="font-size:15px">🏨</div>'
+        +'<div style="flex:1"><div class="hb-name">'+esc(day.hotel)+'</div>'
+        +'<div class="hb-detail">'+day.city+' · Night '+day.dayNum+(day.hotelBy?' · '+day.hotelBy:'')+'</div></div>'
+        +(day.hq?'<a href="'+gm(day.hq)+'" target="_blank" rel="noopener" class="hb-link">📍 Map</a>':'')
+        +'</div>';
+    }
+    if(day.notes)html+='<div class="day-note-bar">'+esc(day.notes)+'</div>';
+    html+='<div class="timeline">';
+    day.stops.forEach(function(s,si){html+=renderStop(s,idx,si);});
+    html+='</div></div></div></div>';
+  });
+  document.getElementById('tab-itinerary').innerHTML=html;
+  loadWeather();
+}
+
+/* ═══ WEATHER · Open-Meteo (no key) ═══ */
+function wmo(c){
+  if(c===0)return{i:'☀️',d:'Clear'};
+  if(c<=2)return{i:'⛅',d:'Partly cloudy'};
+  if(c===3)return{i:'☁️',d:'Overcast'};
+  if(c>=45&&c<=48)return{i:'🌫️',d:'Foggy'};
+  if(c>=51&&c<=67)return{i:'🌧️',d:'Rain'};
+  if(c>=80&&c<=82)return{i:'🌦️',d:'Showers'};
+  if(c>=95)return{i:'⛈️',d:'Thunderstorm'};
+  return{i:'🌤️',d:'Mixed'};
+}
+function loadWeather(){
+  var urlT='https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=Asia%2FTokyo&forecast_days=16';
+  var urlK='https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=Asia%2FTokyo&forecast_days=16';
+  Promise.all([fetch(urlT).then(function(r){return r.json();}),fetch(urlK).then(function(r){return r.json();})]).then(function(results){
+    var dt=results[0].daily, dk=results[1].daily;
+    TRIP.days.forEach(function(day){
+      var src=(day.city==='Kyoto'||day.city==='Nara')?dk:dt;
+      var idx=src.time.indexOf(day.date);
+      var el=document.getElementById('wx-'+day.date);
+      if(!el)return;
+      if(idx===-1){el.innerHTML='<span class="wx-icon">🌸</span><div class="wx-info"><div class="wx-temp" style="font-size:13px">Forecast available closer to the day</div><div class="wx-desc">'+day.city+' · late June / early July</div></div>';return;}
+      var e=wmo(src.weathercode[idx]);
+      var hi=Math.round(src.temperature_2m_max[idx]);
+      var lo=Math.round(src.temperature_2m_min[idx]);
+      var rain=src.precipitation_probability_max[idx]||0;
+      el.innerHTML='<span class="wx-icon">'+e.i+'</span>'
+        +'<div class="wx-info"><div class="wx-temp">'+hi+'° / '+lo+'°C · '+e.d+'</div>'
+        +'<div class="wx-desc">'+day.city+' · early summer</div></div>'
+        +'<div class="wx-rain">💧 '+rain+'%</div>';
+    });
+  }).catch(function(){
+    TRIP.days.forEach(function(d){
+      var el=document.getElementById('wx-'+d.date);
+      if(el)el.innerHTML='<span class="wx-icon">🌸</span><div class="wx-info"><div class="wx-temp" style="font-size:13px">'+d.city+' · late June / early July</div><div class="wx-desc">Warm, humid early summer · 24–31°C · rainy-season tail</div></div>';
+    });
+  });
+}
+
+/* ═══ RENDER · DISCOVER ═══ */
+function renderDiscover(){
+  var el=document.getElementById('tab-discover');
+  var city=DISCOVER_ACTIVE;
+  var sections=DISCOVER[city]||[];
+  var h='<div class="disc-banner"><h2>🗾 Discover '+esc(city)+'</h2><p>Sightseeing · Food &amp; Drink · Shopping</p></div>';
+  h+='<div class="disc-city-bar" role="tablist" aria-label="Select city">';
+  DISCOVER_CITIES.forEach(function(c){
+    h+='<button class="disc-city-pill'+(c===city?' active':'')+'" data-disc-city="'+esc(c)+'">'+esc(c)+'</button>';
+  });
+  h+='</div>';
+  h+='<div class="disc-scherrer">'
+    +'<div class="disc-scherrer-label">Editor\'s Reference</div>'
+    +'<div class="disc-scherrer-title">The Ultimate Shopping List</div>'
+    +'<div class="disc-scherrer-by"><span class="copy">©</span>John Scherrer</div>'
+    +'<p class="disc-scherrer-p">An extraordinary, hand-built Google Map of Japan\'s most considered shops — vintage, design, denim, ceramics, kitchenware, craft. The single best on-the-ground reference for serious shopping in Tokyo, Kyoto and beyond.</p>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">'
+    +'<a class="disc-scherrer-cta" href="https://maps.app.goo.gl/y5dzkZR4L56yY3po8?g_st=i" target="_blank" rel="noopener">Open the Map →</a>'
+    +'<a class="disc-scherrer-ig" href="https://www.instagram.com/bigtime_makin_it_nice" target="_blank" rel="noopener">📷 @bigtime_makin_it_nice</a>'
+    +'</div>'
+    +'<div class="disc-scherrer-tip">Most powerful when used alongside your live location — open the map and look for nearby pins wherever the afternoon ends up.</div>'
+    +'</div>';
+  h+='<div class="disc-scherrer" style="background:linear-gradient(180deg,#1a0f2e 0%,#2d1b47 100%);border-color:rgba(176,124,34,.15);">'
+    +'<div class="disc-scherrer-label">Editor\'s Reference</div>'
+    +'<div class="disc-scherrer-title">The Ultimate Coffee List</div>'
+    +'<div class="disc-scherrer-by"><span class="copy">©</span>Alex Rivera</div>'
+    +'<p class="disc-scherrer-p">A global map of Alex\'s favourite coffee shops — speciality roasters, neighbourhood kissaten, and hidden gems across the world, including an excellent selection throughout Japan.</p>'
+    +'<div class="disc-scherrer-tip" style="margin-bottom:14px">Open the map with your live location enabled and filter to what\'s nearby — the best way to find a great cup wherever the day takes you.</div>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">'
+    +'<a class="disc-scherrer-cta" href="https://maps.app.goo.gl/YxU9bZiQoawn7oqy9?g_st=i" target="_blank" rel="noopener">Open the Map →</a>'
+    +'<a class="disc-scherrer-ig" href="https://www.instagram.com/alexrivio" target="_blank" rel="noopener">📷 @alexrivio</a>'
+    +'</div></div>';
+  sections.forEach(function(section){
+    h+='<div class="disc-card"><div class="disc-card-head"><div class="disc-card-head-title">'+esc(section.cat)+'</div></div><div class="disc-card-body">';
+    section.items.forEach(function(item){
+      var subHtml=item[2]?'<div class="disc-item-sub">'+esc(item[2])+'</div>':'';
+      h+='<a class="disc-item" href="'+gm(item[1])+'" target="_blank" rel="noopener">'
+        +'<div class="disc-item-info"><div class="disc-item-name">'+esc(item[0])+'</div>'+subHtml+'</div>'
+        +'<div class="disc-arrow">→</div></a>';
+    });
+    h+='</div></div>';
+  });
+  el.innerHTML=h;
+  el.querySelectorAll('[data-disc-city]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var c=btn.getAttribute('data-disc-city');
+      if(c&&DISCOVER[c]){DISCOVER_ACTIVE=c;renderDiscover();document.getElementById('main-content').scrollTo({top:0,behavior:'smooth'});}
+    });
+  });
+}
+
+/* ═══ RENDER · WISH LIST ═══ */
+function renderWishlist(){
+  function row(w,i,showMap){
+    var mapBtn=showMap&&w.q?'<a href="'+gm(w.q)+'" target="_blank" rel="noopener" class="wish-map-btn">📍</a>':'';
+    return '<div class="wish-row'+(i>0?' wish-border':'')+'">'
+      +'<div class="wish-num">'+(i+1)+'</div>'
+      +'<div class="wish-info"><div class="wish-name">'+esc(w.name)+'</div>'
+      +'<div class="wish-style">'+esc(w.style)+'</div></div>'
+      +'<div class="wish-actions">'+mapBtn+'</div>'
+      +'</div>';
+  }
+  var h='<div class="wishlist-banner"><h2>✦ HCI Dining Programme</h2><p>Nanette Levi · Japan 2026 · the curated table, evening by evening</p></div>';
+  h+='<div class="section-label">✅ Included in stay</div><div class="wish-card" style="border-color:rgba(27,94,32,.25)">';
+  WL_CONFIRMED.forEach(function(w,i){h+=row(w,i,true);});
+  h+='</div>';
+  if(WL_REQUESTED.length){
+    h+='<div class="section-label">🍽️ To curate · HCI</div><div class="wish-card" style="border-color:rgba(0,77,86,.2)">';
+    WL_REQUESTED.forEach(function(w,i){h+=row(w,i,true);});
+    h+='</div>';
+  }
+  if(WL_SUGGESTIONS.length){
+    h+='<div class="section-label">🔵 Suggestions</div><div class="wish-card" style="border-color:rgba(13,60,110,.2)">';
+    WL_SUGGESTIONS.forEach(function(w,i){h+=row(w,i,true);});
+    h+='</div>';
+  }
+  if(WL_LONGTERM.length){
+    h+='<div class="section-label">📋 Long-term targets</div><div class="wish-card">';
+    WL_LONGTERM.forEach(function(w,i){h+=row(w,i,false);});
+    h+='</div>';
+  }
+  document.getElementById('tab-wishlist').innerHTML=h;
+}
+
+/* ═══ RENDER · DIET ═══ */
+function renderDiet(){
+  var h='<div class="diet-banner"><h2>⚠ Dietary</h2><p>To be collected by HCI · shared with each restaurant in advance</p></div>';
+  if(DIET_JP.length){h+='<div class="diet-cta" onclick="openDietModal()">'
+    +'<div class="diet-cta-icon">🇯🇵</div>'
+    +'<div class="diet-cta-text">'
+    +'<div class="diet-cta-title">Show the Chef · Japanese Card</div>'
+    +'<div class="diet-cta-sub">Tap to open the Japanese version — show it at any counter</div>'
+    +'</div>'
+    +'<div class="diet-cta-arrow">→</div>'
+    +'</div>';}
+  var sorted=DIET.slice().sort(function(a,b){return (b.severe?1:0)-(a.severe?1:0);});
+  sorted.forEach(function(p){
+    h+='<div class="diet-person-card'+(p.severe?' severe':'')+'">'
+      +'<div class="diet-person-head">'
+      +'<div class="diet-person-name">'+esc(p.name)+'</div>'
+      +'<span class="diet-tag '+p.tagClass+'">'+esc(p.tag)+'</span>'
+      +'</div>';
+    p.sections.forEach(function(s){
+      h+='<div class="diet-section-label '+s.class+'">'+esc(s.label)+'</div><div class="diet-chips">';
+      s.items.forEach(function(it){h+='<span class="diet-chip '+s.chipClass+'">'+esc(it)+'</span>';});
+      h+='</div>';
+    });
+    h+='</div>';
+  });
+  document.getElementById('tab-diet').innerHTML=h;
+  var modal=document.getElementById('modal-jp-content');
+  var sortedJp=DIET_JP.slice().sort(function(a,b){return (b.severe?1:0)-(a.severe?1:0);});
+  modal.innerHTML=sortedJp.map(function(p){
+    var inner='<div class="jp-card-name">'+esc(p.name)+'</div>'
+      +'<div class="jp-card-name-en">'+esc(p.nameEn)+'</div>';
+    p.sections.forEach(function(s){
+      inner+='<div class="jp-card-label '+s.class+'">'+esc(s.label)+'</div>'
+        +'<div class="'+(s.class==='severe'?'jp-text':'jp-text-list')+'">'+s.text+'</div>';
+    });
+    return '<div class="jp-card'+(p.severe?' severe':'')+'">'+inner+'</div>';
+  }).join('');
+}
+window.openDietModal=function(){document.getElementById('diet-modal').classList.add('active');document.body.style.overflow='hidden';};
+window.closeDietModal=function(){document.getElementById('diet-modal').classList.remove('active');document.body.style.overflow='';};
+
+/* ═══ RENDER · UTILITIES ═══ */
+function renderUtilities(){
+  document.getElementById('tab-utilities').innerHTML=''
+    +'<div class="section-label">Currency Converter</div>'
+    +'<div class="util-card"><div class="util-card-title">JPY ↔ USD</div>'
+    +'<div class="fx-row">'
+    +'<div class="fx-group"><div class="fx-label">🇯🇵 Japanese Yen</div><input class="fx-input" id="fx-jpy" type="number" inputmode="numeric" value="10000"></div>'
+    +'<button class="fx-swap-btn" id="fx-swap">⇋</button>'
+    +'<div class="fx-group"><div class="fx-label">🇺🇸 US Dollar</div><input class="fx-input" id="fx-usd" type="number" inputmode="decimal"></div>'
+    +'</div><div class="fx-rate-note">Rate: 1 USD = '+FX_RATE.toFixed(2)+' JPY · Source: planning canvas</div></div>'
+    +'<div class="section-label">Quick Reference</div>'
+    +'<div class="util-card"><ul class="info-list">'
+    +'<li><span class="info-emoji">💴</span><div class="info-text"><strong>Cash is useful</strong>Carry some yen — a few counters and the ryokan extras prefer cash. ATMs at 7-Eleven and Japan Post accept foreign cards.</div></li>'
+    +'<li><span class="info-emoji">🍁</span><div class="info-text"><strong>Early–mid November</strong>Autumn in Japan — crisp and largely clear, roughly 10–18°C, with the maples turning. Warm layers and a light coat; evenings are cool.</div></li>'
+    +'<li><span class="info-emoji">📱</span><div class="info-text"><strong>Suica (Mobile Wallet)</strong>Wallet app → tap + → search Suica. Covers Tokyo and Kyoto subway, bus and JR — handy in Hiroshima and Fukuoka too.</div></li>'
+    +'<li><span class="info-emoji">⏰</span><div class="info-text"><strong>Time Zone: JST = UTC+9</strong>No daylight saving. 15 h ahead of Dallas (CST).</div></li>'
+    +'<li><span class="info-emoji">🔌</span><div class="info-text"><strong>Electricity: 100V · Type A</strong>North American travellers need only a 3-to-2-prong adapter, no converter.</div></li>'
+    +'<li><span class="info-emoji">📡</span><div class="info-text"><strong>Pocket Wi-Fi included</strong>A 16-day pocket Wi-Fi router is provided by Traveledge, waiting at your first hotel — up to 10 devices. Return it in the stamped envelope at the airport on departure.</div></li>'
+    +'</ul></div>'
+    +'<div class="section-label">Dining Etiquette</div>'
+    +'<div class="util-card">'
+    +'<div class="rule-item"><span class="rule-icon">🚫</span><div class="rule-text"><strong>No Fragrance — Critical</strong>Avoid perfume, cologne, and scented products on dining days. Even a trace disrupts the chef and other guests at the counter — the single most important point at high-end Japanese restaurants.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">⏰</span><div class="rule-text"><strong>Punctuality</strong>Arrive on time or early — the meal begins together for everyone. Allow generous transfer time to quiet back-street addresses.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">💍</span><div class="rule-text"><strong>Protect the Counter</strong>Remove rings, bracelets, and watches at sushi counters — many are single pieces of precious Hinoki cypress.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">💰</span><div class="rule-text"><strong>No Tipping</strong>Not customary in Japan. Say <em>Gochisousama deshita</em> after the meal — deeply appreciated.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">🔒</span><div class="rule-text"><strong>Reservations are Firm</strong>Once confirmed, reservations are commitments — cancellations damage relationships built over many seasons.</div></div>'
+    +'</div>';
+  var jEl=document.getElementById('fx-jpy'),uEl=document.getElementById('fx-usd');
+  function fJ(){var v=parseFloat(jEl.value);uEl.value=isNaN(v)?'':(v/FX_RATE).toFixed(2);}
+  function fU(){var v=parseFloat(uEl.value);jEl.value=isNaN(v)?'':String(Math.round(v*FX_RATE));}
+  jEl.addEventListener('input',fJ);uEl.addEventListener('input',fU);
+  document.getElementById('fx-swap').addEventListener('click',function(){
+    var t=jEl.value;jEl.value=uEl.value?String(Math.round(parseFloat(uEl.value)*FX_RATE)):'';uEl.value=t?(parseFloat(t)/FX_RATE).toFixed(2):'';
+  });
+  fJ();
+}
+
+/* ═══ RENDER · CONTACTS & EMERGENCY ═══ */
+function renderEmergency(){
+  document.getElementById('tab-emergency').innerHTML=''
+    +'<div class="emergency-banner"><h2>Contacts &amp; Emergency</h2><p>Your Happy Camper team · Japan emergency services · your hotels · medical · embassy</p></div>'
+    +'<div class="section-label">Your Happy Camper Hosts</div>'
+    +'<div class="util-card host-card">'
+    +  '<div class="host-bio">'
+    +    '<div class="host-bio-head"><div class="host-bio-name">Gerhard Huber</div><div class="host-bio-meta">Happy Camper International · Tokyo · Kyoto · London</div></div>'
+    +    '<p class="host-bio-text">Gerhard curates and books each evening of your journey, liaises with every kitchen on your preferences, and is on hand throughout the trip. The eleven open dinners on your itinerary are his to shape — proposed, reserved and briefed ahead.</p>'
+    +  '</div>'
+    +  '<div class="host-bio">'
+    +    '<div class="host-bio-head"><div class="host-bio-name">Tomoko Morikawa</div><div class="host-bio-meta">Programme Director · Tokyo</div></div>'
+    +    '<p class="host-bio-text">Tomoko oversees the dining programme on the ground in Japan, coordinating each reservation and the day-to-day detail so every evening runs smoothly.</p>'
+    +  '</div>'
+    +'</div>'
+    +'<div class="section-label">Happy Camper · Direct</div>'
+    +'<div class="contact-card">'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-n">🍱</div><div><div class="contact-label">Gerhard Huber</div><div class="contact-sub">Happy Camper · cfo@happycamper.food · WhatsApp</div></div></div><a href="tel:+818069892107" class="call-btn cn">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-n">🌿</div><div><div class="contact-label">Tomoko Morikawa</div><div class="contact-sub">Programme Director · ceo@happycamper.food · WhatsApp</div></div></div><a href="tel:+819061589006" class="call-btn cn">📞 Call</a></div>'
+    +'</div>'
+    +'<div class="section-label">Your Hotels</div>'
+    +'<div class="contact-card">'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏨</div><div><div class="contact-label">Palace Hotel Tokyo</div><div class="contact-sub">Tokyo · 4–7 &amp; 17–19 Nov · 03 3211 5211</div></div></div><a href="tel:+81332115211" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">♨️</div><div><div class="contact-label">Fufu Kawaguchiko</div><div class="contact-sub">Kawaguchiko · 7–9 Nov · 0570 0117 22</div></div></div><a href="tel:0570011722" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏨</div><div><div class="contact-label">Sheraton Grand Hiroshima</div><div class="contact-sub">Hiroshima · 9–10 Nov · 082 262 7111</div></div></div><a href="tel:+81822627111" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏨</div><div><div class="contact-label">The Ritz-Carlton Fukuoka</div><div class="contact-sub">Fukuoka · 10–11 Nov · 092 401 8888</div></div></div><a href="tel:+81924018888" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏯</div><div><div class="contact-label">Capella Kyoto</div><div class="contact-sub">Kyoto · 11–17 Nov · 075 541 8877</div></div></div><a href="tel:+81755418877" class="call-btn cb">📞 Call</a></div>'
+    +'</div>'
+    +'<div class="section-label">Emergency Numbers</div>'
+    +'<div class="contact-card">'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-r">🚨</div><div><div class="contact-label">Police</div><div class="contact-sub">All emergency police calls</div></div></div><a href="tel:110" class="call-btn cr">📞 110</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-r">🚑</div><div><div class="contact-label">Ambulance &amp; Fire</div><div class="contact-sub">Medical emergencies</div></div></div><a href="tel:119" class="call-btn cr">📞 119</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-r">⚓</div><div><div class="contact-label">Coast Guard</div><div class="contact-sub">At sea</div></div></div><a href="tel:118" class="call-btn cr">📞 118</a></div>'
+    +'</div>'
+    +'<div class="section-label">Medical — English-speaking</div>'
+    +'<div class="contact-card">'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏥</div><div><div class="contact-label">Tokyo Midtown Clinic</div><div class="contact-sub">Roppongi · 24h English support</div></div></div><a href="tel:+81354137912" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏥</div><div><div class="contact-label">St. Luke\'s International</div><div class="contact-sub">Tsukiji · English staff 24/7</div></div></div><a href="tel:+81335415151" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏥</div><div><div class="contact-label">Kyoto University Hospital</div><div class="contact-sub">Sakyo Ward, Kyoto</div></div></div><a href="tel:+81757513111" class="call-btn cb">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-b">🏥</div><div><div class="contact-label">Hiroshima &amp; Fukuoka</div><div class="contact-sub">Ask your hotel concierge for the nearest English-speaking clinic</div></div></div><span class="call-btn cb" style="opacity:.55">🏨</span></div>'
+    +'</div>'
+    +'<div class="section-label">Embassy &amp; Consulate</div>'
+    +'<div class="contact-card">'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-o">🇺🇸</div><div><div class="contact-label">US Embassy Tokyo</div><div class="contact-sub">Akasaka, Minato-ku</div></div></div><a href="tel:+81332245000" class="call-btn cn">📞 Call</a></div>'
+    +'<div class="contact-row"><div class="contact-left"><div class="contact-icon ci-o">🇺🇸</div><div><div class="contact-label">US Consulate Osaka</div><div class="contact-sub">Nearest to Kyoto</div></div></div><a href="tel:+81663155900" class="call-btn cn">📞 Call</a></div>'
+    +'</div>'
+    +'<div class="section-label">Essential Japanese</div>'
+    +'<div class="util-card"><ul class="info-list">'
+    +'<li><span class="info-emoji">👋</span><div class="info-text"><strong>Konnichiwa · こんにちは</strong>Hello / good afternoon</div></li>'
+    +'<li><span class="info-emoji">🌅</span><div class="info-text"><strong>Ohayou gozaimasu · おはようございます</strong>Good morning</div></li>'
+    +'<li><span class="info-emoji">🌙</span><div class="info-text"><strong>Konbanwa · こんばんは</strong>Good evening</div></li>'
+    +'<li><span class="info-emoji">🙏</span><div class="info-text"><strong>Arigatou gozaimasu · ありがとうございます</strong>Thank you very much</div></li>'
+    +'<li><span class="info-emoji">😊</span><div class="info-text"><strong>Sumimasen · すみません</strong>Excuse me / sorry (most useful word)</div></li>'
+    +'<li><span class="info-emoji">🤲</span><div class="info-text"><strong>Onegaishimasu · お願いします</strong>Please</div></li>'
+    +'<li><span class="info-emoji">✅</span><div class="info-text"><strong>Hai / Iie · はい／いいえ</strong>Yes / No</div></li>'
+    +'<li><span class="info-emoji">👌</span><div class="info-text"><strong>Daijoubu desu · 大丈夫です</strong>I\'m OK / it\'s fine</div></li>'
+    +'<li><span class="info-emoji">🍴</span><div class="info-text"><strong>Itadakimasu · いただきます</strong>Said before eating</div></li>'
+    +'<li><span class="info-emoji">🍵</span><div class="info-text"><strong>Gochisousama deshita · ごちそうさまでした</strong>Thank you for the meal — after dining</div></li>'
+    +'<li><span class="info-emoji">😋</span><div class="info-text"><strong>Oishii desu · おいしいです</strong>It\'s delicious</div></li>'
+    +'<li><span class="info-emoji">🥂</span><div class="info-text"><strong>Kanpai · 乾杯</strong>Cheers</div></li>'
+    +'<li><span class="info-emoji">🇬🇧</span><div class="info-text"><strong>Eigo ga hanasemasu ka? · 英語が話せますか？</strong>Do you speak English?</div></li>'
+    +'<li><span class="info-emoji">❓</span><div class="info-text"><strong>Wakarimasen · わかりません</strong>I don\'t understand</div></li>'
+    +'<li><span class="info-emoji">📍</span><div class="info-text"><strong>~ wa doko desu ka? · ～はどこですか？</strong>Where is ~?</div></li>'
+    +'<li><span class="info-emoji">🚻</span><div class="info-text"><strong>Toire wa doko desu ka? · トイレはどこですか？</strong>Where is the toilet?</div></li>'
+    +'<li><span class="info-emoji">💴</span><div class="info-text"><strong>Ikura desu ka? · いくらですか？</strong>How much is it?</div></li>'
+    +'<li><span class="info-emoji">🛍️</span><div class="info-text"><strong>Kore o kudasai · これをください</strong>This one, please</div></li>'
+    +'<li><span class="info-emoji">🧾</span><div class="info-text"><strong>Okaikei onegaishimasu · お会計お願いします</strong>The bill, please</div></li>'
+    +'<li><span class="info-emoji">💳</span><div class="info-text"><strong>Kaado wa tsukaemasu ka? · カードは使えますか？</strong>Can I pay by card?</div></li>'
+    +'<li><span class="info-emoji">🚫</span><div class="info-text"><strong>~ wa taberaremasen · ～は食べられません</strong>I cannot eat ~</div></li>'
+    +'<li><span class="info-emoji">⚠️</span><div class="info-text"><strong>Arerugii ga arimasu · アレルギーがあります</strong>I have an allergy</div></li>'
+    +'<li><span class="info-emoji">🆘</span><div class="info-text"><strong>Tasukete kudasai! · 助けてください！</strong>Please help me!</div></li>'
+    +'<li><span class="info-emoji">🚑</span><div class="info-text"><strong>Kyuukyuusha o yonde kudasai · 救急車を呼んでください</strong>Please call an ambulance</div></li>'
+    +'<li><span class="info-emoji">🏥</span><div class="info-text"><strong>Byouin wa doko desu ka? · 病院はどこですか？</strong>Where is the hospital?</div></li>'
+    +'</ul></div>';
+}
+
+/* ═══ INIT ═══ */
+function init(){
+  renderItinerary();
+  renderDiscover();
+  renderWishlist();
+  renderDiet();
+  renderUtilities();
+  renderEmergency();
+  if(window.HCIStatement)HCIStatement.init();
+  tickClock();
+  setInterval(tickClock,1000);
+}
+function fixHeaderOffset(){
+  try{
+    var h=document.getElementById('app-header');
+    var m=document.getElementById('main-content');
+    if(h&&m){var hh=h.offsetHeight;m.style.paddingTop=hh+'px';m.style.boxSizing='border-box';}
+  }catch(e){}
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',function(){try{init();}catch(e){console.error(e);} try{fixHeaderOffset();}catch(e){}});
+}else{
+  try{init();}catch(e){console.error('Init error:',e.message,e.stack);}
+  try{fixHeaderOffset();}catch(e){}
+}
+window.addEventListener('unhandledrejection',function(e){e.preventDefault();});
+window.addEventListener('resize',fixHeaderOffset);
+
+}());
+</script>
+
+<!-- HCI Statement library — self-contained IIFE, isolated from the host app -->
+<script>
+(function(){
+"use strict";
+
+const ENC_GUEST = "";
+const ENC_INTERNAL = "";
+
+const TIMEOUT_SEC = 120;
+
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const usd = n => "$" + Number(n).toLocaleString("en-US", { maximumFractionDigits: 0 });
+function parseDate(iso){ const [y,m,d] = iso.split("-").map(Number); return new Date(y, m-1, d); }
+
+const PBKDF2_ITERATIONS = 250000;
+const SALT_LEN = 16, IV_LEN = 12;
+const _enc = new TextEncoder(), _dec = new TextDecoder();
+function cryptoReady(){ return !!(window.crypto && window.crypto.subtle); }
+function b64encode(bytes){
+  const b = new Uint8Array(bytes); let s = "";
+  for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+  return btoa(s);
+}
+function b64decode(str){
+  const s = atob(str.trim()); const b = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) b[i] = s.charCodeAt(i);
+  return b;
+}
+async function deriveKey(password, salt){
+  const base = await crypto.subtle.importKey("raw", _enc.encode(password), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name:"PBKDF2", salt, iterations:PBKDF2_ITERATIONS, hash:"SHA-256" },
+    base, { name:"AES-GCM", length:256 }, false, ["encrypt","decrypt"]
+  );
+}
+async function encryptText(password, plaintext){
+  const salt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+  const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
+  const key = await deriveKey(password, salt);
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name:"AES-GCM", iv }, key, _enc.encode(plaintext)));
+  const out = new Uint8Array(salt.length + iv.length + ct.length);
+  out.set(salt, 0); out.set(iv, SALT_LEN); out.set(ct, SALT_LEN + IV_LEN);
+  return b64encode(out);
+}
+async function decryptText(password, blob){
+  const data = b64decode(blob);
+  const salt = data.slice(0, SALT_LEN);
+  const iv = data.slice(SALT_LEN, SALT_LEN + IV_LEN);
+  const ct = data.slice(SALT_LEN + IV_LEN);
+  const key = await deriveKey(password, salt);
+  const pt = await crypto.subtle.decrypt({ name:"AES-GCM", iv }, key, ct);
+  return _dec.decode(pt);
+}
+function payUrl(st){
+  if (!st.payLink) return null;
+  let u = st.payLink.trim();
+  if (!/^https?:\/\//i.test(u)) return null;
+  if (st.payRef && !/client_reference_id=/.test(u)){
+    u += (u.indexOf("?") >= 0 ? "&" : "?") + "client_reference_id=" + encodeURIComponent(st.payRef);
+  }
+  return u;
+}
+function computeTotals(st){
+  let total = 0, cost = 0;
+  const secs = (st.sections || []).map(sec => {
+    const items = sec.items || [];
+    const sub = items.reduce((a,i) => a + (Number(i.amount)||0), 0);
+    const csub = items.reduce((a,i) => a + (Number(i.cost)||0), 0);
+    total += sub; cost += csub;
+    return { ...sec, _sub: sub, _cost: csub };
+  });
+  total += Number(st.arrangementFee)||0;
+  const paid = (st.payments || []).reduce((a,p) => a + (Number(p.amount)||0), 0);
+  const profit = total - cost;
+  return { secs, total, cost, profit, margin: total>0 ? profit/total : 0, paid, outstanding: total - paid };
+}
+function renderStatement(st, internal){
+  const t = computeTotals(st);
+  const { secs, total, paid, outstanding } = t;
+  const balZero = outstanding <= 0;
+  let html = "";
+  if (internal){
+    html += '<div class="stmt-internal-banner">Internal view · cost &amp; margin visible — do not show to guests</div>';
+  }
+  html += '<div class="card">';
+  html += '<div class="stmt-head">' +
+    '<div class="stmt-as">Statement · as of ' +
+      parseDate(st.asOf).toLocaleDateString("en-US",{day:"numeric",month:"long",year:"numeric"}) + '</div>' +
+    '<div class="stmt-balance' + (balZero?" zero":"") + '">' + usd(outstanding) + '</div>' +
+    '<div class="stmt-blabel">' + (balZero ? "Balance settled — thank you" : "Remaining outstanding balance") + '</div>' +
+  '</div>';
+  const pu = payUrl(st);
+  if (!balZero){
+    if (internal){
+      html += '<div class="stmt-pay-cta">' +
+        '<div class="paybtn disabled">' + (pu ? 'Guest payment link active' : 'No payment link set yet') + '</div>' +
+        '<div class="paybtn-sub">' + (pu ? 'The guest sees a live Pay button here.' : 'Add a payLink in the console so the guest can pay.') + '</div>' +
+      '</div>';
+    } else if (pu){
+      html += '<div class="stmt-pay-cta">' +
+        '<a class="paybtn" href="' + pu + '" target="_blank" rel="noopener">Pay outstanding balance · ' + usd(outstanding) + '</a>' +
+        '<div class="paybtn-sub">Secure checkout via Stripe · opens in a new tab</div>' +
+      '</div>';
+    } else {
+      html += '<div class="stmt-pay-cta">' +
+        '<div class="paybtn disabled">Payment link not yet available</div>' +
+        '<div class="paybtn-sub">A secure payment link will appear here once the invoice is issued.</div>' +
+      '</div>';
+    }
+  }
+  secs.forEach(sec => {
+    html += '<div class="stmt-sec">';
+    html += '<div class="stmt-sec-h"><span class="n">' + sec.name + '</span>' +
+            '<span class="v">' + usd(sec._sub) + '</span></div>';
+    if (sec.note) html += '<div class="stmt-sec-note">' + sec.note + '</div>';
+    (sec.items||[]).forEach(it => {
+      const incl = (Number(it.amount)||0) === 0;
+      const prof = (Number(it.amount)||0) - (Number(it.cost)||0);
+      const profStr = (prof < 0 ? "-" + usd(Math.abs(prof)) : usd(prof));
+      const intLine = (internal && it.cost != null)
+        ? '<div class="li-int">cost ' + usd(it.cost) + ' · profit ' + profStr + '</div>'
+        : "";
+      html += '<div class="stmt-li"><div><div class="li-l">' + it.label + '</div>' +
+        (it.note ? '<div class="li-n">' + it.note + '</div>' : "") + intLine + '</div>' +
+        '<div class="li-v' + (incl?" incl":"") + '">' + (incl ? "included" : usd(it.amount)) + '</div></div>';
+    });
+    html += '</div>';
+  });
+  if ((Number(st.arrangementFee)||0) !== 0){
+    html += '<div class="stmt-sec"><div class="stmt-sec-h"><span class="n">Arrangement fee</span>' +
+            '<span class="v">' + usd(st.arrangementFee) + '</span></div></div>';
+  }
+  html += '<div class="stmt-total"><span class="n">Total services &amp; charges</span>' +
+          '<span class="v">' + usd(total) + '</span></div>';
+  if (internal){
+    html += '<div class="stmt-pl">' +
+      '<div class="pl-row"><span>Revenue</span><span>' + usd(total) + '</span></div>' +
+      '<div class="pl-row"><span>Cost</span><span>' + usd(t.cost) + '</span></div>' +
+      '<div class="pl-row profit"><span>Profit</span><span>' + usd(t.profit) + '</span></div>' +
+      '<div class="pl-row"><span>Margin</span><span>' + (t.margin*100).toFixed(1) + '%</span></div>' +
+    '</div>';
+  }
+  html += '<div class="stmt-pay"><div class="stmt-sec-h" style="border-top:0;padding-top:14px">' +
+          '<span class="n">Payments received</span><span class="v">' + usd(paid) + '</span></div>';
+  if (!(st.payments && st.payments.length)){
+    html += '<div class="empty">No payments recorded yet.</div>';
+  } else {
+    st.payments.forEach(p => {
+      html += '<div class="stmt-li"><div class="li-l">' + (p.label||"Payment") +
+        (p.date ? ' · ' + p.date : "") + '</div><div class="li-v">' + usd(p.amount) + '</div></div>';
+    });
+  }
+  html += '</div>';
+  if (st.fxNote) html += '<div class="stmt-fx">' + st.fxNote + '</div>';
+  html += '</div>';
+  html += '<button class="stmt-lockbtn" id="stmt-relock">🔒 Lock &amp; log out</button>';
+  $("#stmt-view").innerHTML = html;
+  $("#stmt-lock").style.display = "none";
+  $("#stmt-relock").addEventListener("click", () => lockStatement());
+  stmtUnlocked = true;
+  armStmtTimer();
+}
+let stmtUnlocked = false, stmtTimer = null;
+function clearStmtTimer(){ if (stmtTimer){ clearTimeout(stmtTimer); stmtTimer = null; } }
+function armStmtTimer(){
+  clearStmtTimer();
+  const secs = TIMEOUT_SEC;
+  if (secs > 0) stmtTimer = setTimeout(() => lockStatement(true), secs * 1000);
+}
+function lockStatement(auto){
+  clearStmtTimer();
+  stmtUnlocked = false;
+  $("#stmt-view").innerHTML = "";
+  $("#stmt-lock").style.display = "";
+  $("#stmt-pw").value = "";
+  $("#stmt-err").textContent = (auto === true) ? "Session locked for security — re-enter your code." : "";
+}
+async function unlockStatement(){
+  const pw = $("#stmt-pw").value.trim();
+  const err = $("#stmt-err");
+  err.textContent = "";
+  if (!pw){ err.textContent = "Please enter your access code."; return; }
+  if (!cryptoReady()){
+    err.textContent = "Secure view needs an https connection — open the published link, not a local file.";
+    return;
+  }
+  const btn = $("#stmt-unlock"); const label = btn.textContent; btn.textContent = "…";
+  try{
+    try{ renderStatement(JSON.parse(await decryptText(pw, ENC_GUEST)), false); return; }
+    catch(_g){}
+    try{ renderStatement(JSON.parse(await decryptText(pw, ENC_INTERNAL)), true); return; }
+    catch(_i){}
+    err.textContent = "That code didn’t work. Please check and try again.";
+  }finally{
+    btn.textContent = label;
+  }
+}
+const TEMPLATE = {
+  tripTitle: "Trip name", guest: "Guest name(s)",
+  asOf: new Date().toISOString().slice(0,10), currency: "USD",
+  fxNote: "USD figures converted from JPY at the prevailing exchange rate.",
+  arrangementFee: 0,
+  payLink: "",
+  payRef: "",
+  sections: [
+    { name:"Restaurant", note:"", items:[ { label:"", amount:0, cost:0, note:"" } ] },
+    { name:"Activity", items:[ { label:"", amount:0, cost:0 } ] },
+    { name:"Out-of-pocket expenses", items:[ { label:"", amount:0, cost:0 } ] },
+    { name:"Cancellation fees", items:[ { label:"", amount:0, cost:0 } ] }
+  ],
+  payments: []
+};
+function stripInternal(master){
+  const g = JSON.parse(JSON.stringify(master));
+  (g.sections || []).forEach(s => (s.items || []).forEach(it => { delete it.cost; }));
+  return g;
+}
+function setupConsole(){
+  const open = () => $("#console").classList.add("show");
+  if (location.hash === "#encrypt") open();
+  window.addEventListener("hashchange", () => {
+    if (location.hash === "#encrypt") open();
+  });
+  $("#con-close").addEventListener("click", () => {
+    $("#console").classList.remove("show");
+    if (location.hash === "#encrypt") history.replaceState(null,"",location.pathname);
+  });
+  const msg = (m, ok) => { const e=$("#con-msg"); e.textContent=m; e.style.color = ok? "#9DBE8C":"#D69A9A"; };
+  $("#con-template").addEventListener("click", () => {
+    $("#con-json").value = JSON.stringify(TEMPLATE, null, 2);
+    msg("Blank template loaded — cost = internal only.", true);
+  });
+  $("#con-load").addEventListener("click", async () => {
+    const pw = $("#con-pw-internal").value.trim();
+    if (!pw){ msg("Enter the internal code to load the master sheet."); return; }
+    if (!cryptoReady()){ msg("Open via https to use encryption."); return; }
+    try{
+      const j = await decryptText(pw, ENC_INTERNAL);
+      $("#con-json").value = JSON.stringify(JSON.parse(j), null, 2);
+      msg("Loaded master statement — edit, then re-encrypt.", true);
+    }catch(e){ msg("Wrong internal code, or nothing saved yet. Use ‘Blank template’."); }
+  });
+  $("#con-encrypt").addEventListener("click", async () => {
+    const gpw = $("#con-pw-guest").value.trim();
+    const ipw = $("#con-pw-internal").value.trim();
+    if (!gpw || !ipw){ msg("Enter BOTH the guest and internal codes."); return; }
+    if (gpw === ipw){ msg("Use two different codes for guest and internal."); return; }
+    if (!cryptoReady()){ msg("Open via https to use encryption."); return; }
+    let master;
+    try{ master = JSON.parse($("#con-json").value); }
+    catch(e){ msg("That isn’t valid JSON — check for a stray comma or quote."); return; }
+    try{
+      const gBlob = await encryptText(gpw, JSON.stringify(stripInternal(master)));
+      const iBlob = await encryptText(ipw, JSON.stringify(master));
+      $("#con-out-guest").value = gBlob;
+      $("#con-out-internal").value = iBlob;
+      msg("Done. Paste 3a into ENC_GUEST and 3b into ENC_INTERNAL, then commit.", true);
+    }catch(e){ msg("Encryption failed: " + e.message); }
+  });
+  const copyBox = async (id) => {
+    const v = $(id).value;
+    if (!v){ msg("Nothing to copy yet — encrypt first."); return; }
+    try{ await navigator.clipboard.writeText(v); msg("Copied to clipboard.", true); }
+    catch(e){ $(id).select(); msg("Select-all done — copy manually."); }
+  };
+  $("#con-pay-add").addEventListener("click", () => {
+    let master;
+    try{ master = JSON.parse($("#con-json").value); }
+    catch(e){ msg("Load the master sheet first (Load current, or Blank template)."); return; }
+    const amt = parseFloat($("#con-pay-amt").value);
+    if (!amt || amt <= 0){ msg("Enter a payment amount in USD."); return; }
+    if (!Array.isArray(master.payments)) master.payments = [];
+    master.payments.push({
+      date: $("#con-pay-date").value || new Date().toISOString().slice(0,10),
+      amount: amt,
+      label: $("#con-pay-label").value.trim() || "Payment"
+    });
+    $("#con-json").value = JSON.stringify(master, null, 2);
+    $("#con-pay-amt").value = ""; $("#con-pay-label").value = "";
+    msg("Payment added. Now tap ‘Encrypt & generate both blobs’.", true);
+  });
+  $("#con-copy-guest").addEventListener("click", () => copyBox("#con-out-guest"));
+  $("#con-copy-internal").addEventListener("click", () => copyBox("#con-out-internal"));
+}
+function init(){
+  $("#stmt-unlock").addEventListener("click", unlockStatement);
+  $("#stmt-pw").addEventListener("keydown", e => { if (e.key === "Enter") unlockStatement(); });
+  setupConsole();
+  ["click","touchstart","keydown","scroll"].forEach(ev =>
+    document.addEventListener(ev, () => { if (stmtUnlocked) armStmtTimer(); }, { passive:true }));
+}
+window.HCIStatement = { init: init, lock: function(){ lockStatement(); } };
+})();
+</script>
+
+</body>
+</html>
 

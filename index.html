@@ -211,6 +211,17 @@
     .diet-cta-title{font-family:var(--font-serif);font-size:18px;font-weight:400;letter-spacing:.3px;color:#fff;margin-bottom:2px}
     .diet-cta-sub{font-size:11.5px;opacity:.7;line-height:1.45}
     .diet-cta-arrow{font-size:18px;color:var(--gold);flex-shrink:0}
+    .diet-track-head{display:flex;align-items:center;justify-content:space-between;padding:12px 2px 6px}
+    .diet-track-head .lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6E655A}
+    .diet-track-head .cnt{font-size:11.5px;color:#6E655A}
+    .diet-track{background:#fff;border:1px solid #E7E0D5;border-radius:var(--radius);padding:2px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
+    .diet-track-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid #EFEAE0}
+    .diet-track-row:first-child{border-top:0}
+    .diet-track-name{font-size:14px;color:#2A2A2A;font-weight:500}
+    .diet-track-status{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+    .dts-done{background:#E7F3EC;color:#2E6B4F}
+    .dts-wait{background:#FBE7D9;color:#9A5B15}
+    .diet-empty-note{text-align:center;color:#6E655A;font-size:12.5px;font-style:italic;line-height:1.6;padding:18px 14px}
     .diet-person-card{background:var(--white);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--border-lt)}
     .diet-person-card.severe{border:2px solid var(--sakura);background:var(--sakura-lt)}
     .diet-person-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
@@ -663,11 +674,17 @@ var WL_SUGGESTIONS = [];
 var WL_LONGTERM = [];
 
 /* ═══ DIET ═══ */
-var DIET = [
-  { name:'No restrictions on file yet', tag:'Awaiting', tagClass:'adult', severe:false, sections:[
-      { label:'Note', class:'', chipClass:'', items:['HCI records each guest\'s allergies, aversions and preferences here','Share them and every restaurant is briefed in advance'] } ] }
+var DIET_QUESTIONNAIRE_URL = 'https://diet.happycamper.food';
+/* Staff-maintained: flip status to 'completed' when a guest's Formspree response arrives,
+   and add their parsed answers to DIET (+ DIET_JP) below to render the cards as usual. */
+var DIET_GUESTS = [
+  { name:'Nanette Levi',   status:'pending' },
+  { name:'Raimundo Lopez', status:'pending' },
+  { name:'Pauline Lima',   status:'pending' },
+  { name:'Alberto Lima',   status:'pending' }
 ];
-var DIET_JP = [];
+var DIET = [];      // completed guests' cards go here: {name, tag, tagClass, severe, sections:[...]}
+var DIET_JP = [];   // matching Japanese "Show the Chef" cards
 
 /* ═══ DISCOVER ═══ */
 var DISCOVER = {
@@ -1061,7 +1078,22 @@ function renderWishlist(){
 
 /* ═══ RENDER · DIET ═══ */
 function renderDiet(){
-  var h='<div class="diet-banner"><h2>⚠ Dietary</h2><p>To be collected by HCI · shared with each restaurant in advance</p></div>';
+  var doneCount=DIET_GUESTS.filter(function(g){return g.status==='completed';}).length;
+  var h='<div class="diet-banner"><h2>⚠ Dietary</h2><p>Each guest completes the questionnaire · we brief every restaurant in advance</p></div>';
+  h+='<a class="diet-cta" href="'+DIET_QUESTIONNAIRE_URL+'" target="_blank" rel="noopener">'
+    +'<div class="diet-cta-icon">📝</div>'
+    +'<div class="diet-cta-text">'
+    +'<div class="diet-cta-title">Dietary Questionnaire</div>'
+    +'<div class="diet-cta-sub">One short form per guest · allergies, aversions &amp; preferences. Opens in a new tab.</div>'
+    +'</div>'
+    +'<div class="diet-cta-arrow">↗</div>'
+    +'</a>';
+  h+='<div class="diet-track-head"><span class="lbl">Questionnaire status</span><span class="cnt">'+doneCount+' of '+DIET_GUESTS.length+' completed</span></div>';
+  h+='<div class="diet-track">';
+  DIET_GUESTS.forEach(function(g){var done=g.status==='completed';
+    h+='<div class="diet-track-row"><span class="diet-track-name">'+esc(g.name)+'</span>'
+      +'<span class="diet-track-status '+(done?'dts-done':'dts-wait')+'">'+(done?'✓ Completed':'Awaiting')+'</span></div>';});
+  h+='</div>';
   if(DIET_JP.length){h+='<div class="diet-cta" onclick="openDietModal()">'
     +'<div class="diet-cta-icon">🇯🇵</div>'
     +'<div class="diet-cta-text">'
@@ -1070,6 +1102,7 @@ function renderDiet(){
     +'</div>'
     +'<div class="diet-cta-arrow">→</div>'
     +'</div>';}
+  if(!DIET.length){ h+='<div class="diet-empty-note">No responses in yet. As each guest submits the questionnaire, their dietary card appears here — and is shared with every restaurant in advance.</div>'; }
   var sorted=DIET.slice().sort(function(a,b){return (b.severe?1:0)-(a.severe?1:0);});
   sorted.forEach(function(p){
     h+='<div class="diet-person-card'+(p.severe?' severe':'')+'">'

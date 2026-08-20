@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0D2847">
-  <title>Nanette Levi &amp; Raimundo Lopez · Japan 2026</title>
+  <title>Nanette &amp; Raimundo Lopez-Lima Levi · Japan 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -441,8 +441,8 @@
     </div>
   </div>
   <div class="hdr-names">
-    <div class="hdr-name">Nanette Levi &amp; Raimundo Lopez</div>
-    <div class="hdr-name2">Pauline Lima &middot; Alberto Lima</div>
+    <div class="hdr-name">Nanette &amp; Raimundo Lopez-Lima Levi</div>
+    <div class="hdr-name2">Pauline &amp; Alberto Guzman</div>
   </div>
   <nav class="tab-nav">
     <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
@@ -680,49 +680,49 @@ var DIET_QUESTIONNAIRE_URL = 'https://diet.happycamper.food';
 /* Staff-maintained: flip status to 'completed' when a guest's Formspree response arrives,
    and add their parsed answers to DIET (+ DIET_JP) below to render the cards as usual. */
 var DIET_GUESTS = [
-  { name:'Nanette Levi',   status:'completed' },
-  { name:'Raimundo Lopez', status:'completed' },
-  { name:'Pauline Lima',   status:'completed' },
-  { name:'Alberto Lima',   status:'completed' }
+  { name:'Nanette Lopez-Lima Levi',   status:'completed' },
+  { name:'Raimundo Lopez-Lima Levi', status:'completed' },
+  { name:'Pauline Guzman',   status:'completed' },
+  { name:'Alberto Guzman',   status:'completed' }
 ];
 var DIET = [
-  { name:'Pauline Lima', tag:'No allergies', tagClass:'adult', severe:false, sections:[
+  { name:'Pauline Guzman', tag:'No allergies', tagClass:'adult', severe:false, sections:[
     { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
     { label:'Prefers to avoid', class:'avoid', chipClass:'avoid', items:['Lamb','Uni (sea urchin)','Organ meats'] },
     { label:'Notes', class:'', chipClass:'', items:['Minor cross-contamination is fine','Not taking GLP-1 / appetite medication'] }
   ] },
-  { name:'Alberto Lima', tag:'No allergies', tagClass:'adult', severe:false, sections:[
+  { name:'Alberto Guzman', tag:'No allergies', tagClass:'adult', severe:false, sections:[
     { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
     { label:'Preferences', class:'', chipClass:'', items:['No restrictions'] },
     { label:'Notes', class:'', chipClass:'', items:['Minimise cross-contamination where possible','Not taking GLP-1 / appetite medication'] }
   ] },
-  { name:'Nanette Levi', tag:'Reduced portions', tagClass:'adult', severe:false, sections:[
+  { name:'Nanette Lopez-Lima Levi', tag:'Reduced portions', tagClass:'adult', severe:false, sections:[
     { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
     { label:'Prefers to avoid', class:'avoid', chipClass:'avoid', items:['Squid','Octopus'] },
     { label:'Appetite & portions', class:'avoid', chipClass:'avoid', items:['Prefers smaller portions','Sensitive to rich or heavy dishes — can cause nausea','On a GLP-1 appetite medication'] },
     { label:'Notes', class:'', chipClass:'', items:['Minor cross-contamination is fine'] }
   ] },
-  { name:'Raimundo Lopez', tag:'No allergies', tagClass:'adult', severe:false, sections:[
+  { name:'Raimundo Lopez-Lima Levi', tag:'No allergies', tagClass:'adult', severe:false, sections:[
     { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
     { label:'Prefers to avoid', class:'avoid', chipClass:'avoid', items:['Octopus','Pork'] },
     { label:'Notes', class:'', chipClass:'', items:['Minor cross-contamination is fine','Not taking GLP-1 / appetite medication'] }
   ] }
 ];      // completed guests' cards
 var DIET_JP = [
-  { name:'ポーリーン・リマ', nameEn:'Pauline Lima', severe:false, sections:[
+  { name:'ポーリーン・グスマン', nameEn:'Pauline Guzman', severe:false, sections:[
     { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
     { label:'苦手な食材 / Prefers to avoid', class:'avoid', text:'ラム肉（羊）・ウニ・内臓肉（レバー等）<br>好みによるもので、重度のアレルギーではありません。' }
   ] },
-  { name:'アルベルト・リマ', nameEn:'Alberto Lima', severe:false, sections:[
+  { name:'アルベルト・グスマン', nameEn:'Alberto Guzman', severe:false, sections:[
     { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
     { label:'備考 / Notes', class:'', text:'食事制限はありません。可能であれば、他の食材との接触（コンタミネーション）を最小限にしてください。' }
   ] },
-  { name:'ナネット・レビ', nameEn:'Nanette Levi', severe:false, sections:[
+  { name:'ナネット・ロペス・リマ・レビ', nameEn:'Nanette Lopez-Lima Levi', severe:false, sections:[
     { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
     { label:'苦手な食材 / Prefers to avoid', class:'avoid', text:'イカ・タコ<br>好みによるもので、重度のアレルギーではありません。' },
     { label:'量・食欲 / Portions', class:'avoid', text:'少なめの量を希望されます。脂っこい・濃厚なお料理は控えめにしていただけると助かります（吐き気が出ることがあります）。' }
   ] },
-  { name:'ライムンド・ロペス', nameEn:'Raimundo Lopez', severe:false, sections:[
+  { name:'ライムンド・ロペス・リマ・レビ', nameEn:'Raimundo Lopez-Lima Levi', severe:false, sections:[
     { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
     { label:'苦手な食材 / Prefers to avoid', class:'avoid', text:'タコ・豚肉<br>好みによるもので、重度のアレルギーではありません。' }
   ] }
@@ -1096,7 +1096,7 @@ function renderWishlist(){
       +'<div class="wish-actions">'+mapBtn+'</div>'
       +'</div>';
   }
-  var h='<div class="wishlist-banner"><h2>✦ Happy Camper Dining Programme</h2><p>Nanette Levi · Japan 2026 · the curated table, evening by evening</p></div>';
+  var h='<div class="wishlist-banner"><h2>✦ Happy Camper Dining Programme</h2><p>Nanette Lopez-Lima Levi · Japan 2026 · the curated table, evening by evening</p></div>';
   h+='<div class="section-label">✅ Included in stay</div><div class="wish-card" style="border-color:rgba(27,94,32,.25)">';
   WL_CONFIRMED.forEach(function(w,i){h+=row(w,i,true);});
   h+='</div>';

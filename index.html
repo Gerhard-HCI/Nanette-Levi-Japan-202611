@@ -680,8 +680,8 @@ var DIET_QUESTIONNAIRE_URL = 'https://diet.happycamper.food';
 /* Staff-maintained: flip status to 'completed' when a guest's Formspree response arrives,
    and add their parsed answers to DIET (+ DIET_JP) below to render the cards as usual. */
 var DIET_GUESTS = [
-  { name:'Nanette Levi',   status:'pending' },
-  { name:'Raimundo Lopez', status:'pending' },
+  { name:'Nanette Levi',   status:'completed' },
+  { name:'Raimundo Lopez', status:'completed' },
   { name:'Pauline Lima',   status:'completed' },
   { name:'Alberto Lima',   status:'completed' }
 ];
@@ -695,6 +695,17 @@ var DIET = [
     { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
     { label:'Preferences', class:'', chipClass:'', items:['No restrictions'] },
     { label:'Notes', class:'', chipClass:'', items:['Minimise cross-contamination where possible','Not taking GLP-1 / appetite medication'] }
+  ] },
+  { name:'Nanette Levi', tag:'Reduced portions', tagClass:'adult', severe:false, sections:[
+    { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
+    { label:'Prefers to avoid', class:'avoid', chipClass:'avoid', items:['Squid','Octopus'] },
+    { label:'Appetite & portions', class:'avoid', chipClass:'avoid', items:['Prefers smaller portions','Sensitive to rich or heavy dishes — can cause nausea','On a GLP-1 appetite medication'] },
+    { label:'Notes', class:'', chipClass:'', items:['Minor cross-contamination is fine'] }
+  ] },
+  { name:'Raimundo Lopez', tag:'No allergies', tagClass:'adult', severe:false, sections:[
+    { label:'Allergies', class:'', chipClass:'', items:['None reported'] },
+    { label:'Prefers to avoid', class:'avoid', chipClass:'avoid', items:['Octopus','Pork'] },
+    { label:'Notes', class:'', chipClass:'', items:['Minor cross-contamination is fine','Not taking GLP-1 / appetite medication'] }
   ] }
 ];      // completed guests' cards
 var DIET_JP = [
@@ -705,6 +716,15 @@ var DIET_JP = [
   { name:'アルベルト・リマ', nameEn:'Alberto Lima', severe:false, sections:[
     { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
     { label:'備考 / Notes', class:'', text:'食事制限はありません。可能であれば、他の食材との接触（コンタミネーション）を最小限にしてください。' }
+  ] },
+  { name:'ナネット・レビ', nameEn:'Nanette Levi', severe:false, sections:[
+    { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
+    { label:'苦手な食材 / Prefers to avoid', class:'avoid', text:'イカ・タコ<br>好みによるもので、重度のアレルギーではありません。' },
+    { label:'量・食欲 / Portions', class:'avoid', text:'少なめの量を希望されます。脂っこい・濃厚なお料理は控えめにしていただけると助かります（吐き気が出ることがあります）。' }
+  ] },
+  { name:'ライムンド・ロペス', nameEn:'Raimundo Lopez', severe:false, sections:[
+    { label:'アレルギー / Allergies', class:'', text:'特にありません（None）' },
+    { label:'苦手な食材 / Prefers to avoid', class:'avoid', text:'タコ・豚肉<br>好みによるもので、重度のアレルギーではありません。' }
   ] }
 ];   // matching Japanese "Show the Chef" cards
 

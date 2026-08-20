@@ -1121,12 +1121,13 @@ function renderWishlist(){
 /* ═══ RENDER · DIET ═══ */
 function renderDiet(){
   var doneCount=DIET_GUESTS.filter(function(g){return g.status==='completed';}).length;
-  var h='<div class="diet-banner"><h2>⚠ Dietary</h2><p>Each guest completes the questionnaire · we brief every restaurant in advance</p></div>';
+  var allDone=doneCount===DIET_GUESTS.length;
+  var h='<div class="diet-banner"><h2>⚠ Dietary</h2><p>'+(allDone?'All questionnaires received · every restaurant briefed in advance':'Each guest completes the questionnaire · we brief every restaurant in advance')+'</p></div>';
   h+='<a class="diet-cta" href="'+DIET_QUESTIONNAIRE_URL+'" target="_blank" rel="noopener">'
     +'<div class="diet-cta-icon">📝</div>'
     +'<div class="diet-cta-text">'
     +'<div class="diet-cta-title">Dietary Questionnaire</div>'
-    +'<div class="diet-cta-sub">One short form per guest · allergies, aversions &amp; preferences. Opens in a new tab.</div>'
+    +'<div class="diet-cta-sub">'+(allDone?'All forms received — reopen to update any details. Opens in a new tab.':'One short form per guest · allergies, aversions &amp; preferences. Opens in a new tab.')+'</div>'
     +'</div>'
     +'<div class="diet-cta-arrow">↗</div>'
     +'</a>';

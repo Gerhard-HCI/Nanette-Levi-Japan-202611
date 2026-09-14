@@ -557,13 +557,13 @@ var TRIP = {
       stops:[
         { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Conrad Tokyo', addr:'Tokyo', q:'Conrad Tokyo', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
         { time:'Afternoon', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Half-day private Tokyo tour', sub:'Private car · Imperial Palace Gardens & Ginza', loc:'Imperial Palace East Gardens', addr:'Chiyoda, Tokyo', q:'Imperial Palace East Gardens Tokyo', notes:'A half-day with private guide and car: the Imperial Palace East Gardens — the former site of Edo Castle — then south to Ginza for its department stores, basement food halls and galleries.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'The first Happy Camper dinner of the trip. We will propose a restaurant matched to the evening and the group, secure the reservation, and brief the kitchen on any preferences before you arrive.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Nakano', sub:'4 covers · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing a table at Nakano. The reservation is requested and the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
       ] },
     { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Conrad Tokyo', hotelBy:'Separately arranged', hq:'Conrad Tokyo', hosted:false,
       notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · Happy Camper dinner to curate.',
       stops:[
         { time:'09:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Full-day private Tokyo tour', sub:'Private car · 09:00–17:00', loc:'Ueno · Kappabashi · Asakusa', addr:'Taito City, Tokyo', q:'Ueno Park Tokyo', notes:'A full guided day across northern Tokyo: the museums and grounds of Ueno Park, the kitchenware street of Kappabashi, and Senso-ji with the old streets of Asakusa.', alert:'09:00 start · ~8 hours' },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'A Happy Camper dinner in Tokyo — proposed, booked and briefed ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Narisawa (or Nakahara)', sub:'4 covers · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing this evening — Narisawa (subject to its reopening on 1 October), with Nakahara as the alternative. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
       notes:'Private Fuji tour (Chureito Pagoda & Arakurayama) · check in to Fufu · kaiseki dinner included.',
@@ -585,27 +585,27 @@ var TRIP = {
         { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Overnight luggage transfer', sub:'Kawaguchiko → Kyoto', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'Your main luggage is sent ahead to Kyoto so you travel light for the Hiroshima and Fukuoka nights. Bags to the front desk by 10:00 (30 kg per piece); pack a small overnight bag.', alert:'Bags to front desk by 10:00' },
         { time:'10:30', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Mishima → Hiroshima', sub:'Green (First) class · dep 10:30 / arr 14:30', loc:'Mishima Station', addr:'Mishima Station, Shizuoka', q:'Mishima Station', notes:'About 4 hours by bullet train in Green Car, with a change at Nagoya.', alert:'Train change at Nagoya' },
         { time:'14:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Hiroshima tour', sub:'Private car · 14:30–18:30', loc:'Peace Memorial Park', addr:'Naka Ward, Hiroshima', q:'Hiroshima Peace Memorial Park', notes:'A guided afternoon: the Peace Memorial Park and Museum and the Atomic Bomb Dome, then the miniature landscapes of Shukkei-en garden.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Hiroshima', loc:'Hiroshima', addr:'Hiroshima', q:'', notes:'A Happy Camper dinner in Hiroshima — perhaps the city\'s celebrated okonomiyaki or seasonal Seto-inland oysters, or a refined counter. We will propose, book and brief the kitchen ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Tori Yamamoto', sub:'4 covers · Hiroshima', loc:'', addr:'Hiroshima', q:'', notes:'Happy Camper is securing a table at Tori Yamamoto in Hiroshima. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-10', dayNum:7, weekday:'Tuesday, 10 November', city:'Fukuoka', cityClass:'fukuoka', hotel:'The Ritz-Carlton Fukuoka', hotelBy:'by Traveledge', hq:'The Ritz-Carlton Fukuoka', hosted:false,
       notes:'Shinkansen to Fukuoka · Grand Sumo Tournament (Happy Camper to arrange) · Happy Camper dinner to curate.',
       stops:[
         { time:'11:03', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hiroshima → Hakata', sub:'dep 11:03 / arr 12:09 · private transfer to hotel', loc:'Hiroshima Station', addr:'Minami Ward, Hiroshima', q:'Hiroshima Station', notes:'A short bullet-train hop to Fukuoka (Hakata), then a private transfer to The Ritz-Carlton Fukuoka.', alert:null },
         { time:'Afternoon', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Fukuoka Grand Sumo Tournament', sub:'Tickets to be arranged by Happy Camper', loc:'Fukuoka Kokusai Center', addr:'2-2 Chikko-honmachi, Hakata-ku, Fukuoka 812-0021', q:'', notes:'A day at the November grand sumo basho. Tickets are still to be arranged by Happy Camper — not yet confirmed. Once secured, the top-division bouts and ceremonies build through the afternoon, so plan to be seated by 14:00–15:30. It is about 15 minutes by taxi from the hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Fukuoka', loc:'Fukuoka', addr:'Fukuoka', q:'', notes:'A Happy Camper dinner in Hakata, one of Japan\'s great food cities — from its renowned sushi counters to the open-air yatai stalls and motsunabe. We will propose, book and brief ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Imoto', sub:'4 covers · Fukuoka', loc:'', addr:'Fukuoka', q:'', notes:'Happy Camper is securing a table at Imoto in Fukuoka. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-11', dayNum:8, weekday:'Wednesday, 11 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Shinkansen to Kyoto · check in to Capella · Happy Camper dinner to curate.',
       stops:[
         { time:'09:36', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hakata → Kyoto', sub:'Green (First) class · dep 09:36 / arr 12:19', loc:'Hakata Station', addr:'Hakata-ku, Fukuoka', q:'Hakata Station', notes:'A private car to Hakata Station (~10 min), the bullet train to Kyoto in Green Car (about 2h 43m), and a private transfer to Capella Kyoto on arrival (~15 min).', alert:null },
         { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Capella Kyoto', sub:'6 nights · Premier Temple King ×2', loc:'Capella Kyoto', addr:'130 Komatsu-cho, Higashiyama-ku, Kyoto 605-0811', q:'Capella Kyoto', notes:'In the historic Miyagawa-cho district beside Kenninji, Kyoto\'s oldest Zen temple — a reimagined machiya hotel. Breakfast included. Pauline & Alberto check out on 13 November.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Your first Kyoto dinner with Happy Camper. We will match the restaurant to the evening — kaiseki, a counter, or something more relaxed — and handle the booking and the brief.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Cenci', sub:'4 covers · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Cenci in Kyoto (contemporary Italian). Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-12', dayNum:9, weekday:'Thursday, 12 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Day at leisure in eastern Kyoto · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Eastern Kyoto at your pace', sub:'Higashiyama · unguided', loc:'Higashiyama, Kyoto', addr:'Higashiyama Ward, Kyoto', q:'Kiyomizu-dera Kyoto', notes:'Kiyomizu-dera and the lanes of Sannen-zaka, Kodai-ji, Maruyama Park and Yasaka-jinja, down into Gion — all close to the hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A Happy Camper dinner in Kyoto, proposed, booked and briefed ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Oka', sub:'4 covers · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Oka in Kyoto. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-13', dayNum:10, weekday:'Friday, 13 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Pauline & Alberto depart Japan · the party continues as two · Happy Camper dinner to curate.',
@@ -629,7 +629,7 @@ var TRIP = {
       notes:'Day at leisure · Nishijin, Nijo Castle & Fushimi Inari · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Central & southern Kyoto', sub:'Unguided', loc:'Fushimi Inari Taisha', addr:'Fushimi Ward, Kyoto', q:'Fushimi Inari Taisha Kyoto', notes:'The Nishijin weaving district and Nijo Castle, then the thousands of vermilion torii at Fushimi Inari — best wandered up the hillside.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A last Kyoto dinner with Happy Camper, proposed and booked ahead.', alert:null }
+        { time:'18:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Maeda', sub:'2 covers · 18:00 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Confirmed — dinner at Maeda, 18:00. Happy Camper has the reservation and will brief the kitchen on your preferences.', alert:null }
       ] },
     { date:'2026-11-17', dayNum:14, weekday:'Tuesday, 17 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', hosted:false,
       notes:'Raimundo departs for Paris · Nanette continues solo to Tokyo · check in to Aman Tokyo · Happy Camper dinner to curate.',
@@ -645,7 +645,7 @@ var TRIP = {
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Tokyo at your pace', sub:'Unguided', loc:'Meiji Jingu & Harajuku', addr:'Shibuya, Tokyo', q:'Meiji Jingu Tokyo', notes:'Meiji Jingu and Yoyogi Park, the boutiques of Harajuku and Omotesando, the Shibuya crossing, and Shinjuku for the evening.', alert:null },
         { time:'Daytime', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Solo experiences · Happy Camper to arrange', sub:'A few curated solo activities', loc:'Tokyo', addr:'Tokyo', q:'', notes:'At Nanette\'s request, Happy Camper will line up a few enjoyable solo activities for her final days — to be proposed and confirmed.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Tokyo (Nanette, solo)', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Nanette\'s final solo dinner — a fitting close to the journey, proposed and booked ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Tokyo (Nanette, solo)', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Nanette\'s final solo dinner. Happy Camper is looking at options — Mitaka among them — to be proposed and confirmed.', alert:null }
       ] },
     { date:'2026-11-19', dayNum:16, weekday:'Thursday, 19 November', city:'Tokyo', cityClass:'', hotel:'', hotelBy:'', hq:'', hosted:false,
       notes:'Private transfer to Narita · flight home (AA60 to Dallas).',
@@ -658,23 +658,24 @@ var TRIP = {
 
 /* ═══ Happy Camper DINING PROGRAMME (Wish List tab) ═══ */
 var WL_CONFIRMED = [
+  { name:'Maeda', style:'Confirmed · 16 Nov · 18:00 · 2 pax · Kyoto', q:'' },
   { name:'Fufu Kawaguchiko · Kaiseki ×2', style:'Included in stay · 7 & 8 Nov · 4 pax · Kawaguchiko', q:'Fufu Kawaguchiko' }
 ];
 var WL_REQUESTED = [
-  { name:'Dinner · to curate', style:'Thu 5 Nov · 4 pax · Tokyo', q:'' },
-  { name:'Dinner · to curate', style:'Fri 6 Nov · 4 pax · Tokyo', q:'' },
-  { name:'Dinner · to curate', style:'Mon 9 Nov · 4 pax · Hiroshima', q:'' },
-  { name:'Dinner · to curate', style:'Tue 10 Nov · 4 pax · Fukuoka', q:'' },
-  { name:'Dinner · to curate', style:'Wed 11 Nov · 4 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Thu 12 Nov · 4 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Fri 13 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Sat 14 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Sun 15 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Mon 16 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'Tue 17 Nov · 1 pax · Tokyo (solo)', q:'' },
-  { name:'Dinner · to curate', style:'Wed 18 Nov · 1 pax · Tokyo (solo)', q:'' }
+  { name:'Nakano', style:'Requested · 5 Nov · 4 pax · Tokyo', q:'' },
+  { name:'Narisawa (or Nakahara)', style:'Requested · 6 Nov · 4 pax · Tokyo', q:'' },
+  { name:'Tori Yamamoto', style:'Requested · 9 Nov · 4 pax · Hiroshima', q:'' },
+  { name:'Imoto', style:'Requested · 10 Nov · 4 pax · Fukuoka', q:'' },
+  { name:'Cenci', style:'Requested · 11 Nov · 4 pax · Kyoto', q:'' },
+  { name:'Oka', style:'Requested · 12 Nov · 4 pax · Kyoto', q:'' }
 ];
-var WL_SUGGESTIONS = [];
+var WL_SUGGESTIONS = [
+  { name:'Dinner · to curate', style:'13 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'14 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'15 Nov · 2 pax · Kyoto', q:'' },
+  { name:'Dinner · to curate', style:'17 Nov · 1 pax · Tokyo (solo)', q:'' },
+  { name:'Dinner · to curate (Mitaka?)', style:'18 Nov · 1 pax · Tokyo (solo)', q:'' }
+];
 var WL_LONGTERM = [];
 
 /* ═══ DIET ═══ */
@@ -947,7 +948,7 @@ function renderItinerary(){
     +'<h2>Japan</h2>'
     +'<div class="banner-dates">4 – 19 November 2026 · 4 Guests · 15 Nights · Tokyo · Fuji · Hiroshima · Fukuoka · Kyoto</div>'
     +'<div class="banner-chips">'
-    +'<span class="banner-chip pending">🍽️ 12 Happy Camper dinners · curating</span>'
+    +'<span class="banner-chip pending">🍽️ 12 dinners · 7 chosen, 5 to curate</span>'
     +'<span class="banner-chip confirmed">🍱 Fufu Kawaguchiko · ×2 included</span>'
     +'<span class="banner-chip">🗻 Mt Fuji · Chureito Pagoda</span>'
     +'<span class="banner-chip">🕊️ Hiroshima Peace Park</span>'
@@ -1099,16 +1100,16 @@ function renderWishlist(){
       +'</div>';
   }
   var h='<div class="wishlist-banner"><h2>✦ Happy Camper Dining Programme</h2><p>Nanette Lopez-Lima Levi · Japan 2026 · the curated table, evening by evening</p></div>';
-  h+='<div class="section-label">✅ Included in stay</div><div class="wish-card" style="border-color:rgba(27,94,32,.25)">';
+  h+='<div class="section-label">✅ Confirmed &amp; included</div><div class="wish-card" style="border-color:rgba(27,94,32,.25)">';
   WL_CONFIRMED.forEach(function(w,i){h+=row(w,i,true);});
   h+='</div>';
   if(WL_REQUESTED.length){
-    h+='<div class="section-label">🍽️ To curate · Happy Camper</div><div class="wish-card" style="border-color:rgba(0,77,86,.2)">';
+    h+='<div class="section-label">🔵 Requested · being secured</div><div class="wish-card" style="border-color:rgba(0,77,86,.2)">';
     WL_REQUESTED.forEach(function(w,i){h+=row(w,i,true);});
     h+='</div>';
   }
   if(WL_SUGGESTIONS.length){
-    h+='<div class="section-label">🔵 Suggestions</div><div class="wish-card" style="border-color:rgba(13,60,110,.2)">';
+    h+='<div class="section-label">🍽️ Still to curate</div><div class="wish-card" style="border-color:rgba(13,60,110,.2)">';
     WL_SUGGESTIONS.forEach(function(w,i){h+=row(w,i,true);});
     h+='</div>';
   }
@@ -1334,8 +1335,8 @@ window.addEventListener('resize',fixHeaderOffset);
 (function(){
 "use strict";
 
-const ENC_GUEST = "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";
-const ENC_INTERNAL = "FU1URVgkt8Jz9fDbkvTb8Y9YgY9tfuqffVYUeLFemH57YRcvyOu3axaob/dJB5tzAaSxVFGwrNv9bodFI38nNqFLl079z2ZHOJn56E2Pefk5nt49nKcEUwkbS8o1skIK2J61xV2QHhOrfpgqot95IVSwqzd/NMKEkMbsx7jHXMhrwnHDlzwGo+Ms3qWql7NkZWv75JE7f9ZIuWBjogAAHpkG2r4HUckfvrSL5tGle76NNY0c0y9T8snZIT2ZmfDUYzio0evP6DtvrprpZP5DDKNs8Qi548QrYVelz0Y4OTJOFQdMemKziWMoWZYg1bNEv5Omj5HzcpX37mtvz+hybr5+ygNlGHcaVSuTt+PMJUv4o3UxxacF0yEFvAUnjGR1Wi45DB98pjSsTZ5lDwbdHMS0PxkPZ0aUydKG8Lowl8j/QLBSE5mSeBhDKrf94bJ0gcXj5Q4YXdVxqFAZKZxWOZGdM0lJqasAMmu5RPIoR9RC26DXXXKJyzyZwXPUQwLbfG/tDed36c9dRBa5Dr3LI+IYlxl+rRyNTLZFaS8CeE2RMYjADHBpH9cVyVi1AGwGAQtahitngqK0o1VPQ7v2qsUVogeNStimRtQZ4gbxPZfGgjRQ0UPA+2AmxF+Pf+IdSwIB3bKQuisldfQQF2G2kcghCVFkxIBIdX2f4RpgzKBiLS/1A8Pyu5jaVX9bmc9FKj2mYzb+LsxcU9uSHp7VVt/77trhKbMWfiY7v6wyxb5RAOYGykh9SS1Zmsndi25q51J6Dqsag1G6iQ1CHFuUaapr+m8PefzffIR5onfave4OmcFshAWMaeY4dZI5MHXymT2pS/b0Ti2sUOxqXZqX0VQDUSLVioxECj8K3ppyIDExQAMMUN1/sKSlrTcSvP2RGy/tTHMIprJnZDfr100cbmLEOFRQtwq76E6er1wAFwiZkecFZVAJtFNZ50i5ud3dLWlz5k4H6mPuZJ3/OZ7RpOg5KzYpXhEsEjb3WhNi8LTRi8NIw+5uHvp/rj46bavakmjPVaTHCGVovyvzyCoVhpkvQliQO1XHiSGLBlgqrB+mHi64tl/bhnpWG01rxTE8CjzYkD4op1nRfj3wTjmkjh2i9pvG//RnA4tGuO+qmnWREt1PJjh1W0wZdVvdyedsjkHheKhblxQ2IGJ48zV9CTEM+42RPyxPlkuOehFa2EBVlA0ThCWsw549rJVVlVHsPFI8lAEfMIY8VtVseMsSpSqZb269ipSSDwl672+5kxBwZ9dHCPlr5YYamTeSv8yQLAT9hpGC6twKIS6pQ/bl3Y6aRuRA1r+h28SVhcqMmuJNySnDmCbNov/d1G0+3WLdtqlw9yW+4EU4gRmnee4ePADx5VB0NO88T11dmWaTPHDgyd2+hvvtO2RUw47hFYaP4uZ4QzqK9nLshroQ3oQIxnuWm9WOqE+BVV87/S201uP/VwMaf3q0GdT8WhVT3s40XM4zyVVRDsXujzhyA3n1UUFzl6KT88v3oxnUbGz5g60JDbkT4seEqQJRQUQBvmVptTqz3joycfhmjgxnWX0esOD9VGgkJpW4LGkcRWpv7iZEcJoIIF8F6bpcQBkPL6cybgJS1UpKCNna4vqSAmfiDLdqFZ3m771uVU5IAy11YhCKsCvZTK8ACwGCM7Rf5oOw9URoJBVYi5YK0n0ZXCaVueEhW9S3wrxLeEyUzi7ALb8CLzY+a3aryE641EZPF1YsvvQJdXlVrKWk1NIgDTYST7Wt3K3cab3cSUduWzhOgy7d5r//4kq518dQWDrvARuRbKpbaCi4MISM6leIlsuNMa1TeQnHuezVSNlymo0CR08+S/R42ycq4/sHXHSUFRbFxliHQ1b6EBYTBLf813pHYz7kp7uz/Y4AVqgj24KLpFOUEaJVEI8XMfyfawhhu+UqyH2L9hByDPZlq9UiFwNFqK8xOcroML9GzH7GFn8GtrvLVvtbdt5b9ONI+xlV9ANU4E4GcD+e5K/prHUSNz4eXZgHlP2RAA/5XD6mlVd8jPShOVyZYcCguH8V65q55nEcfLHY8pdCEVAHPYgEp0bDwVToJlhTmMno5ECjka2cws3Pq9eZ5arHsXlBKgje7lURGgQEVolyFazLRUutwXyLBOIjn7nXZMhvf9tHvXCcwuUf/02RZgcANJZHBeHmyMmDd0kPV7YQuGUXCUlrHdbbj945MTiFS355fERxX7g4d/QDhF72L2SkmyeBaJPUsEZJtNSJmN4cDEi6p5m6Lb7RigIWO2JIrrQqEAWgmzDxV6Wk4HxeFUOjtw==";
+const ENC_GUEST = "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";
+const ENC_INTERNAL = "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";
 
 const TIMEOUT_SEC = 120;
 

@@ -537,33 +537,33 @@
 'use strict';
 
 /* ═══ CONFIG · Levi · 4–19 Nov 2026 ═══ */
-var FX_RATE = 162;
+var FX_RATE = 158;
 
 /* ═══ TRIP DATA · logistics arranged by Traveledge · dinners curated by Happy Camper ═══ */
 var TRIP = {
   startDate:'2026-11-04',
   endDate:  '2026-11-19',
   days:[
-    { date:'2026-11-04', dayNum:1, weekday:'Wednesday, 4 November', city:'Tokyo', cityClass:'', hotel:'Conrad Tokyo', hotelBy:'Separately arranged', hq:'Conrad Tokyo', hosted:false,
-      notes:'Nanette & Pauline arrive · VIP airport assistance · transfer to the Conrad Tokyo · Raimundo & Alberto already in Japan.',
+    { date:'2026-11-04', dayNum:1, weekday:'Wednesday, 4 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+      notes:'Nanette & Pauline arrive · VIP airport assistance · transfer to the Palace Hotel Tokyo · Raimundo & Alberto already in Japan.',
       stops:[
         { time:'15:40', type:'flight', badge:'AA61 · self-booked', badgeType:'self-booked', title:'Arrive Tokyo · Narita (NRT)', sub:'AA61 · Dallas (DFW) → NRT · Nanette & Pauline', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'Nanette & Pauline land at Narita around 15:40 (AA61 from Dallas, 14h 10m). Raimundo & Alberto are already in Japan — in Tokyo after a conference — and meet them here. At your orientation you\'ll receive 4 Suica cards (¥3,000 loaded each) and 4 eSIMs, arranged by Traveledge — tap-and-go transport plus mobile data across Japan. Draw some yen at the airport 7-Eleven or Japan Post ATM; a few dining counters prefer cash.', alert:null },
         { time:'On arrival', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'VIP airport assistance', sub:'Met at the aircraft · escorted to arrivals · Nanette & Pauline', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'You will be met on the boarding bridge and escorted through to arrivals. Note this is not a fast-track service, and your escort cannot accompany you through immigration and customs — those you clear yourselves.', alert:null },
-        { time:'~1 hr', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Private car to the Conrad Tokyo', sub:'Narita → Conrad Tokyo · approx. 1 hr · Nanette & Pauline', loc:'Conrad Tokyo', addr:'Tokyo', q:'Conrad Tokyo', notes:'A private car transfer from the airport to your hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'First night · in-house', sub:'No dinner committed tonight', loc:'Conrad Tokyo', addr:'Tokyo', q:'Conrad Tokyo', notes:'No dinner out tonight, by design — the Conrad Tokyo\'s own restaurants are an easy option after the flight. Happy Camper is glad to arrange something should you wish.', alert:null }
+        { time:'~1 hr', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Private car to the Palace Hotel Tokyo', sub:'Narita → Palace Hotel Tokyo · approx. 1 hr · Nanette & Pauline', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'A private car transfer from the airport to your hotel.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'First night · in-house', sub:'No dinner committed tonight', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'No dinner out tonight, by design — the Palace Hotel Tokyo\'s own restaurants are an easy option after the flight. Happy Camper is glad to arrange something should you wish.', alert:null }
       ] },
-    { date:'2026-11-05', dayNum:2, weekday:'Thursday, 5 November', city:'Tokyo', cityClass:'', hotel:'Conrad Tokyo', hotelBy:'Separately arranged', hq:'Conrad Tokyo', hosted:false,
+    { date:'2026-11-05', dayNum:2, weekday:'Thursday, 5 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
       notes:'Private orientation · half-day Tokyo tour (Imperial Palace Gardens & Ginza) · first Happy Camper dinner to curate.',
       stops:[
-        { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Conrad Tokyo', addr:'Tokyo', q:'Conrad Tokyo', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
+        { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
         { time:'Afternoon', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Half-day private Tokyo tour', sub:'Private car · Imperial Palace Gardens & Ginza', loc:'Imperial Palace East Gardens', addr:'Chiyoda, Tokyo', q:'Imperial Palace East Gardens Tokyo', notes:'A half-day with private guide and car: the Imperial Palace East Gardens — the former site of Edo Castle — then south to Ginza for its department stores, basement food halls and galleries.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Nakano', sub:'4 covers · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing a table at Nakano. The reservation is requested and the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Sushi Nakano', sub:'4 covers · 20:30 · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing a table at Sushi Nakano for 20:30. The reservation is requested and the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
       ] },
-    { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Conrad Tokyo', hotelBy:'Separately arranged', hq:'Conrad Tokyo', hosted:false,
+    { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
       notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · Happy Camper dinner to curate.',
       stops:[
         { time:'09:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Full-day private Tokyo tour', sub:'Private car · 09:00–17:00', loc:'Ueno · Kappabashi · Asakusa', addr:'Taito City, Tokyo', q:'Ueno Park Tokyo', notes:'A full guided day across northern Tokyo: the museums and grounds of Ueno Park, the kitchenware street of Kappabashi, and Senso-ji with the old streets of Asakusa.', alert:'09:00 start · ~8 hours' },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Narisawa (or Nakahara)', sub:'4 covers · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing this evening — Narisawa (subject to its reopening on 1 October), with Nakahara as the alternative. Reservation requested; kitchen briefed ahead.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Sugalabo', sub:'4 covers · Tokyo', loc:'', addr:'Tokyo', q:'', notes:'Happy Camper is securing this evening at Sugalabo — Yosuke Suga\'s members-and-introductions counter in Kamiyacho. Requested on 10 October; kitchen briefed ahead once the table is held.', alert:null }
       ] },
     { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
       notes:'Private Fuji tour (Chureito Pagoda & Arakurayama) · check in to Fufu · kaiseki dinner included.',
@@ -585,39 +585,41 @@ var TRIP = {
         { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Overnight luggage transfer', sub:'Kawaguchiko → Kyoto', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'Your main luggage is sent ahead to Kyoto so you travel light for the Hiroshima and Fukuoka nights. Bags to the front desk by 10:00 (30 kg per piece); pack a small overnight bag.', alert:'Bags to front desk by 10:00' },
         { time:'10:30', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Mishima → Hiroshima', sub:'Green (First) class · dep 10:30 / arr 14:30', loc:'Mishima Station', addr:'Mishima Station, Shizuoka', q:'Mishima Station', notes:'About 4 hours by bullet train in Green Car, with a change at Nagoya.', alert:'Train change at Nagoya' },
         { time:'14:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Hiroshima tour', sub:'Private car · 14:30–18:30', loc:'Peace Memorial Park', addr:'Naka Ward, Hiroshima', q:'Hiroshima Peace Memorial Park', notes:'A guided afternoon: the Peace Memorial Park and Museum and the Atomic Bomb Dome, then the miniature landscapes of Shukkei-en garden.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Tori Yamamoto', sub:'4 covers · Hiroshima', loc:'', addr:'Hiroshima', q:'', notes:'Happy Camper is securing a table at Tori Yamamoto in Hiroshima. Reservation requested; kitchen briefed ahead.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Tori Yamamoto', sub:'4 covers · 20:30 · Hiroshima', loc:'', addr:'Hiroshima', q:'', notes:'Happy Camper is securing a table at Tori Yamamoto in Hiroshima for 20:30. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-10', dayNum:7, weekday:'Tuesday, 10 November', city:'Fukuoka', cityClass:'fukuoka', hotel:'The Ritz-Carlton Fukuoka', hotelBy:'by Traveledge', hq:'The Ritz-Carlton Fukuoka', hosted:false,
       notes:'Shinkansen to Fukuoka · Grand Sumo Tournament (Happy Camper to arrange) · Happy Camper dinner to curate.',
       stops:[
         { time:'11:03', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hiroshima → Hakata', sub:'dep 11:03 / arr 12:09 · private transfer to hotel', loc:'Hiroshima Station', addr:'Minami Ward, Hiroshima', q:'Hiroshima Station', notes:'A short bullet-train hop to Fukuoka (Hakata), then a private transfer to The Ritz-Carlton Fukuoka.', alert:null },
         { time:'Afternoon', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Fukuoka Grand Sumo Tournament', sub:'Tickets to be arranged by Happy Camper', loc:'Fukuoka Kokusai Center', addr:'2-2 Chikko-honmachi, Hakata-ku, Fukuoka 812-0021', q:'', notes:'A day at the November grand sumo basho. Tickets are still to be arranged by Happy Camper — not yet confirmed. Once secured, the top-division bouts and ceremonies build through the afternoon, so plan to be seated by 14:00–15:30. It is about 15 minutes by taxi from the hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Imoto', sub:'4 covers · Fukuoka', loc:'', addr:'Fukuoka', q:'', notes:'Happy Camper is securing a table at Imoto in Fukuoka. Reservation requested; kitchen briefed ahead.', alert:null }
+        { time:'19:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Imoto', sub:'4 covers · 19:30 · Fukuoka', loc:'', addr:'Fukuoka', q:'', notes:'Happy Camper is securing a table at Imoto in Fukuoka for 19:30. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-11', dayNum:8, weekday:'Wednesday, 11 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Shinkansen to Kyoto · check in to Capella · Happy Camper dinner to curate.',
       stops:[
         { time:'09:36', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hakata → Kyoto', sub:'Green (First) class · dep 09:36 / arr 12:19', loc:'Hakata Station', addr:'Hakata-ku, Fukuoka', q:'Hakata Station', notes:'A private car to Hakata Station (~10 min), the bullet train to Kyoto in Green Car (about 2h 43m), and a private transfer to Capella Kyoto on arrival (~15 min).', alert:null },
         { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Capella Kyoto', sub:'6 nights · Premier Temple King ×2', loc:'Capella Kyoto', addr:'130 Komatsu-cho, Higashiyama-ku, Kyoto 605-0811', q:'Capella Kyoto', notes:'In the historic Miyagawa-cho district beside Kenninji, Kyoto\'s oldest Zen temple — a reimagined machiya hotel. Breakfast included. Pauline & Alberto check out on 13 November.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Cenci', sub:'4 covers · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Cenci in Kyoto (contemporary Italian). Reservation requested; kitchen briefed ahead.', alert:null }
+        { time:'Afternoon', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Geisha house experience', sub:'Private · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'A private geisha house experience in Kyoto — Happy Camper is arranging the house and the form of the evening. To be proposed and confirmed.', alert:null },
+        { time:'18:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Cenci', sub:'4 covers · 18:30 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Cenci in Kyoto (contemporary Italian) for 18:30. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-12', dayNum:9, weekday:'Thursday, 12 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Day at leisure in eastern Kyoto · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Eastern Kyoto at your pace', sub:'Higashiyama · unguided', loc:'Higashiyama, Kyoto', addr:'Higashiyama Ward, Kyoto', q:'Kiyomizu-dera Kyoto', notes:'Kiyomizu-dera and the lanes of Sannen-zaka, Kodai-ji, Maruyama Park and Yasaka-jinja, down into Gion — all close to the hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Oka', sub:'4 covers · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Oka in Kyoto. Reservation requested; kitchen briefed ahead.', alert:null }
+        { time:'19:00', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Oka', sub:'4 covers · 19:00 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Oka in Kyoto for 19:00. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-13', dayNum:10, weekday:'Friday, 13 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Pauline & Alberto depart Japan · the party continues as two · Happy Camper dinner to curate.',
       stops:[
         { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Departure transfer · Pauline & Alberto', sub:'Capella → Kyoto Station 9:20 AM · shinkansen to Tokyo · car to Narita', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'Pauline & Alberto begin the journey home: a private car to Kyoto Station at 9:20 AM, the shinkansen to Tokyo (10:21 AM, ~2h 12m, with oversized-luggage seats), then a private car to Narita for AA60 — NRT 17:30 → Dallas/DFW 14:20. From tonight the dining programme is for two.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'The first dinner for two — Happy Camper will tailor the choice now the group is smaller.', alert:null }
+        { time:'12:00', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Lunch · Matsu', sub:'2 covers · 12:00 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Lunch for two at Matsu, 12:00 — the first Happy Camper table of the smaller party. Reservation requested; kitchen briefed ahead.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Happy Camper will tailor the choice now the group is smaller — to be proposed and confirmed.', alert:null }
       ] },
     { date:'2026-11-14', dayNum:11, weekday:'Saturday, 14 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Day at leisure in western Kyoto · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Kyoto at your pace', sub:'Unguided', loc:'Arashiyama, Kyoto', addr:'Kyoto', q:'Arashiyama Bamboo Grove Kyoto', notes:'The Golden Pavilion (Kinkaku-ji), the Zen rock garden of Ryoan-ji, and the bamboo groves of Arashiyama.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A Happy Camper dinner for two, proposed and booked ahead.', alert:null }
+        { time:'20:00', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Miyoshi', sub:'2 covers · 20:00 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Happy Camper is securing a table at Miyoshi for 20:00. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-15', dayNum:12, weekday:'Sunday, 15 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
       notes:'Day at leisure · the Philosopher\'s Path & Higashiyama temples · Happy Camper dinner to curate.',
@@ -626,26 +628,27 @@ var TRIP = {
         { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A Happy Camper dinner for two, proposed and booked ahead.', alert:null }
       ] },
     { date:'2026-11-16', dayNum:13, weekday:'Monday, 16 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
-      notes:'Day at leisure · Nishijin, Nijo Castle & Fushimi Inari · Happy Camper dinner to curate.',
+      notes:'Raimundo leaves Kyoto · Nanette\'s day at leisure — Nishijin, Nijo Castle & Fushimi Inari · Happy Camper dinner to curate.',
       stops:[
+        { time:'Day', type:'transport', badge:'Departs Kyoto', badgeType:'self-booked', title:'Raimundo leaves Kyoto', sub:'Onward ahead of his flight', loc:'', addr:'', q:'', notes:'Raimundo leaves Kyoto today, ahead of his onward flight. He is not at dinner tonight — from this evening the table is Nanette\'s alone.', alert:null },
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Central & southern Kyoto', sub:'Unguided', loc:'Fushimi Inari Taisha', addr:'Fushimi Ward, Kyoto', q:'Fushimi Inari Taisha Kyoto', notes:'The Nishijin weaving district and Nijo Castle, then the thousands of vermilion torii at Fushimi Inari — best wandered up the hillside.', alert:null },
-        { time:'18:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Maeda', sub:'2 covers · 18:00 · Kyoto', loc:'', addr:'Kyoto', q:'', notes:'Confirmed — dinner at Maeda, 18:00. Happy Camper has the reservation and will brief the kitchen on your preferences.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Kyoto (Nanette)', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Nanette\'s first dinner alone — a Happy Camper table, to be proposed and confirmed.', alert:null }
       ] },
     { date:'2026-11-17', dayNum:14, weekday:'Tuesday, 17 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', hosted:false,
-      notes:'Raimundo departs for Paris · Nanette continues solo to Tokyo · check in to Aman Tokyo · Happy Camper dinner to curate.',
+      notes:'Raimundo flies out of Tokyo · Nanette travels up to Tokyo · check in to Aman Tokyo · dinner at Motoyoshi.',
       stops:[
-        { time:'Morning', type:'flight', badge:'Departs 17 Nov', badgeType:'self-booked', title:'Raimundo departs for Paris', sub:'Onward to a conference · arrangements to be confirmed', loc:'', addr:'', q:'', notes:'Raimundo leaves the trip today to travel on to Paris for a conference. His onward transfer and flight are being arranged separately; Nanette continues the journey solo from here.', alert:null },
+        { time:'Morning', type:'flight', badge:'Departs 17 Nov', badgeType:'self-booked', title:'Raimundo departs Tokyo', sub:'Onward to a conference in Paris · arrangements to be confirmed', loc:'', addr:'', q:'', notes:'Raimundo flies out of Tokyo today, having left Kyoto yesterday. His onward transfer and flight are being arranged separately; Nanette continues the journey solo.', alert:null },
         { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Same-day luggage transfer', sub:'Kyoto → Tokyo', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'Luggage is sent ahead to Tokyo and delivered to Aman Tokyo. Have bags at reception before leaving (30 kg per piece).', alert:null },
         { time:'Midday', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Kyoto → Tokyo', sub:'Green (First) class · ~2 hrs', loc:'Kyoto Station', addr:'Shimogyo Ward, Kyoto', q:'Kyoto Station', notes:'A private car to Kyoto Station (~15 min), the bullet train to Tokyo in Green Car (about 2 hours), then a private transfer to Aman Tokyo (~10 min).', alert:null },
         { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Aman Tokyo', sub:'2 nights · Tokyo Suite ×2', loc:'Aman Tokyo', addr:'The Otemachi Tower, 1-5-6 Otemachi, Chiyoda, Tokyo 100-0004', q:'Aman Tokyo', notes:'Back in Tokyo, high on the top six floors of the Otemachi Tower — 77 sqm Tokyo Suites with skyline views over the Imperial Palace and, on clear days, Mt Fuji. Breakfast included.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Tokyo (Nanette, solo)', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Nanette\'s first solo dinner — a Happy Camper dinner proposed, booked and briefed ahead.', alert:null }
+        { time:'17:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Motoyoshi', sub:'1 cover · 17:30 · Tokyo (Nanette, solo)', loc:'', addr:'Tokyo', q:'', notes:'Nanette\'s first solo dinner — Happy Camper is securing the counter at Motoyoshi for 17:30. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-18', dayNum:15, weekday:'Wednesday, 18 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', hosted:false,
       notes:'Nanette\'s solo day in Tokyo · the final Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Tokyo at your pace', sub:'Unguided', loc:'Meiji Jingu & Harajuku', addr:'Shibuya, Tokyo', q:'Meiji Jingu Tokyo', notes:'Meiji Jingu and Yoyogi Park, the boutiques of Harajuku and Omotesando, the Shibuya crossing, and Shinjuku for the evening.', alert:null },
         { time:'Daytime', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Solo experiences · Happy Camper to arrange', sub:'A few curated solo activities', loc:'Tokyo', addr:'Tokyo', q:'', notes:'At Nanette\'s request, Happy Camper will line up a few enjoyable solo activities for her final days — to be proposed and confirmed.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Tokyo (Nanette, solo)', loc:'Tokyo', addr:'Tokyo', q:'', notes:'Nanette\'s final solo dinner. Happy Camper is looking at options — Mitaka among them — to be proposed and confirmed.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Mitaka', sub:'1 cover · 20:30 · Tokyo (Nanette, solo)', loc:'', addr:'Tokyo', q:'', notes:'Nanette\'s final dinner in Japan — Happy Camper is securing Mitaka for 20:30. Reservation requested; kitchen briefed ahead.', alert:null }
       ] },
     { date:'2026-11-19', dayNum:16, weekday:'Thursday, 19 November', city:'Tokyo', cityClass:'', hotel:'', hotelBy:'', hq:'', hosted:false,
       notes:'Private transfer to Narita · flight home (AA60 to Dallas).',
@@ -658,23 +661,24 @@ var TRIP = {
 
 /* ═══ Happy Camper DINING PROGRAMME (Wish List tab) ═══ */
 var WL_CONFIRMED = [
-  { name:'Maeda', style:'Confirmed · 16 Nov · 18:00 · 2 pax · Kyoto', q:'' },
   { name:'Fufu Kawaguchiko · Kaiseki ×2', style:'Included in stay · 7 & 8 Nov · 4 pax · Kawaguchiko', q:'Fufu Kawaguchiko' }
 ];
 var WL_REQUESTED = [
-  { name:'Nakano', style:'Requested · 5 Nov · 4 pax · Tokyo', q:'' },
-  { name:'Narisawa (or Nakahara)', style:'Requested · 6 Nov · 4 pax · Tokyo', q:'' },
-  { name:'Tori Yamamoto', style:'Requested · 9 Nov · 4 pax · Hiroshima', q:'' },
-  { name:'Imoto', style:'Requested · 10 Nov · 4 pax · Fukuoka', q:'' },
-  { name:'Cenci', style:'Requested · 11 Nov · 4 pax · Kyoto', q:'' },
-  { name:'Oka', style:'Requested · 12 Nov · 4 pax · Kyoto', q:'' }
+  { name:'Sushi Nakano', style:'Requested · 5 Nov · 20:30 · 4 pax · Tokyo', q:'' },
+  { name:'Sugalabo', style:'Requested · 6 Nov · 4 pax · Tokyo', q:'' },
+  { name:'Tori Yamamoto', style:'Requested · 9 Nov · 20:30 · 4 pax · Hiroshima', q:'' },
+  { name:'Imoto', style:'Requested · 10 Nov · 19:30 · 4 pax · Fukuoka', q:'' },
+  { name:'Cenci', style:'Requested · 11 Nov · 18:30 · 4 pax · Kyoto', q:'' },
+  { name:'Oka', style:'Requested · 12 Nov · 19:00 · 4 pax · Kyoto', q:'' },
+  { name:'Matsu · lunch', style:'Requested · 13 Nov · 12:00 · 2 pax · Kyoto', q:'' },
+  { name:'Miyoshi', style:'Requested · 14 Nov · 20:00 · 2 pax · Kyoto', q:'' },
+  { name:'Motoyoshi', style:'Requested · 17 Nov · 17:30 · 1 pax · Tokyo', q:'' },
+  { name:'Mitaka', style:'Requested · 18 Nov · 20:30 · 1 pax · Tokyo', q:'' }
 ];
 var WL_SUGGESTIONS = [
   { name:'Dinner · to curate', style:'13 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'14 Nov · 2 pax · Kyoto', q:'' },
   { name:'Dinner · to curate', style:'15 Nov · 2 pax · Kyoto', q:'' },
-  { name:'Dinner · to curate', style:'17 Nov · 1 pax · Tokyo (solo)', q:'' },
-  { name:'Dinner · to curate (Mitaka?)', style:'18 Nov · 1 pax · Tokyo (solo)', q:'' }
+  { name:'Dinner · to curate', style:'16 Nov · 1 pax · Kyoto', q:'' }
 ];
 var WL_LONGTERM = [];
 

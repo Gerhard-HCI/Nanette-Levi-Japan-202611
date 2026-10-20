@@ -560,10 +560,10 @@ var TRIP = {
         { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Sushi Nakano', sub:'4 covers · 20:30 · Tokyo', loc:'Sushi Nakano', addr:'Tokyo', q:'https://maps.app.goo.gl/ymWQfRUdriN538GA9', notes:'Your table at Sushi Nakano is confirmed for 20:30. The kitchen will be briefed on your preferences ahead of the evening.', alert:null }
       ] },
     { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
-      notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · dinner at Sugalabo (requested).',
+      notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · Happy Camper dinner to curate.',
       stops:[
         { time:'09:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Full-day private Tokyo tour', sub:'Private car · 09:00–17:00', loc:'Ueno · Kappabashi · Asakusa', addr:'Taito City, Tokyo', q:'Ueno Park Tokyo', notes:'A full guided day across northern Tokyo: the museums and grounds of Ueno Park, the kitchenware street of Kappabashi, and Senso-ji with the old streets of Asakusa.', alert:'09:00 start · ~8 hours' },
-        { time:'Evening', type:'restaurant', badge:'Happy Camper · requested', badgeType:'requested', title:'Dinner · Sugalabo', sub:'4 covers · Tokyo', loc:'Sugalabo', addr:'Tokyo', q:'Sugalabo Tokyo', notes:'Happy Camper is securing this evening at Sugalabo — Yosuke Suga\'s members-and-introductions counter in Kamiyacho. Requested on 10 October; kitchen briefed ahead once the table is held.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'4 covers · Tokyo', loc:'Tokyo', addr:'Tokyo', q:'', notes:'A Happy Camper dinner for four in Tokyo — to be proposed and confirmed.', alert:null }
       ] },
     { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
       notes:'Private Fuji tour (Chureito Pagoda & Arakurayama) · check in to Fufu · kaiseki dinner included.',
@@ -673,10 +673,9 @@ var WL_CONFIRMED = [
   { name:'Motoyoshi', style:'Confirmed · 17 Nov · 17:30 · 1 pax · Tokyo', q:'Tempura Motoyoshi Tokyo' },
   { name:'Mitaka', style:'Confirmed · 18 Nov · 20:30 · 1 pax · Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8' }
 ];
-var WL_REQUESTED = [
-  { name:'Sugalabo', style:'Requested 10 Oct · 6 Nov · 4 pax · Tokyo', q:'Sugalabo Tokyo' }
-];
+var WL_REQUESTED = [];
 var WL_SUGGESTIONS = [
+  { name:'Dinner · to curate', style:'6 Nov · 4 pax · Tokyo', q:'' },
   { name:'Dinner · to curate', style:'13 Nov · 2 pax · Kyoto', q:'' },
   { name:'Dinner · to curate', style:'15 Nov · 2 pax · Kyoto', q:'' },
   { name:'Dinner · to curate', style:'16 Nov · 1 pax · Kyoto', q:'' }
@@ -953,7 +952,7 @@ function renderItinerary(){
     +'<h2>Japan</h2>'
     +'<div class="banner-dates">4 – 19 November 2026 · 4 Guests · 15 Nights · Tokyo · Fuji · Hiroshima · Fukuoka · Kyoto</div>'
     +'<div class="banner-chips">'
-    +'<span class="banner-chip pending">🍽️ 12 dinners · 8 confirmed, 1 requested, 3 to curate</span>'
+    +'<span class="banner-chip pending">🍽️ 12 dinners · 8 confirmed, 4 to curate</span>'
     +'<span class="banner-chip confirmed">🍱 Fufu Kawaguchiko · ×2 included</span>'
     +'<span class="banner-chip">🗻 Mt Fuji · Chureito Pagoda</span>'
     +'<span class="banner-chip">🕊️ Hiroshima Peace Park</span>'

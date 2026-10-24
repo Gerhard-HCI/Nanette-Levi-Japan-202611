@@ -10,7 +10,8 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 ## Change log
 
 ### 24 Oct 2026
-- 15 Nov: private tea ceremony added, 15:00, 2 guests, confirmed (venue to follow).
+- 15 Nov: private tea ceremony at Kanjoan added, 15:00, 2 guests, confirmed.
+- Statement updated with the tea ceremony (USD 1,975 for 2, per the Happy Camper pricing guide of 23 Oct 2026).
 - Confirmation tab corrected: Sugalabo on 5 Nov and Sushi Nakano on 6 Nov, matching the Canvas.
 
 ### 23 Oct 2026

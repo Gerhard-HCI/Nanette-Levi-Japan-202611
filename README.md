@@ -9,6 +9,13 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 24 Oct 2026 (later)
+- Sugalabo (5 Nov) is now 2 guests, Nanette and Pauline, while Raimundo and Alberto are at their conference;
+  fee reduced to the Tier 2 rate for two (USD 800) on the Canvas, Confirmation tab, itinerary, Wish List and statement.
+- New "Cost split" tab in the Canvas workbook and a "Proposed split between the two couples" section on the
+  Statement tab: shared items 50/50 (as with the arrangement fee), items after the Guzmans leave on 13 Nov
+  charged to Nanette and Raimundo.
+
 ### 24 Oct 2026
 - 15 Nov: private tea ceremony at Kanjoan added, 15:00, 2 guests, confirmed.
 - Statement updated with the tea ceremony (USD 1,975 for 2, per the Happy Camper pricing guide of 23 Oct 2026).

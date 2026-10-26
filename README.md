@@ -10,6 +10,7 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 ## Change log
 
 ### 26 Oct 2026
+- Raimundo's movements per Traveledge (John Barone, 11 Sep): Kyoto → Tokyo on the evening of 16 Nov with a Tokyo hotel night, then JL045 Haneda 08:20 → Paris on 17 Nov.
 - Sugalabo (5 Nov) back to 4 guests at the Tier 2 rate for four (USD 1,100); split stays 50/50.
 
 ### 24 Oct 2026 (later)

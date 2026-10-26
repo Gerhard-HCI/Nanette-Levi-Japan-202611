@@ -9,6 +9,9 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 26 Oct 2026
+- Sugalabo (5 Nov) back to 4 guests at the Tier 2 rate for four (USD 1,100); split stays 50/50.
+
 ### 24 Oct 2026 (later)
 - Sugalabo (5 Nov) is now 2 guests, Nanette and Pauline, while Raimundo and Alberto are at their conference;
   fee reduced to the Tier 2 rate for two (USD 800) on the Canvas, Confirmation tab, itinerary, Wish List and statement.

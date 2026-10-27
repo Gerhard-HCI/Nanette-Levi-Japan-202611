@@ -9,6 +9,13 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 27 Oct 2026
+- Balance invoices issued 26 Oct, one per couple: K8XHDFTW-0003 to Nanette Levi (USD 8,150 + 326 card fee = 8,476)
+  and E7RB1XGD-0002 to Pauline Guzman (USD 3,975 + 159 card fee = 4,134). Both shown on the statement as unpaid.
+- Paid arrangement fee now shown as two payments, K8XHDFTW-0001 (Lopez-Lima Levi) and E7RB1XGD-0001 (Guzman), 2,250 each.
+- Statement shows one Stripe Pay button per couple (new `payLink`, `invoice`, `payAmount`, `payNote` on each split party).
+- Guest view re-encrypted; the staff (internal) view was not re-encrypted in this update and still shows the 26 Oct figures.
+
 ### 26 Oct 2026
 - Raimundo's movements per Traveledge (John Barone, 11 Sep): Kyoto → Tokyo on the evening of 16 Nov with a Tokyo hotel night, then JL045 Haneda 08:20 → Paris on 17 Nov.
 - Sugalabo (5 Nov) back to 4 guests at the Tier 2 rate for four (USD 1,100); split stays 50/50.

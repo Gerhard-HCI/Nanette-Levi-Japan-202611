@@ -157,7 +157,7 @@
     .ticket-row{display:flex;flex-wrap:wrap;gap:6px}
     .ticket-btn{flex:1 1 44%;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;min-height:38px;border:1px solid #c9a96a;background:#faf6ef;color:#1f3a5f;text-decoration:none}
     .ticket-btn:active{background:#f1e7d2}
-    .map-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px 5px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;min-height:34px;border:1px solid var(--border);background:var(--white);color:var(--ink-2);cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .map-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:3px;padding:8px 3px;border-radius:var(--radius-sm);font-size:10.5px;font-weight:500;min-height:34px;border:1px solid var(--border);background:var(--white);color:var(--ink-2);cursor:pointer;-webkit-tap-highlight-color:transparent}
     .map-btn:active{transform:scale(.96)}
     .map-btn.map-disabled{color:var(--border);cursor:default;background:var(--border-lt);border-color:var(--border-lt);pointer-events:none;opacity:.4}
     .map-btn.mp{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600}
@@ -239,6 +239,18 @@
     .diet-chip.avoid{background:#FFEDD5;color:#9A3412;border-color:#FED7AA}
 
     /* DIET MODAL — Japanese chef card */
+
+    /* Taxi card — shown to the driver */
+    .taxi-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:center;border:1px solid var(--border-lt)}
+    .taxi-to{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+    .taxi-name{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:30px;line-height:1.3;color:#000;font-weight:600;margin-bottom:6px}
+    .taxi-name-en{font-size:13px;color:var(--ink-3);margin-bottom:20px}
+    .taxi-addr{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:25px;line-height:1.65;color:#000;font-weight:600;padding:18px 10px;border-top:2px solid #000;border-bottom:2px solid #000}
+    .taxi-ask{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:19px;color:#000;margin-top:20px;line-height:1.5}
+    .taxi-ask-en{font-size:12px;color:var(--ink-3);margin-top:5px;font-style:italic}
+    .taxi-actions{display:flex;gap:9px;margin-top:20px}
+    .taxi-act{flex:1;padding:12px 8px;border-radius:var(--radius-sm);font-size:12.5px;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);background:var(--white);color:var(--ink-2)}
+    .taxi-act.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
     .modal-overlay{position:fixed;inset:0;background:rgba(7,27,53,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10000;display:none;align-items:flex-end;justify-content:center;animation:overlayIn .25s ease}
     .modal-overlay.active{display:flex}
     @keyframes overlayIn{from{opacity:0}to{opacity:1}}
@@ -509,6 +521,21 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="taxi-modal" onclick="if(event.target===this)closeTaxi()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-grabber"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">Show the driver</div>
+        <div class="modal-title-jp">タクシーの運転手にお見せください</div>
+      </div>
+      <button class="modal-close" onclick="closeTaxi()" aria-label="Close">&times;</button>
+    </div>
+    <div id="taxi-body"></div>
+    <div class="modal-footer-note">住所は Google マップの日本語表記のとおりです。<br><em>Address shown exactly as Google Maps renders it in Japanese.</em></div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <div id="console">
@@ -556,135 +583,158 @@ var TRIP = {
   startDate:'2026-11-04',
   endDate:  '2026-11-19',
   days:[
-    { date:'2026-11-04', dayNum:1, weekday:'Wednesday, 4 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+    { date:'2026-11-04', dayNum:1, weekday:'Wednesday, 4 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', ja:'palace', hosted:false,
       notes:'Nanette & Pauline arrive · VIP airport assistance · transfer to the Palace Hotel Tokyo · Raimundo & Alberto already in Japan.',
       stops:[
         { time:'15:40', type:'flight', badge:'AA61 · self-booked', badgeType:'self-booked', title:'Arrive Tokyo · Narita (NRT)', sub:'AA61 · Dallas (DFW) → NRT · Nanette & Pauline', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'Nanette & Pauline land at Narita around 15:40 (AA61 from Dallas, 14h 10m). Raimundo & Alberto are already in Japan — in Tokyo after a conference — and meet them here. At your orientation you\'ll receive 4 Suica cards (¥3,000 loaded each) and 4 eSIMs, arranged by Traveledge — tap-and-go transport plus mobile data across Japan. Draw some yen at the airport 7-Eleven or Japan Post ATM; a few dining counters prefer cash.', alert:null },
         { time:'On arrival', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'VIP airport assistance', sub:'Met at the aircraft · escorted to arrivals · Nanette & Pauline', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'You will be met on the boarding bridge and escorted through to arrivals. Note this is not a fast-track service, and your escort cannot accompany you through immigration and customs — those you clear yourselves.', alert:null },
-        { time:'~1 hr', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Private car to the Palace Hotel Tokyo', sub:'Narita → Palace Hotel Tokyo · approx. 1 hr · Nanette & Pauline', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'A private car transfer from the airport to your hotel.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'First night · in-house', sub:'No dinner committed tonight', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'No dinner out tonight, by design — the Palace Hotel Tokyo\'s own restaurants are an easy option after the flight. Happy Camper is glad to arrange something should you wish.', alert:null }
+        { time:'~1 hr', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Private car to the Palace Hotel Tokyo', sub:'Narita → Palace Hotel Tokyo · approx. 1 hr · Nanette & Pauline', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', ja:'palace', notes:'A private car transfer from the airport to your hotel.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Open evening', badgeType:'suggestion', title:'First night · in-house', sub:'No dinner committed tonight', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', ja:'palace', notes:'No dinner out tonight, by design — the Palace Hotel Tokyo\'s own restaurants are an easy option after the flight. Happy Camper is glad to arrange something should you wish.', alert:null }
       ] },
-    { date:'2026-11-05', dayNum:2, weekday:'Thursday, 5 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+    { date:'2026-11-05', dayNum:2, weekday:'Thursday, 5 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', ja:'palace', hosted:false,
       notes:'Private orientation · half-day Tokyo tour (Imperial Palace Gardens & Ginza) · dinner at Sugalabo.',
       stops:[
-        { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
+        { time:'Morning', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private orientation session', sub:'English-speaking host · hotel lobby', loc:'Palace Hotel Tokyo', addr:'Tokyo', q:'Palace Hotel Tokyo', ja:'palace', notes:'A private, personalised orientation at the hotel — your itinerary walked through day by day, with a welcome pack to help you travel Japan with confidence.', alert:null },
         { time:'Afternoon', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Half-day private Tokyo tour', sub:'Private car · Imperial Palace Gardens & Ginza', loc:'Imperial Palace East Gardens', addr:'Chiyoda, Tokyo', q:'Imperial Palace East Gardens Tokyo', notes:'A half-day with private guide and car: the Imperial Palace East Gardens — the former site of Edo Castle — then south to Ginza for its department stores, basement food halls and galleries.', alert:null },
-        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Sugalabo', sub:'4 covers · 20:30 · Tokyo', loc:'Sugalabo', addr:'Azabudai, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/YZfPxdavY3JZbagc9', notes:'Your first Happy Camper evening, all four of you together. Yosuke Suga spent more than fifteen years at Joël Robuchon\'s side — first as his personal assistant, then as executive chef opening L\'Atelier in Tokyo and New York — before opening Sugalabo in 2015 as an introductions-only counter. His cooking is modern French built entirely on Japanese produce, sourced on monthly trips to farmers, fishermen and craftspeople around the country; much of the tableware is Japanese-made too. Sixteen seats at the counter. Confirmed for 20:30; the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Sugalabo', sub:'4 covers · 20:30 · Tokyo', loc:'Sugalabo', addr:'Azabudai, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/YZfPxdavY3JZbagc9', ja:'sugalabo', notes:'Your first Happy Camper evening, all four of you together. Yosuke Suga spent more than fifteen years at Joël Robuchon\'s side — first as his personal assistant, then as executive chef opening L\'Atelier in Tokyo and New York — before opening Sugalabo in 2015 as an introductions-only counter. His cooking is modern French built entirely on Japanese produce, sourced on monthly trips to farmers, fishermen and craftspeople around the country; much of the tableware is Japanese-made too. Sixteen seats at the counter. Confirmed for 20:30; the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
       ] },
-    { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', hosted:false,
+    { date:'2026-11-06', dayNum:3, weekday:'Friday, 6 November', city:'Tokyo', cityClass:'', hotel:'Palace Hotel Tokyo', hotelBy:'Separately arranged', hq:'Palace Hotel Tokyo', ja:'palace', hosted:false,
       notes:'Full-day Tokyo tour (Ueno · Kappabashi · Asakusa) · dinner at Sushi Nakano.',
       stops:[
         { time:'09:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Full-day private Tokyo tour', sub:'Private car · 09:00–17:00', loc:'Ueno · Kappabashi · Asakusa', addr:'Taito City, Tokyo', q:'Ueno Park Tokyo', notes:'A full guided day across northern Tokyo: the museums and grounds of Ueno Park, the kitchenware street of Kappabashi, and Senso-ji with the old streets of Asakusa.', alert:'09:00 start · ~8 hours' },
-        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Sushi Nakano', sub:'4 covers · 20:30 · Tokyo', loc:'Sushi Nakano (仲野)', addr:'3-4-12 Minami-Aoyama, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/KW5GQRL5oLecmcWV6', notes:'Sushi Nakano (仲野) is a quiet counter in Minami-Aoyama, between Omotesando and Gaienmae, opened in December 2024. The chef trained at Kurosaki, one of Tokyo\'s hardest-to-book sushi counters, and serves a seasonal omakase of small dishes and nigiri, paired with a thoughtful sake list. Regulars single out the kuruma-ebi (tiger prawn). There are eight seats at the hinoki counter and a private room. The entrance is easy to miss, so look for the small sign. Confirmed for 20:30; the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Sushi Nakano', sub:'4 covers · 20:30 · Tokyo', loc:'Sushi Nakano (仲野)', addr:'3-4-12 Minami-Aoyama, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/KW5GQRL5oLecmcWV6', ja:'nakano', notes:'Sushi Nakano (仲野) is a quiet counter in Minami-Aoyama, between Omotesando and Gaienmae, opened in December 2024. The chef trained at Kurosaki, one of Tokyo\'s hardest-to-book sushi counters, and serves a seasonal omakase of small dishes and nigiri, paired with a thoughtful sake list. Regulars single out the kuruma-ebi (tiger prawn). There are eight seats at the hinoki counter and a private room. The entrance is easy to miss, so look for the small sign. Confirmed for 20:30; the kitchen will be briefed on your preferences ahead of the evening.', alert:null }
       ] },
-    { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
+    { date:'2026-11-07', dayNum:4, weekday:'Saturday, 7 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', ja:'fufu', hosted:false,
       notes:'Private Fuji tour (Chureito Pagoda & Arakurayama) · check in to Fufu · kaiseki dinner included.',
       stops:[
         { time:'08:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Fuji-area tour', sub:'Private car · 08:30–17:00', loc:'Arakurayama Sengen Park & Chureito Pagoda', addr:'Fujiyoshida, Yamanashi', q:'Arakurayama Sengen Park Chureito Pagoda', notes:'A guided day around Mt Fuji: Arakurayama Sengen Park and the Chureito Pagoda for the iconic pagoda-and-Fuji view, and — time permitting — the Itchiku Kubota Art Museum, before being taken to your ryokan on Lake Kawaguchi.', alert:'Chureito Pagoda · 398 steps to the viewpoint' },
-        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Fufu Kawaguchiko', sub:'Luxury ryokan · 2 nights · Konohana Comfort Suite ×2', loc:'Fufu Kawaguchiko', addr:'2211-1 Mizuguchi, Fujikawaguchikomachi, Yamanashi 401-0304', q:'Fufu Kawaguchiko', notes:'A 32-room luxury ryokan with Mt Fuji views, private hot-spring baths and glass walls that open to the forest. Breakfast and dinner included.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'A contemporary kaiseki dinner at the ryokan — fine local produce and Yamanashi wines, with Mt Fuji and the illuminated gardens beyond. Included in the stay; nothing to organise.', alert:null }
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Fufu Kawaguchiko', sub:'Luxury ryokan · 2 nights · Konohana Comfort Suite ×2', loc:'Fufu Kawaguchiko', addr:'2211-1 Mizuguchi, Fujikawaguchikomachi, Yamanashi 401-0304', q:'Fufu Kawaguchiko', ja:'fufu', notes:'A 32-room luxury ryokan with Mt Fuji views, private hot-spring baths and glass walls that open to the forest. Breakfast and dinner included.', alert:null },
+        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', ja:'fufu', notes:'A contemporary kaiseki dinner at the ryokan — fine local produce and Yamanashi wines, with Mt Fuji and the illuminated gardens beyond. Included in the stay; nothing to organise.', alert:null }
       ] },
-    { date:'2026-11-08', dayNum:5, weekday:'Sunday, 8 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', hosted:false,
+    { date:'2026-11-08', dayNum:5, weekday:'Sunday, 8 November', city:'Kawaguchiko', cityClass:'fuji', hotel:'Fufu Kawaguchiko', hotelBy:'by Traveledge', hq:'Fufu Kawaguchiko', ja:'fufu', hosted:false,
       notes:'Morning cycling tour around Lake Kawaguchi · afternoon at leisure · kaiseki dinner included.',
       stops:[
         { time:'10:00', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private cycling tour', sub:'Guided · 10:00–11:30 · from the hotel lobby', loc:'Kawaguchi Asama Shrine', addr:'Fujikawaguchikomachi, Yamanashi', q:'Kawaguchi Asama Shrine', notes:'An easy guided ride to Kawaguchi Asama Shrine — part of the Mt Fuji World Heritage Site, with 1,200-year-old sacred cedars and the "Tenku no Torii" gate framing the mountain — and Haha-no-Shirataki falls.', alert:'Pay on site · ¥13,750 per person · weather-dependent' },
         { time:'Afternoon', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Afternoon by the lake', sub:'Unguided', loc:'Lake Kawaguchi', addr:'Fujikawaguchiko, Yamanashi', q:'Lake Kawaguchi', notes:'A free afternoon on the lake\'s northern shore — Oishi Park\'s flower beds framing Fuji, or the Kawaguchiko Music Forest.', alert:null },
-        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'A second seasonal kaiseki at the ryokan, included in the stay.', alert:null }
+        { time:'Evening', type:'restaurant', badge:'Included', badgeType:'confirmed', title:'Kaiseki dinner · Fufu Kawaguchiko', sub:'4 covers · included in stay', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', ja:'fufu', notes:'A second seasonal kaiseki at the ryokan, included in the stay.', alert:null }
       ] },
     { date:'2026-11-09', dayNum:6, weekday:'Monday, 9 November', city:'Hiroshima', cityClass:'hiroshima', hotel:'Sheraton Grand Hiroshima', hotelBy:'by Traveledge', hq:'Sheraton Grand Hiroshima Hotel', hosted:false,
       notes:'Shinkansen to Hiroshima · private afternoon tour (Peace Park & Shukkei-en) · dinner at Tori Yamamoto.',
       stops:[
-        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Overnight luggage transfer', sub:'Kawaguchiko → Kyoto', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', notes:'Your main luggage is sent ahead to Kyoto so you travel light for the Hiroshima and Fukuoka nights. Bags to the front desk by 10:00 (30 kg per piece); pack a small overnight bag.', alert:'Bags to front desk by 10:00' },
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Overnight luggage transfer', sub:'Kawaguchiko → Kyoto', loc:'Fufu Kawaguchiko', addr:'Fujikawaguchikomachi, Yamanashi', q:'Fufu Kawaguchiko', ja:'fufu', notes:'Your main luggage is sent ahead to Kyoto so you travel light for the Hiroshima and Fukuoka nights. Bags to the front desk by 10:00 (30 kg per piece); pack a small overnight bag.', alert:'Bags to front desk by 10:00' },
         { time:'10:30', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Mishima → Hiroshima', sub:'Green (First) class · dep 10:30 / arr 14:30', loc:'Mishima Station', addr:'Mishima Station, Shizuoka', q:'Mishima Station', notes:'About 4 hours by bullet train in Green Car, with a change at Nagoya.', alert:'Train change at Nagoya' },
         { time:'14:30', type:'activity', badge:'by Traveledge', badgeType:'confirmed', title:'Private Hiroshima tour', sub:'Private car · 14:30–18:30', loc:'Peace Memorial Park', addr:'Naka Ward, Hiroshima', q:'Hiroshima Peace Memorial Park', notes:'A guided afternoon: the Peace Memorial Park and Museum and the Atomic Bomb Dome, then the miniature landscapes of Shukkei-en garden.', alert:null },
-        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Tori Yamamoto', sub:'4 covers · 20:30 · Hiroshima', loc:'Tori Yamamoto', addr:'2-25 Ebisucho, 2F, Naka Ward, Hiroshima', q:'Tori Yamamoto 2-25 Ebisucho Naka Ward Hiroshima', notes:'Hiroshima\'s most sought-after yakitori counter, reservations only, a short walk from Ebisucho. The chicken is free-range jidori — the bird of the day might be local Higashi-Hiroshima chicken, Omi or Nagoya Cochin — grilled over top-grade Tosa binchotan and served on Hiroshima-made ceramics, as a course that moves through the cuts of the bird. A Tabelog Award 2026 Bronze winner. Confirmed for 20:30; the kitchen will be briefed ahead.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Tori Yamamoto', sub:'4 covers · 20:30 · Hiroshima', loc:'Tori Yamamoto', addr:'2-25 Ebisucho, 2F, Naka Ward, Hiroshima', q:'Tori Yamamoto 2-25 Ebisucho Naka Ward Hiroshima', ja:'toriyamamoto', notes:'Hiroshima\'s most sought-after yakitori counter, reservations only, a short walk from Ebisucho. The chicken is free-range jidori — the bird of the day might be local Higashi-Hiroshima chicken, Omi or Nagoya Cochin — grilled over top-grade Tosa binchotan and served on Hiroshima-made ceramics, as a course that moves through the cuts of the bird. A Tabelog Award 2026 Bronze winner. Confirmed for 20:30; the kitchen will be briefed ahead.', alert:null }
       ] },
     { date:'2026-11-10', dayNum:7, weekday:'Tuesday, 10 November', city:'Fukuoka', cityClass:'fukuoka', hotel:'The Ritz-Carlton Fukuoka', hotelBy:'by Traveledge', hq:'The Ritz-Carlton Fukuoka', hosted:false,
       notes:'Shinkansen to Fukuoka · Grand Sumo Tournament · dinner at Imoto.',
       stops:[
         { time:'11:03', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hiroshima → Hakata', sub:'dep 11:03 / arr 12:09 · private transfer to hotel', loc:'Hiroshima Station', addr:'Minami Ward, Hiroshima', q:'Hiroshima Station', notes:'A short bullet-train hop to Fukuoka (Hakata), then a private transfer to The Ritz-Carlton Fukuoka.', alert:null },
         { time:'Afternoon', type:'activity', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Fukuoka Grand Sumo Tournament', sub:'Tickets secured by Happy Camper · admission from 10:00', loc:'Fukuoka Kokusai Center', addr:'2-2 Chikko-honmachi, Hakata-ku, Fukuoka 812-0021', q:'Fukuoka Kokusai Center', notes:'Your tickets for the November grand sumo basho are confirmed, valid from 10:00. The lower divisions wrestle through the day and the top-division bouts and ceremonies build through the afternoon, so after checking in plan to be seated by 14:00–15:30. It is about 15 minutes by taxi from the hotel.', alert:null },
-        { time:'19:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Imoto', sub:'4 covers · 19:30 · Fukuoka', loc:'Imoto', addr:'4-15-29 Yakuin, Chuo-ku, Fukuoka', q:'Imoto 4-15-29 Yakuin Chuo-ku Fukuoka', notes:'Kyoto cuisine in Fukuoka. Chef Imoto trained for six years at Kawakami in Kyoto before opening his own counter in Yakuin in 2015; his menu sits between kappo and kaiseki, treating Kyushu\'s seafood the Kyoto way — clear dashi, white miso, fish grilled over charcoal and, as the season turns, winter crab. Confirmed for 19:30; the kitchen will be briefed ahead.', alert:null }
+        { time:'19:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Imoto', sub:'4 covers · 19:30 · Fukuoka', loc:'Imoto', addr:'4-15-29 Yakuin, Chuo-ku, Fukuoka', q:'Imoto 4-15-29 Yakuin Chuo-ku Fukuoka', ja:'imoto', notes:'Kyoto cuisine in Fukuoka. Chef Imoto trained for six years at Kawakami in Kyoto before opening his own counter in Yakuin in 2015; his menu sits between kappo and kaiseki, treating Kyushu\'s seafood the Kyoto way — clear dashi, white miso, fish grilled over charcoal and, as the season turns, winter crab. Confirmed for 19:30; the kitchen will be briefed ahead.', alert:null }
       ] },
-    { date:'2026-11-11', dayNum:8, weekday:'Wednesday, 11 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-11', dayNum:8, weekday:'Wednesday, 11 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Shinkansen to Kyoto · check in to Capella · dinner at Cenci · geisha house experience from 21:00.',
       stops:[
         { time:'09:36', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Hakata → Kyoto', sub:'Green (First) class · dep 09:36 / arr 12:19', loc:'Hakata Station', addr:'Hakata-ku, Fukuoka', q:'Hakata Station', notes:'A private car to Hakata Station (~10 min), the bullet train to Kyoto in Green Car (about 2h 43m), and a private transfer to Capella Kyoto on arrival (~15 min).', alert:null },
-        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Capella Kyoto', sub:'6 nights · Premier Temple King ×2', loc:'Capella Kyoto', addr:'130 Komatsu-cho, Higashiyama-ku, Kyoto 605-0811', q:'Capella Kyoto', notes:'In the historic Miyagawa-cho district beside Kenninji, Kyoto\'s oldest Zen temple — a reimagined machiya hotel. Breakfast included. Pauline & Alberto check out on 13 November.', alert:null },
-        { time:'18:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Cenci', sub:'4 covers · 18:30 · Kyoto', loc:'Cenci', addr:'Shogoin, Sakyo-ku, Kyoto', q:'Cenci Kyoto', notes:'Ken Sakamoto\'s Cenci is Kyoto\'s best-known Italian table, in a century-old house near Heian Shrine, reached through a red-brick passage. Sakamoto cooks Italian through a Kyoto lens: a seasonal tasting menu whose card lists only the day\'s ingredients, not the dishes, much of it from Kyoto growers and served on Kyoto craft. Ranked among Asia\'s 50 Best Restaurants. Confirmed for 18:30; the kitchen will be briefed ahead.', alert:null },
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Capella Kyoto', sub:'6 nights · Premier Temple King ×2', loc:'Capella Kyoto', addr:'130 Komatsu-cho, Higashiyama-ku, Kyoto 605-0811', q:'Capella Kyoto', ja:'capella', notes:'In the historic Miyagawa-cho district beside Kenninji, Kyoto\'s oldest Zen temple — a reimagined machiya hotel. Breakfast included. Pauline & Alberto check out on 13 November.', alert:null },
+        { time:'18:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Cenci', sub:'4 covers · 18:30 · Kyoto', loc:'Cenci', addr:'Shogoin, Sakyo-ku, Kyoto', q:'Cenci Kyoto', ja:'cenci', notes:'Ken Sakamoto\'s Cenci is Kyoto\'s best-known Italian table, in a century-old house near Heian Shrine, reached through a red-brick passage. Sakamoto cooks Italian through a Kyoto lens: a seasonal tasting menu whose card lists only the day\'s ingredients, not the dishes, much of it from Kyoto growers and served on Kyoto craft. Ranked among Asia\'s 50 Best Restaurants. Confirmed for 18:30; the kitchen will be briefed ahead.', alert:null },
         { time:'21:00', type:'activity', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Geisha house experience', sub:'Private · Kyoto · from 21:00', loc:'', addr:'Kyoto', q:'', notes:'After dinner, a private geisha house experience in Kyoto, confirmed from 21:00. Happy Camper will share the house and arrival details ahead of the evening.', alert:null }
       ] },
-    { date:'2026-11-12', dayNum:9, weekday:'Thursday, 12 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-12', dayNum:9, weekday:'Thursday, 12 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Day at leisure in eastern Kyoto · dinner at Oka.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Eastern Kyoto at your pace', sub:'Higashiyama · unguided', loc:'Higashiyama, Kyoto', addr:'Higashiyama Ward, Kyoto', q:'Kiyomizu-dera Kyoto', notes:'Kiyomizu-dera and the lanes of Sannen-zaka, Kodai-ji, Maruyama Park and Yasaka-jinja, down into Gion — all close to the hotel.', alert:null },
-        { time:'19:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Oka', sub:'4 covers · 19:00 · Kyoto', loc:'Gion Nikuryori Oka', addr:'Gion, Higashiyama-ku, Kyoto', q:'祇園 肉料理おか 京都', notes:'Yoshitaka Oka cooked Italian for 24 years before turning his Gion restaurant into a niku kappo, a counter devoted to aged beef, in 2021. The meat comes from Yoshinobu Niiho of Sakaeya in Shiga, one of Japan\'s most respected butchers, and is aged 30 to 50 days. Eight to ten kinds of beef, from Omi to free-range cattle, are each cooked over a charcoal blend suited to the cut. Eight seats face a small garden. Confirmed for 19:00; the kitchen will be briefed ahead.', alert:null }
+        { time:'19:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Oka', sub:'4 covers · 19:00 · Kyoto', loc:'Gion Nikuryori Oka', addr:'Gion, Higashiyama-ku, Kyoto', q:'祇園 肉料理おか 京都', ja:'oka', notes:'Yoshitaka Oka cooked Italian for 24 years before turning his Gion restaurant into a niku kappo, a counter devoted to aged beef, in 2021. The meat comes from Yoshinobu Niiho of Sakaeya in Shiga, one of Japan\'s most respected butchers, and is aged 30 to 50 days. Eight to ten kinds of beef, from Omi to free-range cattle, are each cooked over a charcoal blend suited to the cut. Eight seats face a small garden. Confirmed for 19:00; the kitchen will be briefed ahead.', alert:null }
       ] },
-    { date:'2026-11-13', dayNum:10, weekday:'Friday, 13 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-13', dayNum:10, weekday:'Friday, 13 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Pauline & Alberto depart Japan · lunch at Matsu · the party continues as two · Happy Camper dinner to curate.',
       stops:[
-        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Departure transfer · Pauline & Alberto', sub:'Capella → Kyoto Station 9:20 AM · shinkansen to Tokyo · car to Narita', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'Pauline & Alberto begin the journey home: a private car to Kyoto Station at 9:20 AM, the shinkansen to Tokyo (10:21 AM, ~2h 12m, with oversized-luggage seats), then a private car to Narita for AA60 — NRT 17:30 → Dallas/DFW 14:20. From tonight the dining programme is for two.', alert:null },
-        { time:'12:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Lunch · Matsu', sub:'2 covers · 12:00 · Kyoto', loc:'Tempura Matsu', addr:'Umezu, Ukyo-ku, Kyoto', q:'Tempura Matsu Kyoto', notes:'Lunch for two at Matsu in Umezu, on the western side of the city towards Arashiyama. Shunichi Matsuno opened it as a tempura house in 1973; his son Toshio, who has cooked with Alain Ducasse and Grant Achatz, now serves a contemporary Japanese tasting menu on bold Oribe ceramics — with tempura kept on the menu in his father\'s honour. Confirmed for 12:00; the kitchen will be briefed ahead.', alert:null },
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Departure transfer · Pauline & Alberto', sub:'Capella → Kyoto Station 9:20 AM · shinkansen to Tokyo · car to Narita', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', ja:'capella', notes:'Pauline & Alberto begin the journey home: a private car to Kyoto Station at 9:20 AM, the shinkansen to Tokyo (10:21 AM, ~2h 12m, with oversized-luggage seats), then a private car to Narita for AA60 — NRT 17:30 → Dallas/DFW 14:20. From tonight the dining programme is for two.', alert:null },
+        { time:'12:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Lunch · Matsu', sub:'2 covers · 12:00 · Kyoto', loc:'Tempura Matsu', addr:'Umezu, Ukyo-ku, Kyoto', q:'Tempura Matsu Kyoto', ja:'matsu', notes:'Lunch for two at Matsu in Umezu, on the western side of the city towards Arashiyama. Shunichi Matsuno opened it as a tempura house in 1973; his son Toshio, who has cooked with Alain Ducasse and Grant Achatz, now serves a contemporary Japanese tasting menu on bold Oribe ceramics — with tempura kept on the menu in his father\'s honour. Confirmed for 12:00; the kitchen will be briefed ahead.', alert:null },
         { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Happy Camper will tailor the choice now the group is smaller — to be proposed and confirmed.', alert:null }
       ] },
-    { date:'2026-11-14', dayNum:11, weekday:'Saturday, 14 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-14', dayNum:11, weekday:'Saturday, 14 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Day at leisure in western Kyoto · dinner at Miyoshi.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Kyoto at your pace', sub:'Unguided', loc:'Arashiyama, Kyoto', addr:'Kyoto', q:'Arashiyama Bamboo Grove Kyoto', notes:'The Golden Pavilion (Kinkaku-ji), the Zen rock garden of Ryoan-ji, and the bamboo groves of Arashiyama.', alert:null },
-        { time:'20:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Miyoshi', sub:'2 covers · 20:00 · Kyoto', loc:'Niku no Takumi Miyoshi', addr:'Gion-machi Minamigawa, Higashiyama-ku, Kyoto', q:'Niku no Takumi Miyoshi Kyoto', notes:'Niku no Takumi Miyoshi is an eight-seat wagyu kaiseki counter in Gion\'s Minamigawa quarter, a few minutes from the hotel. The course moves through beef in many forms: sashimi of tongue, steak, shabu-shabu and the house\'s best-known dish, sukiyaki finished with truffle. In autumn, matsutake and white truffle often join the menu. Confirmed for 20:00; the kitchen will be briefed ahead.', alert:null }
+        { time:'20:00', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Miyoshi', sub:'2 covers · 20:00 · Kyoto', loc:'Niku no Takumi Miyoshi', addr:'Gion-machi Minamigawa, Higashiyama-ku, Kyoto', q:'Niku no Takumi Miyoshi Kyoto', ja:'miyoshi', notes:'Niku no Takumi Miyoshi is an eight-seat wagyu kaiseki counter in Gion\'s Minamigawa quarter, a few minutes from the hotel. The course moves through beef in many forms: sashimi of tongue, steak, shabu-shabu and the house\'s best-known dish, sukiyaki finished with truffle. In autumn, matsutake and white truffle often join the menu. Confirmed for 20:00; the kitchen will be briefed ahead.', alert:null }
       ] },
-    { date:'2026-11-15', dayNum:12, weekday:'Sunday, 15 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-15', dayNum:12, weekday:'Sunday, 15 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Day at leisure · the Philosopher\'s Path & Higashiyama temples · Kanjoan tea ceremony at 15:00 · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'The Philosopher\'s Path', sub:'Unguided', loc:'Philosopher\'s Path, Kyoto', addr:'Sakyo Ward, Kyoto', q:'Philosophers Path Kyoto', notes:'The canal-side walk between Ginkaku-ji (the Silver Pavilion) and Nanzen-ji, with the Keage Incline nearby.', alert:null },
         { time:'15:00', type:'activity', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Private tea ceremony · Kanjoan', sub:'2 guests · 15:00 · Kyoto', loc:'Kanjoan', addr:'Nishijin, Kamigyo-ku, Kyoto', q:'Kanjoan Tea Ceremony Kyoto', notes:'A private tea ceremony for two at Kanjoan, a tea house in the Nishijin weaving district, confirmed for 15:00. About two hours with a tea master, in English, Japanese or German.', alert:null },
         { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A Happy Camper dinner for two, proposed and booked ahead.', alert:null }
       ] },
-    { date:'2026-11-16', dayNum:13, weekday:'Monday, 16 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', hosted:false,
+    { date:'2026-11-16', dayNum:13, weekday:'Monday, 16 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
       notes:'Nanette\'s day at leisure — Nishijin, Nijo Castle & Fushimi Inari · Raimundo travels to Tokyo in the evening · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Central & southern Kyoto', sub:'Unguided', loc:'Fushimi Inari Taisha', addr:'Fushimi Ward, Kyoto', q:'Fushimi Inari Taisha Kyoto', notes:'The Nishijin weaving district and Nijo Castle, then the thousands of vermilion torii at Fushimi Inari — best wandered up the hillside.', alert:null },
         { time:'Evening', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Raimundo travels to Tokyo', sub:'Kyoto → Tokyo · overnight in Tokyo', loc:'', addr:'', q:'', notes:'Raimundo leaves Kyoto this evening and spends the night in Tokyo, ready for his early flight to Paris tomorrow. Traveledge is arranging his transfer and Tokyo hotel. Tonight\'s dinner is Nanette\'s alone.', alert:null },
         { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'1 cover · Kyoto (Nanette)', loc:'Kyoto', addr:'Kyoto', q:'', notes:'Nanette\'s first dinner alone — a Happy Camper table, to be proposed and confirmed.', alert:null }
       ] },
-    { date:'2026-11-17', dayNum:14, weekday:'Tuesday, 17 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', hosted:false,
+    { date:'2026-11-17', dayNum:14, weekday:'Tuesday, 17 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', ja:'aman', hosted:false,
       notes:'Raimundo flies Haneda → Paris (JL045, 08:20) · Nanette travels up to Tokyo · check in to Aman Tokyo · dinner at Motoyoshi.',
       stops:[
         { time:'08:20', type:'flight', badge:'JL045 · self-booked', badgeType:'self-booked', title:'Raimundo departs Tokyo · Haneda (HND)', sub:'Japan Airlines JL045 · HND 08:20 → Paris', loc:'Haneda Airport', addr:'Haneda Airport, Ota City, Tokyo', q:'Haneda Airport Terminal 3', notes:'Raimundo flies to Paris for his conference on Japan Airlines JL045, departing Haneda at 08:20. Traveledge is arranging his transfer from the Tokyo hotel to the airport. Nanette continues the journey solo.', alert:'Early start · allow time for check-in at Haneda' },
-        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Same-day luggage transfer', sub:'Kyoto → Tokyo', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', notes:'Luggage is sent ahead to Tokyo and delivered to Aman Tokyo. Have bags at reception before leaving (30 kg per piece).', alert:null },
+        { time:'Morning', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Same-day luggage transfer', sub:'Kyoto → Tokyo', loc:'Capella Kyoto', addr:'Higashiyama-ku, Kyoto', q:'Capella Kyoto', ja:'capella', notes:'Luggage is sent ahead to Tokyo and delivered to Aman Tokyo. Have bags at reception before leaving (30 kg per piece).', alert:null },
         { time:'Midday', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Kyoto → Tokyo', sub:'Green (First) class · ~2 hrs', loc:'Kyoto Station', addr:'Shimogyo Ward, Kyoto', q:'Kyoto Station', notes:'A private car to Kyoto Station (~15 min), the bullet train to Tokyo in Green Car (about 2 hours), then a private transfer to Aman Tokyo (~10 min).', alert:null },
-        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Aman Tokyo', sub:'2 nights · Tokyo Suite ×2', loc:'Aman Tokyo', addr:'The Otemachi Tower, 1-5-6 Otemachi, Chiyoda, Tokyo 100-0004', q:'Aman Tokyo', notes:'Back in Tokyo, high on the top six floors of the Otemachi Tower — 77 sqm Tokyo Suites with skyline views over the Imperial Palace and, on clear days, Mt Fuji. Breakfast included.', alert:null },
-        { time:'17:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Motoyoshi', sub:'1 cover · 17:30 · Tokyo (Nanette, solo)', loc:'Tempura Motoyoshi', addr:'Ebisu-nishi, Shibuya-ku, Tokyo', q:'Tempura Motoyoshi Tokyo', notes:'Nanette\'s first solo dinner, at an early 17:30. Kazuhito Motoyoshi\'s two-Michelin-star tempura counter in Ebisu is driven by curiosity as much as tradition — his batter uses two kinds of water and even liquid nitrogen. The signature is cold sea urchin on a hot, crisp shiso leaf, and small inventive plates between the tempura give the evening its rhythm. Confirmed; the kitchen will be briefed ahead.', alert:null }
+        { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Aman Tokyo', sub:'2 nights · Tokyo Suite ×2', loc:'Aman Tokyo', addr:'The Otemachi Tower, 1-5-6 Otemachi, Chiyoda, Tokyo 100-0004', q:'Aman Tokyo', ja:'aman', notes:'Back in Tokyo, high on the top six floors of the Otemachi Tower — 77 sqm Tokyo Suites with skyline views over the Imperial Palace and, on clear days, Mt Fuji. Breakfast included.', alert:null },
+        { time:'17:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Motoyoshi', sub:'1 cover · 17:30 · Tokyo (Nanette, solo)', loc:'Tempura Motoyoshi', addr:'Ebisu-nishi, Shibuya-ku, Tokyo', q:'Tempura Motoyoshi Tokyo', ja:'motoyoshi', notes:'Nanette\'s first solo dinner, at an early 17:30. Kazuhito Motoyoshi\'s two-Michelin-star tempura counter in Ebisu is driven by curiosity as much as tradition — his batter uses two kinds of water and even liquid nitrogen. The signature is cold sea urchin on a hot, crisp shiso leaf, and small inventive plates between the tempura give the evening its rhythm. Confirmed; the kitchen will be briefed ahead.', alert:null }
       ] },
-    { date:'2026-11-18', dayNum:15, weekday:'Wednesday, 18 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', hosted:false,
+    { date:'2026-11-18', dayNum:15, weekday:'Wednesday, 18 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', ja:'aman', hosted:false,
       notes:'Nanette\'s solo day in Tokyo · final dinner at Mitaka.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'Western Tokyo at your pace', sub:'Unguided', loc:'Meiji Jingu & Harajuku', addr:'Shibuya, Tokyo', q:'Meiji Jingu Tokyo', notes:'Meiji Jingu and Yoyogi Park, the boutiques of Harajuku and Omotesando, the Shibuya crossing, and Shinjuku for the evening.', alert:null },
         { time:'Daytime', type:'activity', badge:'Happy Camper · to arrange', badgeType:'pending', title:'Solo experiences · Happy Camper to arrange', sub:'A few curated solo activities', loc:'Tokyo', addr:'Tokyo', q:'', notes:'At Nanette\'s request, Happy Camper will line up a few enjoyable solo activities for her final days — to be proposed and confirmed.', alert:null },
-        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Mitaka', sub:'1 cover · 20:30 · Tokyo (Nanette, solo)', loc:'Mitaka (味享)', addr:'Nishi-Shinbashi, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8', notes:'Nanette\'s final dinner in Japan. Takatoshi Inoue trained for about ten years under the late Kenichiro Nishi at Kyoaji, Tokyo\'s legendary Kyoto-style restaurant, and opened his own eight-seat counter in 2018. His cooking is quietly orthodox Kyoto cuisine — clear soups, simmered vegetables, carefully grilled fish — in the Kyoaji tradition of letting each ingredient taste fully of itself. A year\'s seats are spoken for almost as soon as booking opens. Confirmed for 20:30; the kitchen will be briefed ahead.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Mitaka', sub:'1 cover · 20:30 · Tokyo (Nanette, solo)', loc:'Mitaka (味享)', addr:'Nishi-Shinbashi, Minato-ku, Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8', ja:'mitaka', notes:'Nanette\'s final dinner in Japan. Takatoshi Inoue trained for about ten years under the late Kenichiro Nishi at Kyoaji, Tokyo\'s legendary Kyoto-style restaurant, and opened his own eight-seat counter in 2018. His cooking is quietly orthodox Kyoto cuisine — clear soups, simmered vegetables, carefully grilled fish — in the Kyoaji tradition of letting each ingredient taste fully of itself. A year\'s seats are spoken for almost as soon as booking opens. Confirmed for 20:30; the kitchen will be briefed ahead.', alert:null }
       ] },
     { date:'2026-11-19', dayNum:16, weekday:'Thursday, 19 November', city:'Tokyo', cityClass:'', hotel:'', hotelBy:'', hq:'', hosted:false,
       notes:'Private transfer to Narita · flight home (AA60 to Dallas).',
       stops:[
-        { time:'14:00', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Transfer · Aman Tokyo → Narita', sub:'Private car · ~1 hr', loc:'Aman Tokyo', addr:'Otemachi, Chiyoda, Tokyo', q:'Aman Tokyo', notes:'A private car to Narita, departing Aman Tokyo around 14:00.', alert:null },
+        { time:'14:00', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Transfer · Aman Tokyo → Narita', sub:'Private car · ~1 hr', loc:'Aman Tokyo', addr:'Otemachi, Chiyoda, Tokyo', q:'Aman Tokyo', ja:'aman', notes:'A private car to Narita, departing Aman Tokyo around 14:00.', alert:null },
         { time:'17:30', type:'flight', badge:'Departure', badgeType:'self-booked', title:'Depart Tokyo · Narita · AA60', sub:'NRT → Dallas (DFW)', loc:'Narita International Airport', addr:'Narita International Airport, Chiba', q:'Narita International Airport', notes:'American Airlines AA60, NRT 17:30 → DFW 14:20 (11h 50m). Safe travels — gochisousama deshita, and thank you for letting Happy Camper shape the table.', alert:null }
       ] }
   ]
 };
 
+/* ═══ JAPANESE PLACE DIRECTORY · for the taxi card ═══
+   addr = address in Japanese, as Google Maps shows it to a Japanese user.
+   Every entry cross-checked against Google's romanised address + postcode.
+   To extend for a new tour: add an entry and reference it with ja:'<key>' on the stop. */
+var JA_DIR = {
+  palace:{ name:'パレスホテル東京', en:'Palace Hotel Tokyo', addr:'〒100-0005 東京都千代田区丸の内1-1-1', tel:'+81332115211' },
+  nakano:{ name:'鮨 なかの', en:'Sushi Nakano', addr:'〒107-0062 東京都港区南青山3-4-12', tel:'+81334232525' },
+  sugalabo:{ name:'SUGALABO', en:'Sugalabo', addr:'〒106-0041 東京都港区麻布台1-11-10 1F', tel:'' },
+  fufu:{ name:'ふふ 河口湖', en:'Fufu Kawaguchiko', addr:'〒401-0304 山梨県南都留郡富士河口湖町河口 水口2211-1', tel:'' },
+  toriyamamoto:{ name:'とり やまもと', en:'Tori Yamamoto', addr:'〒730-0021 広島県広島市中区胡町2-25 2F', tel:'+81829099686' },
+  sheraton:{ name:'シェラトングランドホテル広島', en:'Sheraton Grand Hiroshima', addr:'〒732-0053 広島県広島市東区若草町12-1', tel:'+81822627111' },
+  imoto:{ name:'いもと', en:'Imoto', addr:'〒810-0022 福岡県福岡市中央区薬院4-15-29', tel:'+81927537125' },
+  ritz:{ name:'ザ・リッツ・カールトン福岡', en:'The Ritz-Carlton Fukuoka', addr:'〒810-0041 福岡県福岡市中央区大名2-6-50', tel:'+81924018888' },
+  capella:{ name:'カペラ京都', en:'Capella Kyoto', addr:'〒605-0811 京都府京都市東山区小松町130', tel:'+81755418877' },
+  cenci:{ name:'cenci', en:'Cenci', addr:'〒606-8323 京都府京都市左京区聖護院円頓美町44-7', tel:'+81757085307' },
+  oka:{ name:'祇園 肉料理おか', en:'Gion Nikuryori Oka', addr:'〒605-0074 京都府京都市東山区祇園町南側577-3', tel:'+81757463465' },
+  matsu:{ name:'天ぷら松', en:'Tempura Matsu', addr:'〒615-0925 京都府京都市右京区梅津大縄場町21-26', tel:'+81758819190' },
+  miyoshi:{ name:'肉の匠 三芳', en:'Nikunotakumi Miyoshi', addr:'〒605-0074 京都府京都市東山区祇園町南側570-15', tel:'+81755612508' },
+  motoyoshi:{ name:'天冨良 元吉', en:'Tempura Motoyoshi', addr:'〒150-0021 東京都渋谷区恵比寿西2-8-11 グランベル恵比寿IV 3階', tel:'+81364550200' },
+  aman:{ name:'アマン東京', en:'Aman Tokyo', addr:'〒100-0004 東京都千代田区大手町1-5-6 大手町タワー', tel:'+81352243333' },
+  mitaka:{ name:'味享', en:'Mitaka', addr:'〒105-0003 東京都港区西新橋1-18-8 報徳ビル1階', tel:'+81368127168' }
+};
+
 /* ═══ Happy Camper DINING PROGRAMME (Wish List tab) ═══ */
 var WL_CONFIRMED = [
-  { name:'Sugalabo', style:'Confirmed · 5 Nov · 20:30 · 4 pax · Tokyo', q:'https://maps.app.goo.gl/YZfPxdavY3JZbagc9' },
-  { name:'Sushi Nakano', style:'Confirmed · 6 Nov · 20:30 · 4 pax · Tokyo', q:'https://maps.app.goo.gl/KW5GQRL5oLecmcWV6' },
-  { name:'Fufu Kawaguchiko · Kaiseki ×2', style:'Included in stay · 7 & 8 Nov · 4 pax · Kawaguchiko', q:'Fufu Kawaguchiko' },
-  { name:'Tori Yamamoto', style:'Confirmed · 9 Nov · 20:30 · 4 pax · Hiroshima', q:'Tori Yamamoto 2-25 Ebisucho Naka Ward Hiroshima' },
-  { name:'Imoto', style:'Confirmed · 10 Nov · 19:30 · 4 pax · Fukuoka', q:'Imoto 4-15-29 Yakuin Chuo-ku Fukuoka' },
-  { name:'Cenci', style:'Confirmed · 11 Nov · 18:30 · 4 pax · Kyoto', q:'Cenci Kyoto' },
-  { name:'Oka', style:'Confirmed · 12 Nov · 19:00 · 4 pax · Kyoto', q:'祇園 肉料理おか 京都' },
-  { name:'Matsu · lunch', style:'Confirmed · 13 Nov · 12:00 · 2 pax · Kyoto', q:'Tempura Matsu Kyoto' },
-  { name:'Miyoshi', style:'Confirmed · 14 Nov · 20:00 · 2 pax · Kyoto', q:'Niku no Takumi Miyoshi Kyoto' },
-  { name:'Motoyoshi', style:'Confirmed · 17 Nov · 17:30 · 1 pax · Tokyo', q:'Tempura Motoyoshi Tokyo' },
-  { name:'Mitaka', style:'Confirmed · 18 Nov · 20:30 · 1 pax · Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8' }
+  { name:'Sugalabo', style:'Confirmed · 5 Nov · 20:30 · 4 pax · Tokyo', q:'https://maps.app.goo.gl/YZfPxdavY3JZbagc9', ja:'sugalabo' },
+  { name:'Sushi Nakano', style:'Confirmed · 6 Nov · 20:30 · 4 pax · Tokyo', q:'https://maps.app.goo.gl/KW5GQRL5oLecmcWV6', ja:'nakano' },
+  { name:'Fufu Kawaguchiko · Kaiseki ×2', style:'Included in stay · 7 & 8 Nov · 4 pax · Kawaguchiko', q:'Fufu Kawaguchiko', ja:'fufu' },
+  { name:'Tori Yamamoto', style:'Confirmed · 9 Nov · 20:30 · 4 pax · Hiroshima', q:'Tori Yamamoto 2-25 Ebisucho Naka Ward Hiroshima', ja:'toriyamamoto' },
+  { name:'Imoto', style:'Confirmed · 10 Nov · 19:30 · 4 pax · Fukuoka', q:'Imoto 4-15-29 Yakuin Chuo-ku Fukuoka', ja:'imoto' },
+  { name:'Cenci', style:'Confirmed · 11 Nov · 18:30 · 4 pax · Kyoto', q:'Cenci Kyoto', ja:'cenci' },
+  { name:'Oka', style:'Confirmed · 12 Nov · 19:00 · 4 pax · Kyoto', q:'祇園 肉料理おか 京都', ja:'oka' },
+  { name:'Matsu · lunch', style:'Confirmed · 13 Nov · 12:00 · 2 pax · Kyoto', q:'Tempura Matsu Kyoto', ja:'matsu' },
+  { name:'Miyoshi', style:'Confirmed · 14 Nov · 20:00 · 2 pax · Kyoto', q:'Niku no Takumi Miyoshi Kyoto', ja:'miyoshi' },
+  { name:'Motoyoshi', style:'Confirmed · 17 Nov · 17:30 · 1 pax · Tokyo', q:'Tempura Motoyoshi Tokyo', ja:'motoyoshi' },
+  { name:'Mitaka', style:'Confirmed · 18 Nov · 20:30 · 1 pax · Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8', ja:'mitaka' }
 ];
 var WL_REQUESTED = [];
 var WL_SUGGESTIONS = [
@@ -891,6 +941,28 @@ function gm(q){return(q&&q.indexOf('http')===0)?q:'https://maps.google.com/?q='+
 function nav(q){return(q&&q.indexOf('http')===0)?q:'https://maps.google.com/maps?daddr='+encodeURIComponent(q||'Tokyo Japan')+'&dirflg=d';}
 var toastTm;
 function showToast(msg){var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTm);toastTm=setTimeout(function(){el.classList.remove('show');},2200);}
+window.showTaxi=function(key){
+  var j=JA_DIR[key]; if(!j)return;
+  document.getElementById('taxi-body').innerHTML=''
+    +'<div class="taxi-card">'
+    +  '<div class="taxi-to">行き先 · DESTINATION</div>'
+    +  '<div class="taxi-name">'+esc(j.name)+'</div>'
+    +  '<div class="taxi-name-en">'+esc(j.en)+'</div>'
+    +  '<div class="taxi-addr">'+esc(j.addr)+'</div>'
+    +  '<div class="taxi-ask">ここまでお願いします。</div>'
+    +  '<div class="taxi-ask-en">Please take me here.</div>'
+    +'</div>'
+    +'<div class="taxi-actions">'
+    +  '<a href="'+gm(j.addr)+'" target="_blank" rel="noopener" class="taxi-act pri">📍 Open in Maps</a>'
+    +  (j.tel?'<a href="tel:'+j.tel+'" class="taxi-act">📞 Call</a>':'')
+    +'</div>';
+  document.getElementById('taxi-modal').classList.add('active');
+  document.body.style.overflow='hidden';
+};
+window.closeTaxi=function(){
+  document.getElementById('taxi-modal').classList.remove('active');
+  document.body.style.overflow='';
+};
 window.copyAddr=function(di,si){
   var stop=TRIP.days[di].stops[si];
   var txt=(stop.addr&&stop.addr!=='Tokyo'&&stop.addr!=='Kyoto')?stop.addr:stop.loc;
@@ -935,11 +1007,16 @@ function renderStop(stop,di,si){
   var badge=stop.badge?'<span class="stop-badge '+stop.badgeType+'">'+esc(stop.badge)+'</span>':'';
   var dotClass=isSuggestion?'t-suggestion':('t-'+(stop.type||'restaurant'));
   var cardClass=stop.badgeType==='suggestion'?' is-suggestion':(stop.badgeType==='pending'?' is-pending':'');
+  var hasJa=!!(stop.ja&&JA_DIR[stop.ja]);
+  var taxiBtn=hasJa
+    ?'<button class="map-btn" onclick="showTaxi(\''+stop.ja+'\')">🚕 Taxi</button>'
+    :'<span class="map-btn map-disabled">🚕</span>';
   var mapHTML=isActionable&&hasLoc
     ?'<a href="'+gm(stop.q)+'" target="_blank" rel="noopener" class="map-btn mp">📍 Maps</a>'
       +'<a href="'+nav(stop.q)+'" target="_blank" rel="noopener" class="map-btn">🧭 Nav</a>'
+      +taxiBtn
       +'<button class="map-btn" onclick="copyAddr('+di+','+si+')">⎘ Copy</button>'
-    :'<span class="map-btn map-disabled">📍</span><span class="map-btn map-disabled">🧭</span><span class="map-btn map-disabled">⎘</span>';
+    :'<span class="map-btn map-disabled">📍</span><span class="map-btn map-disabled">🧭</span>'+taxiBtn+'<span class="map-btn map-disabled">⎘</span>';
   return '<div class="stop-item">'
     +'<div class="stop-time">'+(stop.time?stop.time.replace('~',''):'')+'</div>'
     +'<div class="stop-dot '+dotClass+'"></div>'
@@ -1209,7 +1286,6 @@ function renderUtilities(){
     +'<div class="util-card"><ul class="info-list">'
     +'<li><span class="info-emoji">💴</span><div class="info-text"><strong>Cash is useful</strong>Carry some yen — a few counters and the ryokan extras prefer cash. ATMs at 7-Eleven and Japan Post accept foreign cards.</div></li>'
     +'<li><span class="info-emoji">🍁</span><div class="info-text"><strong>Early–mid November</strong>Autumn in Japan — crisp and largely clear, roughly 10–18°C, with the maples turning. Warm layers and a light coat; evenings are cool.</div></li>'
-    +'<li><span class="info-emoji">📱</span><div class="info-text"><strong>Suica (Mobile Wallet)</strong>Wallet app → tap + → search Suica. Covers Tokyo and Kyoto subway, bus and JR — handy in Hiroshima and Fukuoka too.</div></li>'
     +'<li><span class="info-emoji">⏰</span><div class="info-text"><strong>Time Zone: JST = UTC+9</strong>No daylight saving. 15 h ahead of Dallas (CST).</div></li>'
     +'<li><span class="info-emoji">🔌</span><div class="info-text"><strong>Electricity: 100V · Type A</strong>North American travellers need only a 3-to-2-prong adapter, no converter.</div></li>'
     +'<li><span class="info-emoji">📲</span><div class="info-text"><strong>eSIM ×4 + Suica ×4 (provided)</strong>From your orientation: four eSIMs for mobile data across Japan, plus four Suica cards pre-loaded with ¥3,000 for tap-and-go trains and buses.</div></li>'
@@ -1221,7 +1297,29 @@ function renderUtilities(){
     +'<div class="rule-item"><span class="rule-icon">💍</span><div class="rule-text"><strong>Protect the Counter</strong>Remove rings, bracelets, and watches at sushi counters — many are single pieces of precious Hinoki cypress.</div></div>'
     +'<div class="rule-item"><span class="rule-icon">💰</span><div class="rule-text"><strong>No Tipping</strong>Not customary in Japan. Say <em>Gochisousama deshita</em> after the meal — deeply appreciated.</div></div>'
     +'<div class="rule-item"><span class="rule-icon">🔒</span><div class="rule-text"><strong>Reservations are Firm</strong>Once confirmed, reservations are commitments — cancellations damage relationships built over many seasons.</div></div>'
-    +'</div>';
+    +'<div class="rule-item"><span class="rule-icon">🥢</span><div class="rule-text"><strong>Chopsticks</strong>Never stand them upright in rice, and never pass food chopstick-to-chopstick — both echo funeral rites. To take from a shared dish, turn your chopsticks and use the clean ends.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">📷</span><div class="rule-text"><strong>Photography — ask first</strong>A quiet word before the first course settles it. Many counters allow the dish but not the room, never the flash, and never other guests. Some ask for nothing at all.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">⏱️</span><div class="rule-text"><strong>Eat at the chef&rsquo;s pace</strong>At a sushi counter each piece is finished the moment it is set down and is meant to be eaten within seconds — warm rice, cool fish. Fingers are perfectly correct. Tempura is the same: straight from the oil, eaten at once.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">🍶</span><div class="rule-text"><strong>Soy and wasabi</strong>At the better counters the chef has already seasoned each piece — no soy dish will appear, and asking for one is a small slight. Where soy is served, dip the fish, never the rice, and don&rsquo;t stir wasabi into it.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">🥂</span><div class="rule-text"><strong>Pouring</strong>Fill your companions&rsquo; glasses, not your own; someone will return the favour. Lift your glass slightly off the table to be poured.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">📵</span><div class="rule-text"><strong>Phones at the counter</strong>Silent and out of sight. Step outside for anything that cannot wait — in a ten-seat room, one call is heard by everyone.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">🧼</span><div class="rule-text"><strong>The oshibori</strong>The warm towel is for your hands before the meal. Not the face, not the table — fold it and set it aside.</div></div>'
+    +'<div class="rule-item"><span class="rule-icon">🍽️</span><div class="rule-text"><strong>Finish what is served</strong>Each course is portioned deliberately for you. Anything left is noticed and reported back to the kitchen. If a dish defeats you, say so warmly rather than leaving it.</div></div>'
+    +'</div>'
+    +'<div class="section-label">Getting Around</div>'
+    +'<div class="util-card"><ul class="info-list">'
+    +'<li><span class="info-emoji">📍</span><div class="info-text"><strong>Every stop carries its own buttons</strong>Each entry on your itinerary has <strong>Maps</strong>, <strong>Nav</strong>, <strong>Taxi</strong> and <strong>Copy</strong>. Maps opens the venue in Google Maps, where the address appears in Japanese — the form a driver, concierge or passer-by will recognise. Copy puts it on your clipboard.</div></li>'
+    +'<li><span class="info-emoji">🚕</span><div class="info-text"><strong>Show the driver</strong>The Taxi button opens a full-screen card in Japanese: the venue name, its address, and a line asking to be taken there. Hand your phone to the driver — no pronunciation required.</div></li>'
+    +'<li><span class="info-emoji">🚄</span><div class="info-text"><strong>Shinkansen</strong>Reserved seats are booked for you and shown on your itinerary. Be on the platform five minutes early — doors close to the second, and your carriage position is marked on the platform floor.</div></li>'
+    +'<li><span class="info-emoji">🧳</span><div class="info-text"><strong>Luggage sent ahead</strong>Where your itinerary shows a luggage transfer, your main bags travel separately and meet you at the next hotel. Pack a small overnight bag for the nights between. Bags to the front desk by the stated hour; 30 kg per piece.</div></li>'
+    +'<li><span class="info-emoji">📱</span><div class="info-text"><strong>IC cards — tap and go</strong>Suica or Pasmo covers subway, bus and local JR nationwide, and doubles as payment in convenience stores. Not valid on the shinkansen — those tickets are issued separately.</div></li>'
+    +'<li><span class="info-emoji">🚖</span><div class="info-text"><strong>Taxis</strong>The rear door opens and closes by itself — stand clear and do not reach for it. Cards are widely accepted; tipping is not. The GO app works nationwide.</div></li>'
+    +'<li><span class="info-emoji">🚙</span><div class="info-text"><strong>Your private cars</strong>Transfers marked on the itinerary are private cars with driver. Your driver waits in the hotel lobby, not at the kerb.</div></li>'
+    +'<li><span class="info-emoji">🤫</span><div class="info-text"><strong>Train manners</strong>No phone calls in any carriage. Eating is normal on the shinkansen, not on local trains or the subway. Priority seats near the doors are left free when anyone may need them.</div></li>'
+    +'<li><span class="info-emoji">↔️</span><div class="info-text"><strong>Which side to stand</strong>Escalators: stand left in Tokyo and Kyoto, walk on the right. Osaka reverses it.</div></li>'
+    +'<li><span class="info-emoji">🌙</span><div class="info-text"><strong>Last trains</strong>Most lines stop between midnight and 1 a.m. After a late dinner a taxi is usually the easier answer, and your hotel will call one for you.</div></li>'
+    +'</ul></div>'
+    ;
   var jEl=document.getElementById('fx-jpy'),uEl=document.getElementById('fx-usd');
   function num(el){var x=parseFloat(String(el.value).replace(/[^0-9.]/g,''));return isNaN(x)?NaN:x;}
   function fmtY(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}

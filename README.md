@@ -9,6 +9,9 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 31 Oct 2026
+- K8XHDFTW-0003 (Nanette Levi, USD 8,150) paid via Stripe (payout 29 Oct); marked paid on the statement and her Pay button removed. Outstanding: E7RB1XGD-0002 (Pauline Guzman, USD 3,975).
+
 ### 27 Oct 2026
 - Balance invoices issued 26 Oct, one per couple: K8XHDFTW-0003 to Nanette Levi (USD 8,150 + 326 card fee = 8,476)
   and E7RB1XGD-0002 to Pauline Guzman (USD 3,975 + 159 card fee = 4,134). Both shown on the statement as unpaid.

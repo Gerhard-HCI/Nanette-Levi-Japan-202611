@@ -9,6 +9,9 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 13 Nov 2026
+- Statement: E7RB1XGD-0002 (Pauline Guzman) marked paid and her Pay button removed. Out-of-pocket line added for Tempura Matsu (13 Nov), billed on invoice K8XHDFTW-0004 to Nanette & Raimundo with a Stripe Pay button. Outstanding: K8XHDFTW-0004.
+
 ### 31 Oct 2026
 - K8XHDFTW-0003 (Nanette Levi, USD 8,150) paid via Stripe (payout 29 Oct); marked paid on the statement and her Pay button removed. Outstanding: E7RB1XGD-0002 (Pauline Guzman, USD 3,975).
 

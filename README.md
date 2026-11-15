@@ -9,6 +9,10 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 
 ## Change log
 
+### 15 Nov 2026
+- Motoyoshi (17 Nov): Maps now uses the verbatim Google Maps link supplied.
+- Kanjoan tea ceremony (15 Nov): Maps pinned to the exact Google listing (191-3 Nishiyashiro-cho, Kamigyo-ku); Taxi card added with the Japanese address.
+
 ### 13 Nov 2026
 - Statement: E7RB1XGD-0002 (Pauline Guzman) marked paid and her Pay button removed. Out-of-pocket line added for Tempura Matsu (13 Nov), billed on invoice K8XHDFTW-0004 to Nanette & Raimundo with a Stripe Pay button. Outstanding: K8XHDFTW-0004.
 

@@ -669,7 +669,7 @@ var TRIP = {
       notes:'Day at leisure · the Philosopher\'s Path & Higashiyama temples · Kanjoan tea ceremony at 15:00 · Happy Camper dinner to curate.',
       stops:[
         { time:'Day', type:'activity', badge:'At leisure', badgeType:'suggestion', title:'The Philosopher\'s Path', sub:'Unguided', loc:'Philosopher\'s Path, Kyoto', addr:'Sakyo Ward, Kyoto', q:'Philosophers Path Kyoto', notes:'The canal-side walk between Ginkaku-ji (the Silver Pavilion) and Nanzen-ji, with the Keage Incline nearby.', alert:null },
-        { time:'15:00', type:'activity', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Private tea ceremony · Kanjoan', sub:'2 guests · 15:00 · Kyoto', loc:'Kanjoan', addr:'Nishijin, Kamigyo-ku, Kyoto', q:'Kanjoan Tea Ceremony Kyoto', notes:'A private tea ceremony for two at Kanjoan, a tea house in the Nishijin weaving district, confirmed for 15:00. About two hours with a tea master, in English, Japanese or German.', alert:null },
+        { time:'15:00', type:'activity', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Private tea ceremony · Kanjoan', sub:'2 guests · 15:00 · Kyoto', loc:'Kanjoan', addr:'191-3 Nishiyashiro-cho, Kamigyo-ku, Kyoto', q:'https://www.google.com/maps/search/?api=1&query=Kanjoan%20%E7%B7%A9%E5%BE%90%E5%BA%B5&query_place_id=ChIJkefxbLoHAWARvPCCPciuFOU', ja:'kanjoan', notes:'A private tea ceremony for two at Kanjoan, a tea house in the Nishijin weaving district, confirmed for 15:00. About two hours with a tea master, in English, Japanese or German.', alert:null },
         { time:'Evening', type:'restaurant', badge:'Happy Camper · curating', badgeType:'pending', title:'Dinner · curated by Happy Camper', sub:'2 covers · Kyoto', loc:'Kyoto', addr:'Kyoto', q:'', notes:'A Happy Camper dinner for two, proposed and booked ahead.', alert:null }
       ] },
     { date:'2026-11-16', dayNum:13, weekday:'Monday, 16 November', city:'Kyoto', cityClass:'kyoto', hotel:'Capella Kyoto', hotelBy:'by Traveledge', hq:'Capella Kyoto', ja:'capella', hosted:false,
@@ -691,7 +691,7 @@ var TRIP = {
 { time:'12:21', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Shinkansen · Kyoto → Tokyo', sub:'Green (First) class · dep 12:21 / arr 14:33', loc:'Kyoto Station', addr:'Shimogyo Ward, Kyoto', q:'Kyoto Station', notes:'The bullet train to Tokyo in Green Car, departing 12:21 and arriving 14:33.', alert:null },
                 { time:'14:33', type:'transport', badge:'by Traveledge', badgeType:'logistics', title:'Transfer · Tokyo Station → Aman Tokyo', sub:'Private car · pick-up on the platform', loc:'Aman Tokyo', addr:'Otemachi, Chiyoda, Tokyo', q:'Aman Tokyo', ja:'aman', notes:'Your driver meets you on the platform at Tokyo Station on arrival and takes you to Aman Tokyo (~10 min).', alert:null },
 { time:'15:00', type:'hotel', badge:'by Traveledge', badgeType:'confirmed', title:'Check in · Aman Tokyo', sub:'2 nights · Tokyo Suite ×2', loc:'Aman Tokyo', addr:'The Otemachi Tower, 1-5-6 Otemachi, Chiyoda, Tokyo 100-0004', q:'Aman Tokyo', ja:'aman', notes:'Back in Tokyo, high on the top six floors of the Otemachi Tower — 77 sqm Tokyo Suites with skyline views over the Imperial Palace and, on clear days, Mt Fuji. Breakfast included.', alert:null },
-        { time:'17:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Motoyoshi', sub:'1 cover · 17:30 · Tokyo (Nanette, solo)', loc:'Tempura Motoyoshi', addr:'Ebisu-nishi, Shibuya-ku, Tokyo', q:'Tempura Motoyoshi Tokyo', ja:'motoyoshi', notes:'Nanette\'s first solo dinner, at an early 17:30. Kazuhito Motoyoshi\'s two-Michelin-star tempura counter in Ebisu is driven by curiosity as much as tradition — his batter uses two kinds of water and even liquid nitrogen. The signature is cold sea urchin on a hot, crisp shiso leaf, and small inventive plates between the tempura give the evening its rhythm. Confirmed; the kitchen will be briefed ahead.', alert:null }
+        { time:'17:30', type:'restaurant', badge:'Happy Camper · confirmed', badgeType:'confirmed', title:'Dinner · Motoyoshi', sub:'1 cover · 17:30 · Tokyo (Nanette, solo)', loc:'Tempura Motoyoshi', addr:'Ebisu-nishi, Shibuya-ku, Tokyo', q:'https://maps.app.goo.gl/iT2MNMxdyjH9AZv87?g_st=ic', ja:'motoyoshi', notes:'Nanette\'s first solo dinner, at an early 17:30. Kazuhito Motoyoshi\'s two-Michelin-star tempura counter in Ebisu is driven by curiosity as much as tradition — his batter uses two kinds of water and even liquid nitrogen. The signature is cold sea urchin on a hot, crisp shiso leaf, and small inventive plates between the tempura give the evening its rhythm. Confirmed; the kitchen will be briefed ahead.', alert:null }
       ] },
     { date:'2026-11-18', dayNum:15, weekday:'Wednesday, 18 November', city:'Tokyo', cityClass:'', hotel:'Aman Tokyo', hotelBy:'by Traveledge', hq:'Aman Tokyo', ja:'aman', hosted:false,
       notes:'Nanette\'s solo day in Tokyo · final dinner at Mitaka.',
@@ -727,6 +727,7 @@ var JA_DIR = {
   oka:{ name:'祇園 肉料理おか', en:'Gion Nikuryori Oka', addr:'〒605-0074 京都府京都市東山区祇園町南側577-3', tel:'+81757463465' },
   matsu:{ name:'天ぷら松', en:'Tempura Matsu', addr:'〒615-0925 京都府京都市右京区梅津大縄場町21-26', tel:'+81758819190' },
   miyoshi:{ name:'肉の匠 三芳', en:'Nikunotakumi Miyoshi', addr:'〒605-0074 京都府京都市東山区祇園町南側570-15', tel:'+81755612508' },
+  kanjoan:{ name:'緩徐庵（茶道）', en:'Kanjoan tea house', addr:'〒602-8491 京都府京都市上京区西社町191-3', tel:'+81752007653' },
   motoyoshi:{ name:'天冨良 元吉', en:'Tempura Motoyoshi', addr:'〒150-0021 東京都渋谷区恵比寿西2-8-11 グランベル恵比寿IV 3階', tel:'+81364550200' },
   aman:{ name:'アマン東京', en:'Aman Tokyo', addr:'〒100-0004 東京都千代田区大手町1-5-6 大手町タワー', tel:'+81352243333' },
   tamanohikari:{ name:'玉乃光酒造', en:'Tamanohikari Sake Brewery', addr:'〒612-8066 京都府京都市伏見区東堺町545-2', tel:'+81756115000' },
@@ -744,7 +745,7 @@ var WL_CONFIRMED = [
   { name:'Oka', style:'Confirmed · 12 Nov · 19:00 · 4 pax · Kyoto', q:'祇園 肉料理おか 京都', ja:'oka' },
   { name:'Matsu · lunch', style:'Confirmed · 13 Nov · 12:00 · 2 pax · Kyoto', q:'Tempura Matsu Kyoto', ja:'matsu' },
   { name:'Miyoshi', style:'Confirmed · 14 Nov · 20:00 · 2 pax · Kyoto', q:'Niku no Takumi Miyoshi Kyoto', ja:'miyoshi' },
-  { name:'Motoyoshi', style:'Confirmed · 17 Nov · 17:30 · 1 pax · Tokyo', q:'Tempura Motoyoshi Tokyo', ja:'motoyoshi' },
+  { name:'Motoyoshi', style:'Confirmed · 17 Nov · 17:30 · 1 pax · Tokyo', q:'https://maps.app.goo.gl/iT2MNMxdyjH9AZv87?g_st=ic', ja:'motoyoshi' },
   { name:'Mitaka', style:'Confirmed · 18 Nov · 20:30 · 1 pax · Tokyo', q:'https://maps.app.goo.gl/xZzUUKYVhrN22pgo8', ja:'mitaka' }
 ];
 var WL_REQUESTED = [];

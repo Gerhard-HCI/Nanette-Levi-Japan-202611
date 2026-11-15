@@ -10,6 +10,7 @@ encrypted (AES-GCM-256, PBKDF2-SHA256, 250,000 iterations) with separate guest a
 ## Change log
 
 ### 15 Nov 2026
+- Full button audit: every Maps and Nav button for a real place (itinerary, hotels, dining list, Discover in all five cities) is now pinned to its verified Google Place ID; Nav opens Google directions to that pin. Taxi-card Maps buttons pinned too. Copy now gives a full address (the Japanese taxi address where there is one). Generic category/area searches (e.g. "Ramen Tokyo", "Ginza") stay as searches.
 - Motoyoshi (17 Nov): Maps now uses the verbatim Google Maps link supplied.
 - Kanjoan tea ceremony (15 Nov): Maps pinned to the exact Google listing (191-3 Nishiyashiro-cho, Kamigyo-ku); Taxi card added with the Japanese address.
 
